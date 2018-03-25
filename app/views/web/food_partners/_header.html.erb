@@ -1,0 +1,15 @@
+<div class="fa-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <%= @food_partner.company_name %>
+          <small>
+            <%= link_to "More Info", partners_from_web_information_path(@food_partner.url_slug) %>
+          </small>
+        </h1>
+        <%= render 'details' %>
+      </div>
+    </div>
+  </div>
+</div>

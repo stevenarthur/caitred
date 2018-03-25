@@ -1,0 +1,49 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.are-you-an-investor {
+  padding: 5rem 2rem;
+  background-color: #d4e3e1;
+  overflow: hidden;
+  text-align: left;
+
+  h2, p {
+    text-align: center;
+  }
+
+  h2 {
+    font-weight: bold;
+    @include font-size(3);
+    @media (min-width: $screen-md-min) {
+      @include font-size(5);
+    }
+  }
+
+  p {
+    @include font-size(2);
+  }
+
+  @media (min-width: $screen-md-min) {
+    text-align: center;
+  }
+}
+
+.are-you-an-investor__form {
+  max-width: 750px;
+  margin: 3rem auto;
+  overflow: hidden;
+  label { 
+    text-align: left; 
+    display: block;
+  }
+}
+
+.are-you-an-investor__column {
+  @media (min-width: $screen-md-min) {
+    float: left;
+    width: 50%;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+}

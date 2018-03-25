@@ -1,0 +1,31 @@
+%br
+- flash.each do |key, value|
+  %div{class: flash_class(key)}
+    = value
+%br
+.row
+  .col-md-12.text-center
+    %h1
+      = "Order ##{@enquiry.id} confirmed !"
+    %br
+    %h3
+      Thanks your confirmation.
+.row
+  .col-md-8
+    %p
+      = "Date: #{@enquiry.event_date.try(:strftime, '%d %b')}"
+      %br
+      = "Company: #{@enquiry.customer.company_name}"
+      %br
+      = "Contact: #{@enquiry.customer.name} - #{@enquiry.customer.telephone}"
+      %br
+      = "Delivery Time: #{@enquiry.delivery_time}"
+      %br
+      = "Address: #{@enquiry.address.try(:one_line) }"
+      %br
+      = "Parking: #{@enquiry.address.try(:parking_information) }"
+      %br
+      %br
+      Order:
+      %br
+      = simple_format @enquiry.supplier_communications.last.try(:email_html)

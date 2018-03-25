@@ -1,0 +1,44 @@
+<% content_for :top_content do %>
+  <%= render 'breadcrumbs' %>
+  <div class="fa-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <%= @food_partner.company_name %>
+        </h1>
+        <%= render 'details' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<div class="partners">
+  <div class="row">
+    <div class="col-md-3 padding-10">
+      <div class="details">
+        <div class="image text-center">
+          <%= image_tag asset_path(@food_partner.image_path), :class => "img-circle" %>
+        </div>
+        <div class="type text-center">
+          <%= @food_partner.quick_description %>
+        </div>
+        <div class="bio text-center">
+          <%= simple_format(@food_partner.bio) %>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="text-center">
+          <%= link_to "View Menu", partner_from_web_path(@food_partner.url_slug), :class => "button button--small" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 partners-information">
+      <h3 class="partners-information-header">Gallery</h3>
+      <%= image_tag @food_partner.featured_image_file_name %>
+    </div>
+  </div>
+</div>

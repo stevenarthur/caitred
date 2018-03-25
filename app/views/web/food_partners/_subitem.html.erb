@@ -1,0 +1,19 @@
+<% item.subitems.each do |subitem| %> 
+  <div class="pa-item pa-item--subitem">
+
+    <div class="pa-item__add_to_cart" id="qa--package-<%= subitem.id %>">
+      <span class="price"><%= number_to_currency(subitem.cost) %></span>
+
+      <%= simple_form_for :enquiry_item, url: add_cart_item_path, remote: true do |f| %>
+        <%= f.input :quantity, label: false, as: :select, include_blank: false,
+                               collection: (subitem.minimum_order || 1)..subitem.maximum_order %>
+        <%= f.input :packageable_item_id, as: :hidden, input_html: { value: subitem.id } %>
+        <%= f.submit "+" %>
+      <% end %>
+    </div>
+
+    <h3><%= subitem.title %></h3>
+    <%= render 'dietary_icons', item: subitem %>
+    <%= simple_format(subitem.description) %>
+  </div>
+<% end %>

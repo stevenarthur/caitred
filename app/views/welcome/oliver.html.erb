@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+
+Writen by Oliver Plummer
+
+-->
+<html>
+    <!--
+
+    HEAD start
+
+    -->
+    <head>
+        <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700,800" />
+        <link href='https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800,300,200' rel='stylesheet' type='text/css' />
+        <%= stylesheet_link_tag 'oliver' %>
+        <link rel="icon" type="image/ico" href="<%= image_url('oliver/favicon.png') %>">
+        <meta charset="iso-8859-1" />
+        <title>Corporate Catering for Sydney's Foodies - Caitre'd</title>
+    </head>
+    <!--
+
+    HEAD end
+
+    -->
+
+    <!--
+
+    BODY start
+
+    -->
+    <body>
+        <div class="nav">
+            <div class="nav-bar">
+                <ul>
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#browse">Browse</a>
+                    </li>
+                    <a href="index.htm" class="nav-logo">
+                        <%= image_tag 'oliver/logo.png' %>
+                    </a>
+                    <li>
+                        <a href="#about-us">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#featured">Featured</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            <div class="inner">
+                <h1>Great Office Catering Delivered</h1>
+                <h2>Brought to you by Sydney's best caterers.</h2>
+                <button name="button" type="submit" class="jumbotron-button">
+                    Quick Quote?
+                </button>
+                <p>eat@youchews.com</p>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="info">
+            <h1>The Ultimate Guide to Hacking Great Catering for your Hackathon</h1>
+            <p>
+                The idea of You Chews was launched at the Lean Startup Machine and refined at Launch48, so I&#39;m (almost!) as passionate about hackathons as I am about great food. People fondly remember an experience when great food is involved, and hackathons don&#39;t have to be any different. Most people are trying to eat healthier nowadays and the tech world is full of foodies. Treating them accordingly (read: not serving pizza and Subway three days straight) will be a pleasant&#44; welcome surprise and guarantees your event will be one that is talked and Tweeted about for months to come.
+            </p>
+            <p>
+            <b>1.)</b><br> Think outside the pizza box. With the food scene in Australia so alive and vibrant&#44; there&#39;s no need to default to pizza for dinner every night and sandwiches for every lunch. To give an example, this year&#39;s FashHackers dined on You Chews menus of roasted portuguese chicken and roasted veggies&#44; smoked salmon wraps with kale and quinoa salad&#44; a pasta buffet, and beef stir fry with brown rice and Japanese&#45;inspired salads and sides. Great food doesn&#39;t have to be fancy or expensive &#45; the above menus were priced between $10-$15 per person.
+            </p>
+
+            <p>
+                If you do end up ordering pizza for one of the meals, Friday night pitches is a good night for it.
+            </p>
+            </div>
+
+            <div class="form">
+                <p>Download the PDF after you've signed up to our newsletter:</p>
+                <form>
+                    Your Name:<br>
+                    <input type="text" name="name" placeholder="John Cena"><br>
+                    Email<br>
+                    <input type="text" name="email" placeholder="example@example.com"><br>
+                    Company/Orginization:<br>
+                    <input type="text" name="company" placeholder="ANZ"><br>
+                    Create a password:<br>
+                    <input type="password" name="password" placeholder="&#42;&#42;&#42;&#42;&#42;"><br>
+                    <input type="submit" value="Sign Up"/><br>
+                </form>
+            </div>
+        </div>
+    </body>
+    <!--
+
+    BODY end
+
+    -->
+</html>

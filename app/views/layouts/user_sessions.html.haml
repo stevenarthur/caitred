@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title
+      Cake
+      = yield :title
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = render 'shared/facebook_tracking_pixel'
+    = render 'shared/segment'
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700'
+    = csrf_meta_tags
+    = render 'shared/bugherd'
+    = render 'shared/bugsnag'
+  %body
+    .container
+      %header
+        .row
+          .col-xs-2
+            %h1.logo
+              Cake
+      = yield

@@ -1,0 +1,35 @@
+<div class="partners">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <h1>Meet the partners</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% @food_partners.in_groups_of(4) do | group | %>
+        <div class="row">
+          <% group.each do | food_partner | %>
+            <% if food_partner %>
+              <div class="col-md-3 bloc">
+                <div class="food-partner">
+                  <div class="image text-center">
+                    <% if food_partner.featured_image_file_name.present? %>
+                      <%= image_tag food_partner.featured_image_file_name.url(:partner_thumb) %>
+                    <% end %>
+                  </div>
+                  <div class="title text-center">
+                    <%= link_to food_partner.company_name, partner_from_web_path(food_partner.url_slug) %>
+                  </div>
+                  <div class="type text-center">
+                    <%= food_partner.quick_description %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

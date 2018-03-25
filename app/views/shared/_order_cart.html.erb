@@ -1,0 +1,61 @@
+<h2 class="delta">Event Details</h2>
+
+<%= simple_form_for current_enquiry, url: partner_checkout_path(@food_partner.url_slug), 
+                                     method: 'post', data: {
+                                       enquiry_id: current_enquiry.id,
+                                       food_partner: @food_partner.company_name,
+                                       food_partner_id: @food_partner.id
+                                     }, html: { 
+                                       id: "js--proceed-to-checkout" } do |f| %>
+
+  <div class="your-order">
+    <h2 class="delta">Your Order</h2>
+
+    <%= f.input :postcode, as: :integer, input_html: { value: session[:postcode].present? ? session[:postcode] : nil } %>
+
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
+
+    <%= f.input :event_date, as: :string, label: 'Date', placeholder: 'dd month yyyy', 
+                        input_html: {  data: { 'min-date' => @food_partner.minimum_order_date, 
+                                               'days-off' => days_off(@food_partner) },
+                                               class: 'js-datepicker', value: session[:delivery_day], 
+                                                 id: 'qa--delivery-day' }  %>
+
+    <%= f.input :event_time, as: :select, 
+                             selected: session[:eat_time].present? ? session[:eat_time] : nil, 
+                             label: "Eat Time (Delivery will be 15 mins before)", input_html: { id: "qa--enquiry-time" },
+                             collection: @food_partner.available_delivery_times_for_day(session[:delivery_day]) %>
+
+    <div class="js--cart-items js--sticky-order">
+      <%= render 'shared/cart_items' %>
+    </div>
+
+  </div>
+
+<% end %>
+
+<script type='text/javascript'>
+
+  var startdate = $('.js-datepicker').data('min-date');
+  var mindate = new Date(startdate);
+  var days_off = $('.js-datepicker').data('days-off');
+
+  $('.js-datepicker').datepicker({
+    dateFormat: 'dd M yy',
+    beforeShowDay: DisableSpecificDates,
+    firstDay: 1
+  });
+
+  function DisableSpecificDates(date) {
+    if ( date < mindate || (days_off.indexOf(date.getDay()) > -1) ) {
+      return [false, '', 'Closed'];
+    } else {
+      return [true, '', 'Open'];
+    }
+  };
+
+</script>

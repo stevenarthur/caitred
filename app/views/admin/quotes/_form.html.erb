@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-8 col-md-push-2">
+
+      <%= simple_form_for(@quote) do |f| %>
+        <% if @food_partner %>
+          <%= f.input :food_partner_id, as: :hidden, html: { value: @food_partner.id }  %>
+        <% end %>
+        <%= f.input :name, validate: true %>
+        <%= f.input :email, validate: true %>
+        <%= f.input :company, validate: true %>
+        <%= f.input :number_of_people, validate: true %>
+        <%= f.input :date, as: :string, placeholder: "Date (required)",
+          label: "Date of event", order: [:day, :month, :year],
+          input_html: { class: 'form-control js-datepicker' },
+          validate: true
+        %>
+        <%= f.input :postcode, label: "Postcode for Delivery", validate: true  %>
+        <%= f.input :phone, label: "Contact Phone Number", validate: true %>
+        <%= f.input :message, label: "What can we help you with?", placeholder: "Hi, I work for an awesome company that does team lunches every Friday. We'd like to set up an account please!", html: { rows: 6}, validate: true %>
+        <%= f.submit "Submit", class: 'shadow-button shadow-button--centered shadow-button--small shadow-button--green' %>
+      <% end %>
+
+  </div>
+</div>

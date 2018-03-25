@@ -1,0 +1,46 @@
+@import 'mixins';
+@import 'web_variables';
+
+.how-it-works {
+  background-color: $caitre-light-grey;
+  padding: 3rem 0 6rem 0;
+  text-align: center;
+
+  h2 {
+    color: $caitre-grey;
+    font-size: 6rem;
+    &::after {
+      content: "";
+      width: 29rem;
+      height: 5px;
+      background-color: #68707B;
+      display: block;
+      margin: 1rem auto;
+    }
+  }
+
+  h3 { 
+    font-size: 7.2rem;
+    margin: 3rem auto;
+    border-radius: 400px;
+    width: 11rem;
+    height: 11rem;
+    color: white;
+    line-height: 11rem;
+    text-align: center;
+    background-color: $caitre-grey;
+  }
+
+  p { 
+    @include font-size(3);
+    max-width: 800px;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+
+  .video_container {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+}

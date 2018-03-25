@@ -1,0 +1,75 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+$min-height: 225px;
+
+.about-footer {
+  overflow: hidden;
+
+  h1 {
+    @include font-size(4);
+    color: #fff;
+  }
+
+  .about-footer__hungry, .about-footer__make {
+    display: block !important;
+    color: #fff;
+    min-height: $min-height;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: all 0.3s;
+
+    p {
+      @include font-size(2);
+      font-style: italic;
+      width: 60%;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  $background-gradient: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+  .about-footer__hungry {
+    background-image: $background-gradient, asset-url('about-images/hungry_for_more.jpg');
+  }
+
+  .about-footer__make {
+    background-image: $background-gradient, asset-url('about-images/make_great_food.jpg');
+    text-align: right;
+
+    p {
+      float: right;
+    }
+    @media (max-width: $screen-md-min) {
+      text-align: left;
+
+      p {
+        float: none;
+      }
+    }
+  }
+
+  @media (max-width: $screen-md-min) {
+    padding-bottom: 0;
+  }
+}
+
+.about-footer__overlay {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 4rem;
+  min-height: $min-height;
+}
+
+.about-footer__make:hover,
+.about-footer__hungry:hover{
+  .about-footer__overlay {
+    background-color: rgba(0,0,0,0.3);
+  }
+}

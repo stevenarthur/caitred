@@ -1,0 +1,19 @@
+@import "web_variables";
+@import "mixins";
+
+.contact {
+  margin: 5rem 0;
+
+  h4 {
+    text-transform:uppercase;
+    @include font-size(2);
+  }
+
+  p {
+    @include font-size(1.8)
+  }
+
+  .col-md-6 {
+    margin-bottom: 3rem;
+  }
+}

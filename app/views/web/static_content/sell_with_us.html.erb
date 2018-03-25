@@ -1,0 +1,88 @@
+<% content_for(:title){ 'Sell your catering packages with us' } %>
+<% content_for(:meta_description){ 'Enquire now to become a catering partner' } %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+
+  <%= 
+    content_tag :div, class: "header--sell-with-us header--content header--banner" do
+      content_tag :div, class: "header-content-wrap" do
+        content_tag :div, class: "header-content-box" do
+          concat( content_tag(:h1){ "Become a Caitre'd Caterer" } )
+          + concat( content_tag(:p){ "Caitre’d acts as your “front of house” to your kitchen. We help you get the customer service and hospitality right so your food tastes even more sensational." } )
+        end
+      end
+    end 
+  %>
+
+<% end %>
+
+<% content_for(:last_content) do %>
+  <section class='make-amazing-food'>
+    <div class="container">
+      <div class='row'>
+
+      <div class="col-md-6">
+        <div class="make-amazing-food__points">
+          <h2>Why Apply?</h2>
+          <ul>
+            <li>You get more business through a dedicated sales team</li>
+            <li>You control what you sell, when you sell it, where you deliver and how much lead time you need</li>
+            <li>Regular orders, regular payments, no hidden fees</li>
+            <li>Let us handle the orders, admin, marketing and invoicing, so you can focus on the food and delivery</li>
+          </ul>
+        </div>
+      </div>
+
+        <div class="col-md-6">
+
+          <%= render 'shared/flashes' %>
+
+          <%= form_tag(sell_with_us_path, method: 'POST') do |f| %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+            <div class="form-group">
+              <%= label_tag :delivery, "Do You Deliver? Yes or No" %>
+              <%= text_field_tag :delivery, '', class: 'form-control input-md', required: true  %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :name, 'Your Name' %>
+              <%= text_field_tag :name, '', class: 'form-control input-md', required: true %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :email, "Email Address" %>
+              <%= text_field_tag :email, '', class: 'form-control input-md', required: true  %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :phone, "Contact Number" %>
+              <%= text_field_tag :phone, '', class: 'form-control input-md', required: true  %>
+            </div>
+            
+            <div class="form-group">
+              <%= label_tag :company_name, "Business Name" %>
+              <%= text_field_tag :company_name, '', class: 'form-control input-md', required: true  %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :website, "Website / Facebook Page" %>
+              <%= text_field_tag :website, '', class: 'form-control input-md', required: true  %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :more_info, "Anything else you would like to tell us about your business?" %>
+              <%= text_area_tag :more_info, '', class: 'form-control input-md', required: true  %>
+            </div>
+
+            <%= submit_tag "Apply to Join", class: 'button' %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

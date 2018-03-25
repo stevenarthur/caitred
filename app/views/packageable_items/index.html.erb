@@ -1,0 +1,57 @@
+<%= render 'shared/edit_food_partner' %>
+
+<div class="tab-content">
+  <div id="js-edit-packagable-items" class="tab-pane tabbed-panel active">
+    <div class="col-xs-12">
+
+      <h3>Packagable Items</h3>
+      <br />
+
+      <div class="row">
+
+        <div class="col-md-2">
+          <ul class="js--partner-sidebar-event-types fa-menu__event-type-list">
+
+            <li data-event-type="all"><%= link_to "All Items", "#all" %></li>
+
+            <% @food_partner.menu_categories.each do |menu_category| %>
+              <li data-event-type="<%= menu_category.name.parameterize %>">
+                <%= link_to menu_category.name, "##{menu_category.name.parameterize}" %>
+              </li>
+            <% end %>
+
+          </ul>
+          <a id="#js-add-item" href="<%= new_packageable_item_path(@food_partner) %>" class='btn btn-success'>Add Item</a>
+        </div>
+
+        <div class="col-md-10">
+
+          <!-- All Items -->
+          <section class="event-type-menu animated fadeIn" data-event-type="all">
+            <%= render 'table', items: @packageable_items.active, caption: "Active Items" %>
+
+            <% if @packageable_items.inactive.present? %>
+              <%= render 'table', items: @packageable_items.inactive, caption: "Inactive Items" %>
+            <% end %>
+          </section>
+          <!-- End All Items -->
+
+          <!-- Categorized Items -->
+          <% @food_partner.menu_categories.each do |menu_category| %>
+            <section class="event-type-menu animated fadeIn" data-event-type="<%= menu_category.name.parameterize %>">
+              <%= render 'table', items: menu_category.packageable_items.active, caption: "Active Items" %>
+
+              <% if menu_category.packageable_items.inactive.present? %>
+                <%= render 'table', items: menu_category.packageable_items.inactive, caption: "Inactive Items" %>
+              <% end %>
+            </section>
+          <% end %>
+          <!-- End Categorized Items -->
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

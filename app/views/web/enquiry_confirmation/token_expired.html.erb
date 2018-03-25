@@ -1,0 +1,9 @@
+<% content_for :title do %>
+  Confirm your Order -
+<% end %>
+<h2>Confirm your order</h2>
+<p>
+  Unfortunately that link has expired. Please
+  <a href="<%= regenerate_enquiry_confirmation_path(@enquiry_confirmation.token) %>">click here to request a new link</a>
+  \.
+</p>

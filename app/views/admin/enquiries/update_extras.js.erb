@@ -1,0 +1,9 @@
+$('.extras').html("<%= escape_javascript(render(:partial => 'extras')).html_safe %>");
+
+$('.item').change( function() {
+  s = ''
+  $('.item:checked').each( function() {
+     s = s + $(this).attr("data-item-id") + ",";
+     $('#extras').val(s);
+  });
+});

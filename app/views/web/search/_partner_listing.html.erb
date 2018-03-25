@@ -1,0 +1,32 @@
+<li class="col-md-4">
+  <div class="fa-search__item js--fa-search-item">
+
+    <div class="js--title">
+      <h2>
+        <%= link_to partner_from_web_path(food_partner.url_slug), id: "qa--partner-#{food_partner.id}" do %>
+          <%= food_partner.quick_description %>
+        <% end %>
+      </h2>
+    </div>
+
+      <%= link_to partner_from_web_path(food_partner.url_slug), class: 'fa-search__partner-image' do %>
+        <div class="content">
+          <%= image_tag food_partner.featured_image_file_name.url(:partner_thumb) %>
+        </div>
+      <% end %>
+
+    <%= link_to partner_from_web_path(food_partner.url_slug) do %>
+      <small><%= food_partner.company_name %></small>
+    <% end %>
+
+    <div class="fa-search__meta">
+      <i class="fa fa-clock-o" data-toggle='tooltip' data-placement='bottom' title='Delivery notice'></i>
+      <%= food_partner.lead_time_hours %> hours |
+
+      <strong>MIN</strong> <%= number_to_currency(food_partner.minimum_spend) %> |
+
+      <i class="fa fa-calendar-o" data-toggle='tooltip' data-placement='bottom' title='Delivery hours'></i>
+      <%= food_partner.availability_text %> 
+    </div>
+  </div>
+</li>

@@ -1,0 +1,53 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="footer__newsletter-signup">
+          <div class="row">
+            <div class="col-md-8 col-md-push-2">
+              <h3>Give Caitre’d a try. Sign up for special deals and vouchers.</h3>
+              <form action="//youchews.us7.list-manage.com/subscribe/post?u=52de2e3c092e551381ab7194f&amp;id=c9e337eab9" method= "POST" target="_blank">
+                <input type="email" value="" name="EMAIL" class='footer__newsletter-signup__email' id="mce-EMAIL" placeholder='happycustomer@caitre-d.com'>
+                <input class='button' type='submit' 
+                       name="Sign up now" value="Sign me up" data-name='subscribe' />
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__navigation">
+          <nav>
+            <ul>
+              <li><%= link_to "Hire a Caitredette", caitredette_service_path %>
+              <li><%= link_to "Browse Caterers", partner_search_path('sydney-city') %></li>
+              <li><%= link_to "Need a Quote?", new_quote_path %></li>
+
+              <li><%= link_to "For Caterers", sell_with_us_path %></li>
+              <li><%= link_to "About Caitre'd", about_us_path %></li>
+              <li><%= link_to "About Our CEO", about_elizabeth_path %></li>
+
+              <li><%= link_to "FAQs", faqs_path %></li>
+
+              <li><%= link_to "Blog", "http://blog.youchews.com/" %></li>
+
+              <li><%= link_to "Terms of Service", terms_of_service_path %></li>
+              <li><%= link_to "Terms of Use", terms_path %></li>
+              <li><%= link_to "Privacy", privacy_path %></li>
+              <li><%= link_to "Contact", contact_us_path %></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__lower-content">
+
+          <div class="footer__social-links">
+            <%= render 'shared/social_links' %>
+          </div>
+          <p>&copy; <%= Date.today.year %> Caitre’d | <%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com" %></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>

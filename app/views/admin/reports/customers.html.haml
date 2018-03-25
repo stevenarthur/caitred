@@ -1,0 +1,34 @@
+- content_for :title do
+  \- Customers Report
+
+.row
+  .col-xs-12
+    %h2
+      Customer counts
+    %p Please note, only completed orders are counted.
+
+.row.spaced
+  .col-xs-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Type
+          %th Description
+          %th Number
+      %tbody
+        %tr
+          %td "Weekly" Customers
+          %td Ordered at least 6 times in the last three months (assume twice a week)
+          %td=@customer_reports.weekly_customers
+        %tr
+          %td Regular Customers
+          %td Ordered at least 4 times in the last year
+          %td=@customer_reports.regular_customers
+        %tr
+          %td Repeat Customers
+          %td Ordered at least twice in the last year
+          %td=@customer_reports.repeat_customers
+        %tr
+          %td New Customers
+          %td Ordered at least once in the last year
+          %td=@customer_reports.new_customers

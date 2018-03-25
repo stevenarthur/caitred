@@ -1,0 +1,8 @@
+<div class="tab-pane tabbed-panel active cake__wrap">
+  <%= simple_form_for @testimonial, url: testimonial_form_url, html: { class: 'form-horizontal' } do |f| %>
+    <%= f.input :text %>
+    <%= f.input :author %>
+    <%= f.association :food_partner, collection: FoodPartner.all, label_method: :company_name %>
+    <%= f.submit "Save Testimonial", class: 'shadow-button shadow-button--green' %>
+  <% end %>
+</div>

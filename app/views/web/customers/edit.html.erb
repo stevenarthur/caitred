@@ -1,0 +1,29 @@
+<div class="my-orders">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'account_links' %>
+    </div>
+    <div class="col-md-9">
+
+      <h1>My Profile</h1>
+      <div class="my-orders__wrap">
+        <%= simple_form_for @customer, url: update_customer_path do |f| %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :first_name %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :last_name %>
+            </div>
+          </div>
+          <%= f.input :company_name %>
+          <%= f.input :email %>
+          <%= f.input :telephone %>
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <%= f.submit "Update Profile", class: "shadow-button shadow-button--green" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

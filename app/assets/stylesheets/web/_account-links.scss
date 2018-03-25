@@ -1,0 +1,27 @@
+@import 'mixins';
+@import 'web_variables';
+
+.account-links {
+  margin: 0 0 3rem 0;
+  a { 
+    background-color: white;
+    display: block;
+    line-height: 2rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: $caitre-green;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .account-links {
+    margin: 5rem 0 0 0;
+  }
+}

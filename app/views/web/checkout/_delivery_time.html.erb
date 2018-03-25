@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= f.input :event_date, as: :string, input_html: { 
+          data: { 'min-date' => @enquiry.food_partner.minimum_order_date, 
+                  'days-off' => days_off(@enquiry.food_partner) },
+          class: 'js-datepicker', value: session[:delivery_day] } %>
+  </div>
+  <div class="col-md-6" id="js--checkout-time"> 
+    <%= f.input :event_time, as: :select, 
+                             selected: session[:eat_time].present? ? session[:eat_time] : nil, 
+                             label: "Eat Time",
+                             collection: @enquiry.food_partner.available_delivery_times_for_day(session[:delivery_day]) %>
+                             <p class="help-block help-block--complex">Delivery time will be <em>15 minutes</em> before "Eat Time"</p>
+  </div>
+</div>

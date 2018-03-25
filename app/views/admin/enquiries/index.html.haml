@@ -1,0 +1,11 @@
+- content_for :title do
+  \- View Enquiries
+
+= render partial: 'enquiry_table', locals: { enquiries: @processing_enquiries, title: 'Enquiries Awaiting Confirmation', table_id: 'js-processing' }
+= render partial: 'enquiry_table', locals: { enquiries: @confirmed_enquiries, title: 'Awaiting Completion', table_id: 'js-confirmed' }
+
+= render partial: 'enquiry_table', locals: { enquiries: @cancelled_enquiries, title: 'Cancelled Orders', table_id: 'js-cancelled' }
+= render partial: 'enquiry_table', locals: { enquiries: @completed_enquiries, title: 'Completed Orders (last 6 months)', table_id: 'js-cancelled' }
+
+
+#js-enquiry-modal.modal.fade

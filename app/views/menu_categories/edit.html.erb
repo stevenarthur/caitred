@@ -1,0 +1,11 @@
+<%= render 'shared/edit_food_partner' %>
+
+<div class="tab-content">
+  <div class="tab-pane tabbed-panel active">
+    <div class="col-xs-12">
+      <%= simple_form_for @menu_category, url: menu_category_path(@food_partner, @menu_category) do |f| %>
+        <%= render 'form', f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

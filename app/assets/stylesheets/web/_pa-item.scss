@@ -1,0 +1,56 @@
+@import 'mixins';
+@import 'web_variables';
+
+.pa-item {
+  overflow: hidden;
+  background-color: $dark-bg;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+
+  h3 {
+    margin-right: 16rem;
+  }
+
+  h3, span.price {
+    margin-top: 0;
+    font-size: $font-size;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  $add-to-cart-circumfrence: 3px;
+  button, input[type='submit'] {
+    background-color: $caitre-green;
+    color: white;
+    border-radius: $add-to-cart-circumfrence;
+    border:none;
+    font-weight: bold;
+    line-height: 2.1rem;
+    @include font-size(1.4);
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    &:hover {
+      background-color: darken($caitre-green, 5);
+    }
+  }
+}
+
+.pa-item__add_to_cart {
+  float: right;
+  position: relative;
+  top: -0.5rem;
+  right: -0.5rem;
+
+  h3, span, input, form, div { 
+    display: inline-block;
+  }
+  div.select {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.pa-item.pa-item--subitem {
+  margin-left: 3rem;
+}

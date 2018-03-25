@@ -1,0 +1,9 @@
+@import 'web_variables';
+
+.event-type-menu{
+  /*display: none;*/
+}
+
+.event-type-menu.active {
+  display: block;
+}

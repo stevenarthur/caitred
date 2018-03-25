@@ -1,0 +1,64 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+p.help-block--complex {
+ @include font-size(1.2); 
+ margin-top: -1rem;
+ em { 
+   font-style: normal;
+   text-decoration: underline;
+ }
+}
+
+.input--home-banner {
+  font-weight: lighter;
+}
+
+p.help-block--error {
+  display: block;
+  margin: 0; 
+  padding: 0.5rem 2rem;
+  background-color: $yc-red;
+  border-radius: 3px;
+  color: white !important;
+  @include font-size(1.6);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  border-color: $caitre-green !important;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type='submit'], button.shadow-button{
+  background-color: $caitre-green;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem 4rem;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+  border: none;
+  &:hover, &:active {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background-color: darken($caitre-green, 4);
+  }
+  &:disabled {
+    background-color: $caitre-light-grey;
+    &:hover {
+      cursor: auto;
+      background-color: $caitre-light-grey;
+    }
+  }
+}
+
+label {
+  @include font-size(1.8);
+  font-weight: normal;
+}

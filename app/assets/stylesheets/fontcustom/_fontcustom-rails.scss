@@ -1,0 +1,55 @@
+//
+// Icon Font: fontcustom
+//
+
+@font-face {
+  font-family: "fontcustom";
+  src: font-url("fontcustom.eot");
+  src: font-url("fontcustom.eot?#iefix") format("embedded-opentype"),
+       font-url("fontcustom.woff") format("woff"),
+       font-url("fontcustom.ttf") format("truetype"),
+       font-url("fontcustom.svg#fontcustom") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "fontcustom";
+    src: font-url("fontcustom.svg#fontcustom") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icon-banger:before,
+.icon-gluten_free:before,
+.icon-icon_18613:before,
+.icon-icon_34525:before,
+.icon-icon_61684:before,
+.icon-vegan:before,
+.icon-vegan-small-g:before,
+.icon-vegetarian:before {
+  display: inline-block;
+  font-family: "fontcustom";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.icon-banger:before { content: "\f104"; }
+.icon-gluten_free:before { content: "\f105"; }
+.icon-icon_18613:before { content: "\f102"; }
+.icon-icon_34525:before { content: "\f100"; }
+.icon-icon_61684:before { content: "\f101"; }
+.icon-vegan:before { content: "\f106"; }
+.icon-vegan-small-g:before { content: "\f108"; }
+.icon-vegetarian:before { content: "\f109"; }

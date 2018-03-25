@@ -1,0 +1,14 @@
+%br
+- flash.each do |key, value|
+  %div{class: flash_class(key)}
+    = value
+%br
+.row
+  .col-md-12.text-center
+    %h1
+      = "Order ##{@enquiry.id} refused."
+    %br
+    %h3
+      We notice your refusal for this order and we will notice the client.
+      %br
+      Thank you.

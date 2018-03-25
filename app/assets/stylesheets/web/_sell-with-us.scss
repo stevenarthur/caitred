@@ -1,0 +1,13 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.sell-with-us { 
+  background-color: white;
+  padding: 4rem 0;
+
+  h2 {
+    @include font-size(2.4);
+    color: $primary-green;
+  }
+}

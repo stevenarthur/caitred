@@ -1,0 +1,9 @@
+<tr id="<%= "qa--#{postcode.id}" %>">
+  <td><%= postcode.zipcode %></td>
+  <td><%= postcode.title %></td>
+  <td><%= link_to "X", 
+          remove_postcode_food_partner_path(id: @food_partner.id, 
+          postcode: postcode.id), remote: true, method: :delete, 
+          class: 'btn btn-warning js--remove-food-partner' %>
+  </td>
+</tr>

@@ -1,0 +1,248 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Dosis', sans-serif
+    /* font-family: 'Open Sans', sans-serif; */
+    /* font-family: Arial, sans-serif; */
+}
+
+.nav {
+    background-color: #fff;
+    height: 130px;
+    margin-top: -16px;
+    margin: 0px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 6px solid #000;
+}
+
+.nav .nav-bar {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.nav .nav-bar ul {
+    overflow: hidden;
+    margin: 0;
+    /* padding: 20px; */
+    margin-left: -20px;
+    line-height: 110px;
+}
+
+.nav .nav-bar ul li {
+    list-style: none;
+    /* display: inline; */
+    DISPLAY: BLOCK;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* display: inline-block; */
+    width: 17.5%;
+    float: left;
+    text-align: center;
+    line-height: 110px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.nav .nav-bar ul > a:hover {
+    
+}
+
+.nav .nav-bar ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 25px;
+    /* padding: 15px 40px 15px 40px; */
+    font-weight: 600;
+    display: block;
+    line-height: 110px;
+    padding: 0;
+    padding-top: 6px;
+    margin: 0;
+}
+
+.nav .nav-bar ul li a:hover {
+    text-decoration: underline;
+    color: #14af9b;
+    transition: .3s all;
+}
+
+.nav .nav-bar ul a {
+    text-decoration: none;
+}
+
+.nav .nav-bar .nav-logo {
+    width: 30%;
+    position:relative;
+    /* display: inline-block; */
+    float: left;
+    margin-top: 19px;
+    text-align: CENTER;
+}
+
+.nav .nav-bar .nav-logo::before {
+    transition: .3s all;
+    right: 0;
+    content: "";
+    position: absolute;
+    top: 64px;
+    width: 54%;
+    left: 68px;
+    height: 4px;
+    display: block;
+    background-color: #fff;
+    
+}
+
+.nav .nav-bar .nav-logo:hover::before {
+    background-color: #138979;
+    
+}
+
+.nav .nav-bar ul a img {
+    /* width: 243px; */
+    max-height: 73PX;
+    margin-top: 8px;
+    /* margin-bottom: -37px; */
+}
+
+.jumbotron {
+    width: 100%;
+    height: 600px;
+    background-image: asset_url("oliver/Jumbotron.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 130px;
+    background-size: cover;
+    border-bottom: 6px solid #000;
+    text-align: center;
+}
+
+.jumbotron .inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.jumbotron h1 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.jumbotron h2 {
+    font-size: 35px;
+    color: #fff;
+    margin-top: -25px;
+    font-weight: 400;
+}
+
+.jumbotron p {
+    color: #fff;
+    font-size: 20px;
+    display: inline;
+    padding-left: 50px;
+}
+
+.jumbotron .jumbotron-button {
+    border: none;
+    height: 54px;
+    color: #fff;
+    background-color: #138979;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.jumbotron .jumbotron-button:hover {
+    text-decoration: underline;
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+
+.wrapper .info {
+    width: 660px;
+    margin: 0 auto;
+    background-color: #fff;
+    height: 800px;
+    padding: 10px;
+    margin-top: 20px;
+    float: left;
+    
+}
+
+.wrapper .info h1 {
+    color: #000;
+    font-size: 30px;
+    margin-top: 0px;
+}
+
+.wrapper .info p {
+    font-weight: 400;
+    line-height: 2rem;
+}
+
+.wrapper .form {
+    width: 320px;
+    margin: 20px;
+    float: left;
+    margin-top: 30px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    padding-bottom: 0px;
+}
+
+.wrapper .form p {
+    color: #000;
+    margin-top: -5px;
+}
+
+.wrapper .form form input {
+    width: 270px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.wrapper input[type=text], .wrapper input[type=password] {
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 8px 0;
+}
+
+.wrapper input[type=submit] {
+    color: #fff;
+    background-color: #138979;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    padding: 15px 30px;
+    cursor: pointer;
+    height: 52px;
+    margin-bottom: -10p;
+}
+
+
+

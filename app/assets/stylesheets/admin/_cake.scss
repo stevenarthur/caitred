@@ -1,0 +1,65 @@
+@import 'web_variables';
+
+table {
+  caption {
+    background-color: $primary-green;
+    padding: 0.8rem 0;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.tabbed-panel {
+  padding-bottom: 2rem;
+}
+
+.navbar.cake__navbar {
+  background-color: $primary-green;
+  border: none;
+  ul { 
+    li.active {
+      a { 
+        color: white;
+        background-color: darken($primary-green,5);
+        &:hover {
+          color: white;
+          background-color: darken($primary-green,5);
+        }
+      }
+    }
+    li a {
+      color: white;
+      &:hover {
+        color: white;
+        background-color: darken($primary-green,2);
+      }
+    }
+  }
+}
+
+.cake__wrap {
+  padding: 2rem 3rem;
+  fieldset {
+    margin-top: 2rem;
+    background-color: lighten($brand-light-border, 5); 
+    padding: 2rem 3rem;
+    margin-bottom: 1rem;
+  }
+  .label--new-line {
+    display: block;
+  }
+  legend {
+    font-size: 16px; 
+    color: $primary-green;
+    border: none;
+    padding: 1rem 2rem;
+    background-color: $primary-green;
+    color: white;
+  }
+  img {
+    max-width: 100%;
+  }
+}

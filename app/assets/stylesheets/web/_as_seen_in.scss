@@ -1,0 +1,24 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.as-seen-in {
+  background-color: white;
+  padding: 3rem;
+  text-align: center;
+
+  h2 {
+    font-weight: bold;
+    color: $caitre-grey;
+    margin-bottom: 1rem;
+    @include heading-border();
+    @media (max-width: $screen-sm-min) {
+      font-size: 30px;
+    }
+    font-size: 50px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

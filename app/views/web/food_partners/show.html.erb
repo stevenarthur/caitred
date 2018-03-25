@@ -1,0 +1,44 @@
+<%= content_for(:tracked_page_name){ "Partner page: #{ @food_partner.company_name }" } %>
+<%= content_for(:title){ "#{ @food_partner.company_name } on Caitre'd" } %>
+
+<% content_for :top_content do %>
+  <%= render 'header' %>
+  <%= render 'breadcrumbs' %>
+<% end %>
+
+<div class="row">
+
+  <% # Menu Area %>
+  <article class="col-md-8 js--match-height">
+    <div class="fa-menu">
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="fa-menu__feature">
+            <div class="content">
+              <% if @food_partner.featured_image_file_name.present? %>
+                <%= image_tag @food_partner.featured_image_file_name.url(:partner_featured), alt: @food_partner.company_name %>
+              <% end %>
+            </div>
+          </div>
+          <% if @food_partner.need_to_know %>
+            <div class="fa-menu__need-to-know">
+              <h4>Presentation</h4>
+              <%= simple_format @food_partner.need_to_know %>
+            </div>
+          <% end %>
+        </div>
+
+        <%= render 'menu' %>
+
+      </div>
+    </div>
+  </article>
+
+  <% # Sidebar %>
+  <div class="col-md-4 order-cart js--match-height">
+    <%= render 'shared/order_cart' %>
+  </div>
+
+</div>
+

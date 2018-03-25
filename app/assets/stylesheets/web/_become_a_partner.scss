@@ -1,0 +1,24 @@
+@import 'mixins';
+@import 'web_variables';
+
+.become-a-partner {
+  background-image: asset-url('become_a_partner.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  text-align: center;
+  padding: 8rem 0 6rem 0;
+
+  h2 { 
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    @include font-size(5);
+  }
+
+  p {
+    color: white;
+    @include font-size(2.4);
+    margin-bottom: 2rem;
+  }
+
+}

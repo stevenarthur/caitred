@@ -1,0 +1,24 @@
+<% if @enquiry.errors.any? || @enquiry_item.errors.any? %>
+  alert("not valid.")
+<% else %>
+$(".js--cart-items").html("<%= escape_javascript(render 'shared/cart_items') %>");
+  $('.js--sticky').stick_in_parent();
+
+  // Segment Tracking
+  analytics.track('Removed Product', {
+    id: "<%= @enquiry_item.packageable_item_id %>",
+    sku: "<%= @enquiry_item.xero_item_id %>",
+    name: "<%= @enquiry_item.title %>",
+    price: "<%= @enquiry_item.unit_price %>",
+    quantity: "<%= @enquiry_item.quantity %>",
+    enquiry_id: "<%= @enquiry_item.enquiry_id %>",
+    total_price: "<%= @enquiry_item.total_price %>",
+    food_partner_id: "<%= @enquiry.food_partner_id %>",
+    food_partner_company_name: "<%= @enquiry.food_partner_company_name %>"
+  });
+
+  Cake.AddInstructions.ready();
+  $("#js--enquiry_parameters input, #js--enquiry_parameters select").on('change', function(){
+    $("#js--enquiry_parameters").submit()
+  });
+<% end %>

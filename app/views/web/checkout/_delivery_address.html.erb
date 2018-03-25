@@ -1,0 +1,19 @@
+<%= f.simple_fields_for :address, @enquiry.address do |b| %>
+  <%= b.input :company, validate: true %>
+  <%= b.input :line_1, label: "Address Line 1", validate: true %>
+  <%= b.input :line_2, label: "Address Line 2", required: false %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <%= b.input :suburb, validate: true %>
+    </div>
+    <div class="col-sm-6">
+      <%= b.input :postcode, input_html: { value: session[:postcode].to_i }, 
+                             disabled: true, validate: true %>
+      <%= b.input :postcode, as: :hidden, input_html: { value: session[:postcode].to_i } %>
+    </div>
+  </div>
+
+  <%= b.input :parking_information, as: :text, placeholder: "Please provide as much parking/loading dock/delivery information as you can as this will ensure your food will arrive on time.", validate: true, input_html: { maxlength: 500 } %>
+
+<% end %>

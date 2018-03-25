@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>
+      Details for
+      <%= @food_partner.company_name %>
+    </h2>
+    <ul class="nav nav-tabs" id="js-nav">
+      <li class="<%= tab_class(:food_partner) %>">
+        <a href="<%= edit_food_partner_path(@food_partner) %>">Edit Food Partner</a>
+      </li>
+      <li class="<%= tab_class(:packageable_items) %>">
+        <a href="<%= packageable_items_path(@food_partner) %>">Edit Menu</a>
+      </li>
+      <li class="<%= tab_class(:menu_categories) %>">
+        <a href="<%= menu_categories_path(@food_partner) %>">Edit Menu Categories</a>
+      </li>
+    </ul>
+  </div>
+</div>

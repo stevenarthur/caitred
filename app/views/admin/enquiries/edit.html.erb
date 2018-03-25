@@ -1,0 +1,90 @@
+<% content_for(:title){ "Editing Order #{@enquiry.id}" } %>
+
+<h2 class='js-enquiry-title'>Order <%= @enquiry.id %></h2>
+
+<div class="cake__wrap">
+  <%= render 'status_actions' %>
+
+  <%= simple_form_for @enquiry, url: enquiry_form_url do |f| %>
+
+    <%= field_set_tag "Payment Details" do %>
+      <%= render 'payment_details', f: f %>
+    <% end %>
+
+
+    <div class="row">
+      <div class="col-xs-6">
+        <%= field_set_tag "Event Details" do %>
+          <%= render 'event_details', f: f %>
+        <% end %>
+        <%= field_set_tag "Customer Details" do %>
+          <%= render 'customer_details', f: f %>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <%= field_set_tag "Delivery Details" do %>
+          <%= render 'delivery_details', f: f %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= field_set_tag "Order Details" do %>
+      <%= render 'order_details', f: f %>
+    <% end %>
+
+    <br />
+    <%= f.submit "Update Order", class: 'btn btn-success btn-lg pull-right' %>
+    <br style="clear: both;" />
+
+    <hr />
+    <br />
+
+    <%= field_set_tag "Past Communications" do %>
+      <% if @enquiry.supplier_communications.empty? %>
+        No Previous Communication 
+      <% else %>
+        <table class="table-condensed-xs table">
+          <thead>
+            <tr>
+              <th>Created At</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Subject</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @enquiry.supplier_communications.each do |comm| %>
+              <tr>
+                <td><%= comm.created_at.strftime('%d %b %y %H:%M') %></td>
+                <td><%= comm.from_name %></td>
+                <td><%= comm.to_name %></td>
+                <td class="email-content-container">
+                  <a class="js-email-subject"><%= comm.email_subject %></a>
+                  <div class="js-email-content email-content">
+                    <%= simple_format(comm.email_html) %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <% end %>
+    <% end %>
+
+  <% end %>
+
+
+    <%= field_set_tag "Send Supplier Email" do %>
+      <%= render partial: 'supplier_communications' %>
+    <% end %>
+
+</div>
+
+<script type='text/javascript'>
+  window.enquiryAddressUrl = "<%= admin_enquiry_address_path(@enquiry, popup: 1) %>"
+  window.enquirySetAddressUrl = "<%= admin_enquiry_set_address_path(@enquiry) %>"
+  window.sendOrderEmailUrl = "<%= admin_send_supplier_order_path(@enquiry) %>"
+  window.sendConfLinkUrl = "<%= admin_enquiry_send_confirmation_link_path(@enquiry) %>"
+  window.generageInvoiceUrl = "<%= admin_generate_invoice_path(@enquiry) %>"
+</script>

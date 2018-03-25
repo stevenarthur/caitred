@@ -1,0 +1,23 @@
+.form-group
+  = form.label :line_1, "Address line 1", class: 'col-xs-4 control-label'
+  .col-xs-8
+    = form.text_field :line_1, class: 'form-control input-sm', id: 'js-address-1'
+.form-group
+  = form.label :line_2, "Address line 2", class: 'col-xs-4 control-label'
+  .col-xs-8
+    = form.text_field :line_2, class: 'form-control input-sm'
+.form-group
+  = form.label :suburb, "Suburb", class: 'col-xs-4 control-label'
+  .col-xs-8
+    = form.text_field :suburb, class: 'form-control input-sm'
+.form-group
+  = form.label :postcode, "Postcode", class: 'col-xs-4 control-label'
+  .col-xs-8
+    = form.text_field :postcode, class: 'form-control input-sm'
+.form-group
+  = form.label :parking_information, "Parking Information", class: 'col-xs-4 control-label'
+  .col-xs-8
+    = form.text_area:parking_information, class: 'form-control input-sm'
+.form-group
+  .col-xs-6
+    = submit_tag "Save Address", class: 'btn btn-success btn-inline', id: 'js-save-address'

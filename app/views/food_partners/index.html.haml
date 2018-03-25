@@ -1,0 +1,18 @@
+.row
+  .col-xs-12
+    %h2 Food Partners
+    
+    / Nav tabs
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#home", :role => "tab"} Active
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "inactive-food-partner", "data-toggle" => "tab", :href => "#inactive-food-partner", :role => "tab"} Inactive
+    / Tab panes
+    .tab-content
+      #home.tab-pane.active{:role => "tabpanel"}
+        %br
+        = render "table", food_partners: @active_food_partners
+      #inactive-food-partner.tab-pane{:role => "tabpanel"}
+        %br
+        = render "table", food_partners: @inactive_food_partners

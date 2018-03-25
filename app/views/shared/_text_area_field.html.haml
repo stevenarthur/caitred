@@ -1,0 +1,12 @@
+- placeholder = "" unless local_assigns.has_key? :placeholder
+- data = { "model-class" => model_class } if local_assigns.has_key? :model_class
+.form-group.js-field-group.has-feedback
+  = form.label field_name, field_label, class: 'col-xs-4 control-label'
+  .col-xs-8
+    - if defined? field_value
+      = form.text_area field_name, class: 'form-control input-sm', value: field_value, id: field_id, validate: true, data: data, placeholder: (placeholder || "")
+    - else
+      = form.text_area field_name, class: 'form-control input-sm', id: field_id, validate: true, data: data, placeholder: (placeholder || "")
+    = form.hidden_field field_name, name: "#{field_name}-original", id: "#{field_id}-original"
+    %span.glyphicon.form-control-feedback
+    %span.js-errors.error-message

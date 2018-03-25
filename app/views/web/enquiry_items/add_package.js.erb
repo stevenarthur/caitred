@@ -1,0 +1,25 @@
+<% if @enquiry.errors.any? %>
+  $(".js--modal-error").html("<div class='alert alert-warning'><%= @enquiry.errors.messages[:base][0] %></div>")
+<% else %>
+  $('.fp-modal').modal('hide');
+  $(".js--modal-error").html("");
+  $(".js--cart-items").html("<%= escape_javascript(render 'shared/cart_items') %>");
+  $('.js--sticky').stick_in_parent();
+
+  // Segment Tracking
+  fbq('track', 'AddToCart');
+  analytics.track('added package to cart', {
+    enquiry_id: "<%= @enquiry.id %>"
+  });
+
+  Cake.AddInstructions.ready();
+  $("#js--enquiry_parameters input, #js--enquiry_parameters select").on('change', function(){
+    $("#js--enquiry_parameters").submit()
+  });
+
+  var edit_links = $('.order-cart--edit');
+
+  for (var i = 0; i < edit_links.length; i++) {
+    $('.pa-item__add_to_cart button[data-target="' + $(edit_links[i]).data('target') + '"]').text('Edit')
+  }
+<% end %>

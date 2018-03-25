@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title
+      Cake
+      = yield :title
+    = render 'shared/segment'
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700'
+    = csrf_meta_tags
+    = render 'shared/bugherd' unless Rails.env.production?
+    = render 'shared/bugsnag'
+  %body
+    .container
+      %header
+        .row
+          .col-xs-2
+            %h1.logo
+              Cake
+          .col-xs-4.col-xs-offset-6.right-bottom.js-welcome
+            - if authenticated?
+              %br
+              Welcome,
+              %span.js-current-user
+                = current_user.first_name
+              <br />
+              - if current_user.is_power_user?
+                = link_to "Staff", users_path
+                |
+              %a{href: reset_my_password_path, id: 'js-reset-my-password'} Reset Password
+              |
+              %a{href: edit_my_profile_path, id: 'js-edit-my-profile'} Edit Profile
+              |
+              %a{href: logout_path, id: 'js-logout'} Logout
+        - if authenticated?
+          .row
+            .col-xs-12
+              %nav.navbar.navbar-default.cake__navbar
+                .container-fluid
+                  %ul.nav.navbar-nav
+                    %li{class: (params[:controller] == 'customers' ? 'active' : '')}
+                      %a{href: admin_customers_path} Customers
+                    %li{class: (params[:controller] == 'enquiries' ? 'active' : '')}
+                      %a{href: admin_enquiries_path} Enquiries
+                    %li{class: ((['food_partners', 'menus'].include? params[:controller]) ? 'active' : '')}
+                      %a{href: food_partners_path} Food Partners
+                    %li
+                      %a{href: admin_reports_index_path, id: 'js-reports'} Reports
+                    %li
+                      %a{href: admin_quotes_path, id: 'js-quotes'} Quotes
+                    %li
+                      %a{href: admin_testimonials_path, id: 'js-quotes'} Testimonials
+                    %li
+                      %a{href: admin_carts_path } Carts
+      .row
+        .col-xs-8
+          - flash.each do |key, value|
+            %div{class: flash_class(key)}
+              = value
+      = yield
+      .row.spaced
+        &nbsp;

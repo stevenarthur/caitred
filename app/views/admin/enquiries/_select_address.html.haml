@@ -1,0 +1,2 @@
+= form_for @enquiry, url: enquiry_form_url do |form|
+  = form.select :address_id, address_options, { include_blank: include_blank }, { class: 'form-control input-sm', id: 'js-choose-address', data: { href: admin_enquiry_set_address_path(@enquiry) } }

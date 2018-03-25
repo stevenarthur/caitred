@@ -1,0 +1,63 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.proud-to-be-part-of {
+  overflow:hidden;
+  padding: 5rem 0 6rem 0;
+  background-color: white;
+  text-align: center;
+
+  h2 {
+    font-weight: bold;
+    color: #4f4f4f;
+    @include font-size(3);
+    &::after {
+      content: "";
+      width: 29rem;
+      height: 5px;
+      background-color: #68707B;
+      display: block;
+      margin: 1rem auto;
+    }
+    @media (min-width: $screen-md-min) {
+      @include font-size(5);
+    }
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+.proud-to-be-part-of__logo {
+  @include aspect-ratio(16,8);
+  background-color: white;
+
+  .content {
+    min-height: inherit !important;
+  }
+  .proud-to-be-a-part-of__inner {
+    @include vertical-align(absolute);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.proud-to-be-part-of__muru-d,
+.proud-to-be-part-of__unsw,
+.proud-to-be-part-of__heads-over-heels,
+.proud-to-be-part-of__food-tech-aus,
+.proud-to-be-part-of__telstra,
+.proud-to-be-part-of__the-marketing-academy {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  h3 {
+    color: $caitre-grey;
+  }
+  p { @include font-size(1.8); }
+  @media (max-width: $screen-md-min) {
+    margin-bottom: 5rem;
+  }
+}

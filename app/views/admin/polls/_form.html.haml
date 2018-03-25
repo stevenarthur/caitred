@@ -1,0 +1,31 @@
+= form_for @poll, url: poll_form_url, html: { class: 'form-horizontal'} do |form|
+  .form-group
+    = form.label :title, "Poll Title", class: 'col-xs-2 control-label'
+    .col-xs-6
+      = form.text_field :title, class: 'form-control input-sm', placeholder: 'title', id: 'js-title'
+  .form-group
+    = form.label :description_html, "Description (HTML)", class: 'col-xs-2 control-label'
+    .col-xs-6
+      = form.text_area :description_html, class: 'form-control input-sm', placeholder: 'description', id: 'js-description_html'
+  .form-group
+    = form.label :tag, "Tag (used to uniquely identify the poll)", class: 'col-xs-2 control-label'
+    .col-xs-6
+      = form.text_area :tag, class: 'form-control input-sm', placeholder: 'tag', id: 'js-tag'
+  .form-group
+    %label.col-xs-2.control-label Answers
+    = hidden_field_tag "poll[answers][][id]", @poll_answers[0].try(:id)
+    .col-xs-1
+      = text_field_tag "poll[answers][][order]", @poll_answers[0].try(:order), class: 'form-control input-sm', placeholder: 'position'
+    .col-xs-5
+      = text_field_tag "poll[answers][][answer_text]", @poll_answers[0].try(:answer_text), class: 'form-control input-sm', placeholder: 'answer text'
+  - (1..4).each do |idx|
+    .form-group
+      = hidden_field_tag "poll[answers][][id]", @poll_answers[idx].try(:id)
+      .col-xs-1.col-xs-offset-2
+        = text_field_tag "poll[answers][][order]", @poll_answers[idx].try(:order), class: 'form-control input-sm', placeholder: 'position'
+      .col-xs-5
+        = text_field_tag "poll[answers][][answer_text]", @poll_answers[idx].try(:answer_text), class: 'form-control input-sm', placeholder: 'answer text'
+
+  .form-group
+    .col-sm-offset-2.col-xs-6
+      = submit_tag "Save Poll Details", class: 'btn btn-success', id: 'js-save-poll'

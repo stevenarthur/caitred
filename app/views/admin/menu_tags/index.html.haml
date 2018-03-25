@@ -1,0 +1,34 @@
+- content_for :title do
+  \- View Menu Tags
+
+.row
+  .col-xs-12
+    %h2
+      Menu Tags
+
+.row.spaced
+  .col-xs-12
+    = form_tag admin_menu_tags_generate_tags_path do
+      = submit_tag "Generate Menu Tags", class: 'btn btn-success', id: 'js-generate-menu-tags'
+
+= form_tag admin_menu_tags_save_all_path do
+  .row.spaced
+    .col-xs-12
+      %table.table.table-striped
+        %tr
+          %th Tag
+          %th Is a filter?
+          %th Count of matching menus
+          %th &nbsp;
+        - @menu_tags.each do |menu_tag|
+          %tr.js-menu-tag
+            %td
+              = menu_tag.tag
+            %td
+              = check_box_tag "filters[]", menu_tag.id, menu_tag.is_filter, disabled: (true if menu_tag.menu_count ==0)
+            %td
+              = menu_tag.menu_count
+            %td
+              %a{href: all_menus_path(Location.sydney.slug, first_tag: menu_tag.tag), target: '_blank'}
+                View all matching menus
+      = submit_tag "Save Changes", class: 'btn btn-success'

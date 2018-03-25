@@ -1,0 +1,48 @@
+@import "web_variables";
+@import 'bootstrap';
+@import 'web';
+@import 'menus';
+
+.partners {
+  h1 {
+    margin: 20px;
+    font-size: 50px;
+  }
+  .padding-10 {
+    padding-right: 10px;
+  }
+  .bloc {
+    padding: 20px; 
+  }
+  .image {
+    padding: 15px;
+    img {
+      width: 120px;
+    }
+  }
+  .title {
+    color: #be5945;
+    font-size: 120%;
+  }
+  .type {
+    text-transform: uppercase;
+    font-size: 75%;
+  }
+  .details {
+    min-height: 400px;
+    background-color: #efeeee;
+    border: 1px solid #d9d9d9;
+    padding: 10px;
+
+    img {
+       width: 100px;
+    }
+    .type {
+      color: #be5945;
+    }
+    .bio {
+      margin-top: 15px;
+    }
+
+  }
+}

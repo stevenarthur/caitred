@@ -1,0 +1,47 @@
+<% if @payment %>
+  <table class="table table-bordred">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= Time.at(@payment['created']).strftime("%d %B %Y - %l:%M %p") %></td>
+        <td><%= @payment['amount'].to_f / 100 %></td>
+        <td><%= @payment['currency'] %></td>
+        <td><%= @payment['status'] %></td>
+        <td>
+          <% unless @payment['refunded'] %>
+            <%= link_to admin_refund_enquiry_path, :class => 'btn btn-danger btn-sm', :method => :post do %>
+              <i class="fa fa-undo"></i>
+              Refund
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <% if @payment['refunded'] %>
+        <tr class="danger">
+          <td><%= Time.at(@payment['refunds'].first['created']).strftime('%d %m %Y %I:%M %p') %></td>
+          <td><%= @payment['refunds'].first['amount'].to_f / 100 %></td>
+          <td><%= @payment['refunds'].first['currency'] %></td>
+          <td>Refunded</td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  No Stripe Payment
+<% end %>
+
+<% if @enquiry.post_confirmation? %>
+  <%= link_to admin_enquiry_invoice_path, :class => "create-button btn btn-success btn-sm" do %>
+    <i class="fa fa-file"></i>
+    Download Invoice
+  <% end %>
+<% end %>

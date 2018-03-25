@@ -1,0 +1,23 @@
+<section class="caitredette__consultation">
+  <div class="container">
+    <h2>Book Your Caitredette Consultation</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <%= image_tag 'consultation.jpg' %>
+      </div>
+      <div class="col-md-6">
+        <%= simple_form_for @caitredette_req do |f| %>
+          <%= f.input :name, validate: true %>
+          <%= f.input :company_name, validate: true %>
+          <%= f.input :postcode, validate: true %>
+          <%= f.input :email, validate: true %>
+          <%= f.input :phone, validate: true %>
+          <%= f.input :preferred_communication_method, collection: ['Email', 'Phone'], include_blank: false,
+                      label: "How would you like to be contacted?" %>
+          <%= f.input :message, html: { rows: 6} , validate: true %>
+          <%= f.submit "Request Your Booking", class: 'button' %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

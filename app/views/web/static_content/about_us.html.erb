@@ -1,0 +1,22 @@
+<% content_for(:meta_description){ "Your office catering concierge - book from an exclusive list of Sydney caterers for food that will be the talk of the office" } %>
+<% content_for :title do %>
+  About Us - Corporate Catering for Sydney's Foodies
+<% end %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+  <%= bordered_header_text "About Caitre'd", "company" %>
+<% end %>
+
+<% content_for :middle_content do %>
+  <div class="about">
+
+    <%= render 'web/static_content/about/how_it_started' %>
+
+    <%= render 'web/static_content/about/proud_to_be_a_part_of' %>
+    <%= render 'web/static_content/about/about_footer' %>
+
+  </div>
+<% end %>

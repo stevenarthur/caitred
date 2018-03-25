@@ -1,0 +1,61 @@
+<% content_for(:title){ "Place an Enquiry | " } %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+  <%= 
+    content_tag :div, class: "header--enquiry header--content header--banner" do
+      content_tag :div, class: "header-content-wrap" do
+        content_tag :div, class: "header-content-box" do
+          concat( content_tag(:h1){ "Place an Enquiry" } )
+          + concat( content_tag(:p){ "How can we be of service?" } )
+        end
+      end
+    end 
+  %>
+<% end %>
+
+<% content_for :middle_content do %>
+  <div class="new-quote">
+    <div class="container">
+      <div class="row content--body">
+
+        <div class="col-md-6 centered">
+          <p>From custom quotes to quick question, we're "at your service" to help you book your catering, your way.</p>
+
+          <%= image_tag "liz.jpg", alt: "Elizabeth" %>
+        </div>
+
+        <div class="col-md-6">
+          <%= simple_form_for(@quote) do |f| %>
+            <% if @food_partner %>
+              <%= f.input :food_partner_id, as: :hidden, html: { value: @food_partner.id }  %>
+            <% end %>
+            <%= f.input :name, label: "Your Name", validate: true %>
+            <%= f.input :email, label: "Your Company Email", validate: true %>
+            <%= f.input :phone, label: "Your Contact Number", validate: true %>
+            <%= f.input :contact_method, collection: ['Email', 'Phone'], include_blank: false,
+                        label: "How would you like to be contacted?" %>
+            <%= f.input :postcode, label: "Your Event's Postcode", placeholder: "Eg. 2000", validate: true  %>
+            <%= f.input :message, label: "What can we help you with?", placeholder: "Is this for a team lunch? Or a corporate workshop? Or is this a themed party for your co-workers? If you provide us with all of the details you have at hand, we can get straight to work helping you find the right caterer.", html: { rows: 6}, validate: true %>
+            <%= f.submit "Submit Enquiry", class: 'button' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="new-quote__promise">
+      <div class="container">
+        <h2>CEO's Promise</h2>
+        <div class="row">
+          <div class="col-sm-3"> <p>Personalised <br />Services</p> </div>
+          <div class="col-sm-3"> <p>Delivery Time <br />Guarantee</p> </div>
+          <div class="col-sm-3"> <p>Hand-Picked <br />Caterers</p> </div>
+          <div class="col-sm-3"> <p>The Only Surprises Are Delicious</p> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

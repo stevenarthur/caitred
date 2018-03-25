@@ -1,0 +1,74 @@
+<% if @food_partner.menu_categories.present? %>
+
+  <div class="col-md-3 js--sticky-menu">
+    <ul class="js--partner-sidebar-event-types fa-menu__event-type-list">
+      <% @food_partner.menu_categories.each do |menu_category| %>
+        <% if menu_category.packageable_items.active.present? %>
+          <li data-event-type="<%= menu_category.name.parameterize %>">
+            <%= link_to menu_category.name, "##{menu_category.name.parameterize}" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="js--menu-wrap col-md-9">
+    <% @food_partner.menu_categories.each do |menu_category| %>
+      <% if menu_category.packageable_items.active.present? %>
+
+        <section class="event-type-menu animated fadeIn" data-event-type="<%= menu_category.name.parameterize %>">
+          <% menu_category.packageable_items.active.by_sort_order.each do |item| %>
+            <div class="pa-item">
+
+              <div class="pa-item__add_to_cart" id="qa--package-<%= item.id %>">
+                <span class="price"><%= number_to_currency(item.cost) %></span>
+                <% if current_enquiry.food_partner.present? && current_enquiry.food_partner != @food_partner %>
+                  <button data-toggle="modal" data-target="[data-order-error='true']">Add</button>
+                <% elsif item.package? %>
+                  <button data-toggle="modal" data-target="[data-item-id='<%= item.id %>']">
+                    <% if current_enquiry.enquiry_items.where(packageable_item_id: item.id).present? %>
+                      Edit
+                    <% else %>
+                      Add
+                    <% end %>
+                  </button>
+                <% else %> 
+                  <%= simple_form_for :enquiry_item, url: add_cart_item_path, remote: true do |f| %>
+                    <%= f.input :quantity, label: false, as: :select, include_blank: false,
+                                           collection: (item.minimum_order || 1)..item.maximum_order %>
+                    <%= f.input :packageable_item_id, as: :hidden, input_html: { value: item.id } %>
+                    <%= f.submit "Add" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <h3><%= item.title %></h3>
+              <%= render 'dietary_icons', item: item %>
+              <%= simple_format(item.description) %>
+            </div>
+          <% end %>
+        </section>
+
+      <% end %>
+    <% end %>
+  </div>
+
+<% end %>
+
+<!-- Modals -->
+<% content_for :last_content do %>
+  <% if current_enquiry.food_partner.present? && current_enquiry.food_partner != @food_partner %>
+    <%= render 'package_modal_error' %>
+  <% else %>
+    <% @top_level_packages.each_with_index do |item, index| %>
+      <%= render 'package_modal', item: item, index: index %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+

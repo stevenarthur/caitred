@@ -1,0 +1,62 @@
+<h1 class="main-title">You have received a new catering order.</h1>
+
+<p>Hello <%= @food_partner.company_name %>,</p>
+<p>We just received a new catering order for you. By clicking the green button below, you are confirming this order.</p>
+
+<div class="centered">
+  <p><%= link_to "YES I CAN EXECUTE THIS ORDER", supplier_order_confirmation_url(@enquiry.id, @enquiry.token), class: 'button' %></p>
+</div>
+
+<p>If you cannot fulfil this order for any reason, please call us on (02) 8007 5056</p>
+
+<hr />
+
+<h2>Your Catering Order</h2>
+
+<p class="event-details"><strong>
+  Order ID: <span style='font-weight: normal'>#<%= @enquiry.id %></span><br>
+  Order Amount: <span style='font-weight: normal'><%= number_to_currency(@enquiry.total_cost) %></span><br>
+
+  Delivery Date: <span style='font-weight: normal'><%= @enquiry.event_date.try(:strftime, '%d %b') %></span><br>
+  Delivery Time:  <span style='font-weight: normal'><%= @enquiry.delivery_time %></span> <br>
+
+  Delivery Contact: <span style='font-weight: normal'><%= @enquiry.customer_name %> - <%= @enquiry.customer_telephone %></span><br />
+  <% if @enquiry.customer.additional_first_name.present? %>
+    Additional Delivery Contact: <span style='font-weight: normal'> <%= @enquiry.customer.additional_name %> - <%= @enquiry.customer.additional_telephone %></span><br>
+  <% end %>
+
+  <% if @enquiry.number_of_attendees.present? %>
+    Total Guests:  <span style='font-weight: normal'><%= @enquiry.number_of_attendees %></span><br>
+  <% end %>
+
+  <% if @enquiry.additional_messages.present? %>
+    Additional Comments:  <span style='font-weight: normal'><%= @enquiry.additional_messages %></span><br>
+  <% end %>
+
+  <% if @enquiry.customer_company_name.present? %>
+    Company Name:  <span style='font-weight: normal'><%= @enquiry.customer_company_name %></span> <br>
+  <% end %>
+
+  Delivery Address:  <span style='font-weight: normal'><%= @enquiry.address.one_line %></span><br>
+  Parking Information:  <span style='font-weight: normal'><%= @enquiry.address.parking_information %></span></strong></p>
+
+
+  <% if @modified_content.present? %>
+    <%= simple_format(@modified_content) %>
+  <% else %>
+    <%= simple_format(@enquiry.formatted_line_items_for_menu_details) %>
+  <% end %>
+
+  <p>Please provide labels for the food so the customers know what they’re eating.</p>
+
+<% content_for :lower_email do %>
+  <tr>
+    <td class="iris__image">
+      <%= image_tag 'mailers/caitred.png', alt: "Caitre-D" %>
+    </td>
+    <td class="iris__text">
+      <h3>If you have any issues...</h3>
+      <p>If you have any issues before or during the job, please call us right away on <span class="green">(02) 8007 5056</span>.</p>
+    </td>
+  </tr>
+<% end %>

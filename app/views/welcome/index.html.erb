@@ -1,0 +1,21 @@
+<% content_for(:title){'Sydney Office Catering - Your Catering Concierge'} %>
+<% content_for(:meta_description){'Sydney corporate catering for events and meetings. On time delivery from an exclusive list of local caterers.'} %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+<% end %>
+
+<% content_for :top_content do %>
+  <%= render 'banner' %>
+<% end %>
+
+<% content_for :middle_content do %>
+  <%= render 'founders_promise' %>
+  <%= render 'simpler_online_ordering' %>
+  <%= render 'plan_your_event' %>
+  <%= render 'how_it_works' %>
+  <%= render 'web/static_content/about/companies_we_feed' %>
+  <%= render 'as_seen_in' %>
+<% end %>

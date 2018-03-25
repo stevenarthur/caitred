@@ -1,0 +1,11 @@
+%textarea{ name: 'supplier_email', class: 'form-control', rows: 10, id: 'js-email-content'}
+  - if @enquiry.supplier_communications.present?
+    !=@enquiry.supplier_communications.last.email_html
+  - else 
+    !=@enquiry.formatted_line_items_for_partner
+%br
+.js-supplier-email-box
+  
+%a.btn.btn-inline.btn-default#js-send-email Send email
+= link_to "Confirm the order for #{@enquiry.food_partner.company_name}", 
+          admin_enquiry_confirm_path(@enquiry), :class => "btn btn-inline btn-danger" if @enquiry.status == 'Processing'

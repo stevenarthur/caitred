@@ -1,0 +1,14 @@
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+  <div class="header--new-quote header--content header--banner">
+    <div class="header-content-wrap">
+      <div class="header-content-box">
+        <h1>Thank You!</h1>
+        <p>We have received your enquiry. We'll be in touch shortly.<br />
+        For more information about Caitre'd, please visit our <a href="<%= faqs_path %>">FAQs</a>.</p>
+      </div>
+    </div>
+  </div>
+<% end %>

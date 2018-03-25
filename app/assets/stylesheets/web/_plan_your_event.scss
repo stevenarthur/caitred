@@ -1,0 +1,70 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.plan-your-event__media {
+  background-image: url(asset_path('home/simpler_online_ordering.jpg')) ;
+  background-position: center center;
+  background-size: cover;
+}
+
+.plan-your-event__content {
+  background-color: $caitre-brown;
+  padding: 4rem 3rem;
+
+  h2 { 
+    margin-top: 0; 
+    color: white;
+    margin-bottom: 1rem;
+    text-transform:none;
+  } 
+  p { 
+    color: white;
+    margin-bottom: 3rem;
+    @include font-size(2);
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .plan-your-event__media {
+    @include aspect-ratio(100, 50);
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .plan-your-event { 
+    width: 100%;
+    overflow: hidden;
+    display: table;
+    direction: rtl;
+  }
+
+  .plan-your-event__media, 
+  .plan-your-event__content {
+    width: 50%;
+    display: table-cell;
+    direction: ltr;
+  }
+
+  .plan-your-event__content {
+    padding: 4rem;
+    h2 { 
+      color: white;
+      @include font-size(3.6);
+    }
+    p {
+      @include font-size(2.5);
+      margin-bottom: 3rem;
+    }
+    h2, p, a {
+      text-align: left;
+      max-width: 500px;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .plan-your-event__content {
+    padding: 8rem;
+  }
+}

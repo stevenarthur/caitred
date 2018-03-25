@@ -1,0 +1,54 @@
+<div class="home--banner">
+  <div class="home--banner__content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="transparent-bloc">
+            <%= image_tag 'logo--large.png', alt: "Caitre'd" %>
+            <h1>Your Office Catering Concierge</h1>
+            <small>Pick your caterer. Let us take care of the rest.</small>
+          </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+
+          <%= form_tag("/search", method: "post", id: 'js--track-search', remote: true) do %>
+            <div class="row spaced">
+              <div class="col-md-8 js-field-group has-feedback">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <%= hidden_field_tag :slug, nil, class: 'form-control input-lg', id: 'js--slug', placeholder: 'Enter your postcode (e.g. 2000)', maxlength: 4 %>
+                <%= text_field_tag :postcode, nil, class: 'form-control input-lg input--home-banner', id: 'js--lookup', placeholder: 'Enter your postcode (e.g. 2000)', minlength: 3, maxlength: 4, required: true %>
+              </div>
+              <div class="col-md-4">
+                <%= button_tag(type: 'submit', class: "button") do %>
+                  View Catering Options 
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row" id="js--service-postcode-wrap">
+            <div class="col-md-9 col-md-push-1">
+              <div class="banner__postcode-error">
+                <p class="js--service-postcode-info">Sorry it seems that we don't service <span class="js--service-postcode">POSTCODE</span> just yet but let us notify you as soon as we do!</p>
+
+                <%= simple_form_for @postcode_lead, remote: true, html: { class: 'modern postcode-lead-form' }, 
+                                    data: { model: 'postcode_lead' } do |f| %>
+                  <%= f.input :postcode, as: :hidden %>
+                  <div class="row">
+                    <div class="col-xs-8">
+                      <%= f.input :email, label: false, placeholder: "Email Address" %>
+                    </div>
+                    <div class="col-xs-4">
+                      <%= f.submit "Notify Me", class: "banner__postcode-error__button" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

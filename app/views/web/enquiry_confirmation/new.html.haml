@@ -1,0 +1,135 @@
+- content_for :title do
+  Confirm your Order -
+
+- content_for :javascripts do
+  = javascript_include_tag "https://cdn.pin.net.au/pin.v2.js", "data-turbolinks-track" => true
+  = javascript_include_tag "payment", "data-turbolinks-track" => true
+
+.confirm.spinner.js-spinner
+  %h2 Your payment is processing, please wait!
+
+.js-order-form
+
+  .row.top
+    .col-sm-12
+      %h1 Confirm your order
+
+  .row.error-container#js-errors
+    .col-sm-11
+      .alert.alert-danger
+        %h4#js-error-heading
+        %ul
+
+  .row.spaced
+    .col-sm-8
+      .order-info
+        .row
+          .col-sm-3
+            %label
+              Order number
+          .col-sm-9#js-enquiry-id
+            =@enquiry.id
+        .row
+          .col-sm-3
+            %label
+              Date
+          .col-sm-9#js-event-date
+            =formatted_event_date
+        .row
+          .col-sm-3
+            %label
+              Time
+          .col-sm-9#js-event-time
+            =@enquiry.event_time
+        .row
+          .col-sm-3
+            %label
+              To serve
+          .col-sm-9#js-attendees
+            =@enquiry.event.attendees
+        .row.spaced
+          .col-sm-3
+            %label
+              Contact
+          .col-sm-9
+            %div= @enquiry.customer.name
+            %div= @enquiry.customer.company_name
+            %div= @enquiry.customer.telephone
+            %div= @enquiry.customer.email
+        .row.spaced
+          .col-sm-3
+            %label
+              Delivery to
+          .col-sm-9
+            %div= @enquiry.address.company
+            %div= @enquiry.address.line_1
+            %div= @enquiry.address.line_2
+            %div= @enquiry.address.suburb
+            %div= @enquiry.address.postcode
+            %div
+        - unless @enquiry.address.parking_information.blank?
+          .row
+            .col-sm-3
+              %label Parking information
+            .col-sm-9
+              = @enquiry.address.parking_information
+        .row.spaced
+          .col-sm-3
+            %label
+              Your Package
+          .col-sm-9
+            %span#js-menu-title
+              = @enquiry.menu_title
+            .menu-content#js-customer-menu-content
+              ! #{@enquiry.customer_menu_html}
+
+      .row.spaced
+      = form_tag confirm_enquiry_path(token: @token, customer_id: @enquiry.customer.id, format: :json), id: 'js-pin', class: 'form-horizontal' do
+        .order-info
+          - if @enquiry.payment_method == PaymentMethod::CREDIT_CARD.to_s
+            = render partial: 'web/enquiry_confirmation/credit_card_form'
+          .row.spaced
+            .col-sm-12
+              = check_box_tag :terms, 1, false, id: 'js-accept-terms', class: 'conf-terms'
+              = label_tag 'js-accept-terms', 'I have read and accept the Terms and Conditions'
+          .row.spaced
+            .col-sm-12.confirm-order-button
+              =hidden_field_tag :customer_id, @enquiry.customer.id
+              =hidden_field_tag :token, @token
+              =hidden_field_tag :card_token, "", id: 'js-card-token'
+              = submit_tag "Confirm Order", class: 'btn btn-primary', id: 'js-confirm-button'
+
+    .col-sm-3
+      .row
+        .col-sm-12.price-box
+          .your-price
+            your price
+          .total-price
+            #{@enquiry.amount_to_pay_display_string}
+
+      .row
+        .col-sm-12.price-calculation-box
+          .price-line
+            .food-for Food for #{@enquiry.event.attendees} people
+            .food-per-person at #{@enquiry.price_per_head_display_string} + GST per person
+            .price
+              =@enquiry.food_total_including_gst_display_string
+          .price-line
+            Delivery Charge:
+            .price
+              #{@enquiry.delivery_including_gst_display_string}
+          .price-line
+            Payment Fee (#{payment_fee_type}):
+            .price
+              #{@enquiry.payment_fee_display_string}
+          .price-line.last
+            Includes GST
+            .price
+              #{@enquiry.total_gst_display_string}
+      .row.spaced
+        .col-sm-12.terms-box
+          = render partial: 'web/enquiry_confirmation/terms'
+
+%script
+  Cake.pinEnv = '#{ENV["PIN_ENV"]}';
+  Cake.pinPublicKey = '#{ENV["PIN_PUBLIC"]}';

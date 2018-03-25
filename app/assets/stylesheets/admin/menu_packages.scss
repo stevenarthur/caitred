@@ -1,0 +1,27 @@
+.items-list {
+  thead > tr > td {
+    padding-left: 15px;
+  }
+  tbody > tr {
+    background-color: #eaeaea;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    cursor: move;
+    td {
+      span {
+        display: inline;
+        margin-left: -0.7em;
+        padding-right: 18px;
+      }
+      &.remove-packaged-item {
+        text-align: right;
+      }
+    }
+  }
+
+  .draggable {
+    background-color: #cad9e3;
+    padding-bottom: 3px;
+    border: 1px dashed #000;
+  }
+}

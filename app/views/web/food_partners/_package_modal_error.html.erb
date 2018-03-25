@@ -1,0 +1,21 @@
+<div class="modal fp-modal fp-modal--error" data-order-error='true'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="js--modal-error">
+      </div>
+
+      <h3>Unable To Add To Cart</h3>
+      <hr>
+      <p class="bold">Your cart already includes an item from <%= link_to current_enquiry.food_partner_company_name, partner_from_web_path(current_enquiry.food_partner.url_slug) %>.</p>
+      <p>Unfortunately, we can’t process orders from multiple caterers at the same time right now. Should you wish to order from multiple caterers in the same transaction, please <%= link_to "contact us", contact_us_path %>. Or if you would like to order from <%= @food_partner.company_name %>, please proceed and clear cart</p>
+      <div class="modal-button-group">
+        <button type="button" class="shadow-button shadow-button--white" data-dismiss="modal" aria-label="Close">
+          Cancel
+        </button>
+        <%= link_to "Proceed & Clear Cart", clear_cart_items_path(current_enquiry.id), class: 
+        'shadow-button shadow-button--green modal-button--continue', method: :post %>
+      </div>
+    </div>
+  </div>
+</div>

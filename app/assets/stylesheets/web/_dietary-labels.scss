@@ -1,0 +1,25 @@
+@import 'mixins';
+@import 'web_variables';
+
+.dietary-labels {
+  margin: 0; padding: 0;
+  overflow: hidden;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  li { 
+    float: left; list-style: none; 
+    margin-right: 1rem;
+    color: $primary-green;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  li:before { content: "•"; padding-right: 1rem; }
+  li:first-of-type {  }
+}
+
+.dietary-labels li:first-of-type { 
+  &:before {
+    content: none; 
+    padding-right: 0;
+  }
+} 

@@ -1,0 +1,62 @@
+<div class="modal fp-modal" data-item-id="<%= item.id %>">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <h3><%= item.title %></h3>
+      <%= render 'dietary_icons', item: item %>
+      <hr />
+      <%= simple_format(item.what_you_get) %>
+      <p><strong>Minimum Order: <%= item.minimum_order %></strong></p>
+      <hr />
+
+      <div class="js--modal-error">
+      </div>
+
+      <%= simple_form_for :package_items, url: add_cart_package_path, remote: true do |f| %>
+
+        <div class="fp-modal-item">
+            <strong><%= item.title %> (Standard Package)</strong>
+            <div class="pa-item__add_to_cart" id="qa--package-<%= item.id %>">
+              <span class="price" data-price="<%= item.cost %>"><%= number_to_currency(item.cost) %></span>
+
+              <%= f.simple_fields_for :standard_item do |b| %>
+                <% selected_qty = current_enquiry.enquiry_items.find_by(packageable_item_id: item.id).try(:quantity) || item.minimum_order %>
+                <%= b.input :quantity, label: false, as: :select, include_blank: false,
+                                                     collection: (0)..item.maximum_order, 
+                                                     selected: selected_qty %>
+                <%= b.input :packageable_item_id, as: :hidden, input_html: { value: item.id } %>
+              <% end %>
+            </div>
+            <%= simple_format(item.description) %>
+        </div>
+
+        <% item.subitems.active.order(sort_order: :asc).each_with_index do |variant, index| %>
+          <% subitem_qty = current_enquiry.enquiry_items.find_by(packageable_item_id: variant.id).try(:quantity) || 0 %>
+          <%= f.simple_fields_for "variants[]", current_enquiry.enquiry_items.new do |v| %>
+            <div class="fp-modal-item fp-modal-item--subitem">
+              <strong><%= variant.title %></strong>
+              <div class="pa-item__add_to_cart" id="qa--package-<%= variant.id %>">
+                <span class="price" data-price="<%= variant.cost %>"><%= number_to_currency(variant.cost) %></span>
+                <%= v.input :quantity, label: false, as: :select, include_blank: false,
+                                       selected: subitem_qty,
+                                       collection: (0)..item.maximum_order %>
+                <%= v.input :packageable_item_id, as: :hidden, input_html: { value: variant.id } %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <hr />
+        <%= f.input :additional_instructions, as: :text, 
+                    placeholder: "Add any special requirements or additional instructions here" %>
+        <%= f.submit "+ Add to Cart (#{number_to_currency(item.cost * item.minimum_order)})", 
+          class: 'shadow-button shadow-button--yellow shadow-button--centered' %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

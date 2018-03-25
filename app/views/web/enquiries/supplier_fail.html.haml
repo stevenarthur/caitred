@@ -1,0 +1,15 @@
+%br
+- flash.each do |key, value|
+  %div{class: flash_class(key)}
+    = value
+%br
+.row
+  .col-md-12.text-center
+    %h1
+      = "Sorry you can't manage this order."
+    %br
+    %h3
+      Contact us for more details.
+    %br
+    %p
+      (This order may have been already confirmed or there is an error in the link, try again.)

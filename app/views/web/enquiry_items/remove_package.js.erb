@@ -1,0 +1,10 @@
+$(".js--cart-items").html("<%= escape_javascript(render 'shared/cart_items') %>");
+Cake.AddInstructions.ready();
+$('.js--sticky').stick_in_parent();
+// Segment
+analytics.track('removed package from cart', {
+  enquiry_id: "<%= @enquiry.id %>"
+});
+$("#js--enquiry_parameters input, #js--enquiry_parameters select").on('change', function(){
+  $("#js--enquiry_parameters").submit()
+});

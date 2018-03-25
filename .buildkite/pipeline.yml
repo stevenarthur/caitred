@@ -1,0 +1,13 @@
+steps:
+  - name: ":bundler:"
+    command: "bundle install"
+  - name: ":postgres:"
+    command: "./bin/rake db:create && ./bin/rake db:structure:load"
+  - name: ":npm:"
+    command: "npm install"
+  - name: ":rage1:"
+    command: "./bin/spring stop"
+  - name: ":rspec:"
+    command: "./bin/rspec ."
+  - name: ":unlock:" 
+    command: "bundle-audit check --update"

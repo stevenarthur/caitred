@@ -1,0 +1,16 @@
+= form.fields_for :dietary_requirements, @enquiry.dietary_requirements do |dietary_requirements|
+  .row
+    .col-xs-3
+      %label
+        = dietary_requirements.select :vegetarian, options_for_select((0..100)), { :class => 'form-control input dietary-select' }
+        Vegetarian
+    .col-xs-3
+      %label
+        = dietary_requirements.select :gluten_free, options_for_select((0..100)), { :class => 'form-control input dietary-select' }
+        Gluten Free
+    .col-xs-3
+      %label
+        = dietary_requirements.select :vegan, options_for_select((0..100)), { :class => 'form-control input dietary-select' }
+        Vegan
+
+

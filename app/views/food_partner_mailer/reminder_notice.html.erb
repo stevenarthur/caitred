@@ -1,0 +1,49 @@
+<h1 class="main-title">Let us know that you’re on track.</h1>
+
+<p>Hello <%= @food_partner.company_name %>,</p>
+<p>Is everything on track for your upcoming order?</p>
+<p>Please reply with details of your delivery driver, including phone number and name so that we can contact them directly for any changes from the customer. </p>
+<p>If you have any problems, let us know ASAP on (02) 8007 5056.</p>
+
+<hr />
+
+<h2>Your Catering Order</h2>
+
+<p class="event-details"><strong>
+  Order ID: <span style='font-weight: normal'>#<%= @enquiry.id %></span><br>
+  Order Amount: <span style='font-weight: normal'><%= number_to_currency(@enquiry.total_cost) %></span><br>
+  Delivery Date: <span style='font-weight: normal'><%= @enquiry.event_date.try(:strftime, '%d %b') %></span><br>
+  Delivery Time:  <span style='font-weight: normal'><%= @enquiry.delivery_time %></span> <br>
+
+  Delivery Contact: <span style='font-weight: normal'><%= @enquiry.customer_name %> - <%= @enquiry.customer_telephone %></span><br />
+  <% if @enquiry.customer.additional_first_name.present? %>
+    Additional Delivery Contact: <span style='font-weight: normal'> <%= @enquiry.customer.additional_name %> - <%= @enquiry.customer.additional_telephone %></span><br>
+  <% end %>
+
+  <% if @enquiry.number_of_attendees.present? %>
+    Total Guests:  <span style='font-weight: normal'><%= @enquiry.number_of_attendees %></span><br>
+  <% end %>
+
+  <% if @enquiry.additional_messages.present? %>
+    Additional Comments:  <span style='font-weight: normal'><%= @enquiry.additional_messages %></span><br>
+  <% end %>
+
+  <% if @enquiry.customer_company_name.present? %>
+    Company Name:  <span style='font-weight: normal'><%= @enquiry.customer_company_name %></span> <br>
+  <% end %>
+
+  Delivery Address:  <span style='font-weight: normal'><%= @enquiry.address.one_line %></span><br>
+  Parking Information:  <span style='font-weight: normal'><%= @enquiry.address.parking_information %></span></strong></p>
+
+
+<% content_for :lower_email do %>
+  <tr>
+    <td class="iris__image">
+      <%= image_tag 'mailers/caitred.png', alt: "Caitre-D" %>
+    </td>
+    <td class="iris__text">
+      <h3>If you have any issues...</h3>
+      <p>If you have any issues before or during the job, please call us right away on <span class="green">(02) 8007 5056</span>.</p>
+    </td>
+  </tr>
+<% end %>

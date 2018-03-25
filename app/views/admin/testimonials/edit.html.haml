@@ -1,0 +1,10 @@
+- content_for :title do
+  \- Editing Testimonial
+  = @testimonial.author
+
+.row
+  .col-xs-8
+    %h2 
+      Details for #{@testimonial.author}
+
+= render "form"

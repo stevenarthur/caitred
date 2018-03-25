@@ -1,0 +1,54 @@
+.row.grid.left.right.button-box.js-view-button-container.show-customer-conf
+  .col-xs-4
+    %label Customer Confirmation Info
+  .col-xs-8
+    %a.btn.btn-inline.btn-default#js-show-customer-conf Click to View
+.row.grid.left.right.customer-confirmation#js-customer-conf
+  .col-xs-8
+    %h4 Customer Info
+    .form-group
+      .col-xs-12
+        = form.label :payment_method, "Payment Method", class: 'control-label'
+      .col-xs-6
+        = form.radio_button :payment_method, PaymentMethod::CREDIT_CARD.to_s
+        %label=PaymentMethod::CREDIT_CARD.to_s
+      .col-xs-6
+        = form.radio_button :payment_method, PaymentMethod::SINGLE_EFT_INVOICE.to_s
+        %label=PaymentMethod::SINGLE_EFT_INVOICE.to_s
+      .col-xs-6
+        = form.radio_button :payment_method, PaymentMethod::PAYPAL_INVOICE.to_s
+        %label=PaymentMethod::PAYPAL_INVOICE.to_s
+      .col-xs-6
+        = form.radio_button :payment_method, PaymentMethod::MONTHLY_EFT_INVOICE.to_s
+        %label=PaymentMethod::MONTHLY_EFT_INVOICE.to_s
+    .form-group
+      .col-xs-12
+        = form.label :customer_menu_content, "Menu Details for Customer", class: 'control-label'
+        %textarea{rows: 8, id: 'js-customer-menu-content', name: 'enquiry[customer_menu_content]', class: 'form-control input-sm'}
+          !=@enquiry.formatted_line_items_for_customer
+  .col-xs-4.pricing-row
+    %h4 Pricing
+    %h4 Ex-GST
+    .form-group
+      .col-xs-12
+        %label#js-total-cost-label
+          Food total (incl GST) #{number_to_currency(@enquiry.food_cost)}
+    .form-group
+      .col-xs-12
+        = form.label :delivery_cost, "Delivery $", class: 'control-label'
+        = form.text_field :delivery_cost, class: 'form-control input-sm', id: 'js-delivery-cost'
+    .form-group
+      .col-xs-12
+        %label#js-total-cost-label
+          Delivery (incl GST) #{number_to_currency(@enquiry.total_cost)}
+      = form.hidden_field :total_cost, class: 'form-control input-sm', id: 'js-total-cost'
+    .form-group
+      .col-xs-12
+        %label#js-total-cost-label
+          Payment fee #{@enquiry.payment_fee_display_string}
+    .form-group
+      .col-xs-12
+        %label#js-total-cost-label
+          Amount the customer will pay #{@enquiry.amount_to_pay_display_string}
+
+

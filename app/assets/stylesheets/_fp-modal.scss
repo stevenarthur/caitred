@@ -1,0 +1,84 @@
+@import "web_variables";
+@import "admin_variables";
+@import 'mixins';
+
+.fp-modal {
+  .close {
+    @include font-size(3);
+    position: relative;
+    right: -1rem;
+  }
+
+  label {
+    margin-top: 0.5rem;
+    color: $caitre-green;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  //display: block !important;
+
+  .modal-content {
+    border: none;
+    padding: 2rem 4rem 4rem 4rem;
+    box-shadow: none;
+  }
+
+  .modal-button-group {
+    margin-top: 25px;
+
+    .modal-button--continue {
+      float: right;
+    }
+  }
+}
+
+.fp-modal--error {
+  .modal-dialog {
+    .modal-content {
+      background-color: $caitre-green;
+    }
+    border: 5px solid $caitre-green-darkened;
+    color: white;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) !important;
+
+    a {
+      color: white;
+      font-weight: bold;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    hr {
+      border-top-color: $caitre-green-darkened;
+    }
+
+    h3 {
+      color: white;
+    }
+
+    .modal-content {
+      padding: 1rem 4rem 2rem 4rem;
+    }
+  }
+}
+
+.fp-modal-item {
+  strong {
+    color: $caitre-green;
+  }
+}
+
+.fp-modal-item--subitem {
+  margin-left: 3rem;
+  clear: both;
+  overflow: hidden;
+}

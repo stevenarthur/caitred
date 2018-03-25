@@ -1,0 +1,31 @@
+<h1 class="main-title">Caitre’d - your office catering concierge</h1>
+
+<p>Dear <%= @customer.first_name %>,</p>
+<p>You could be using any caterer - and you’ve chosen Caitre’d. We are so grateful to have you as a customer.</p>
+<p>To show our appreciation, please accept this welcome gift - a guide I’ve personally written as an easy, short “how-to” make sure every Caitre’d experience you have with us is better than the last.</p>
+<p>I’ll let you get back to booking in your caterer, but if you have any questions about anything at any time, don’t hesitate to ask. My personal email address is below.</p>
+<p>We look forward to being at your service!</p>
+<p><%= image_tag 'mailers/liz.png', alt: "Elizabeth Kaelin" %>
+<p>Tastefully yours,<br />
+<%= link_to "Elizabeth Kaelin", "https://www.linkedin.com/in/elizabethkaelin", class: 'green' %><br/>
+<%= link_to "elizabeth@caitre-d.com", "mailto:elizabeth@caitre-d.com" %></p>
+
+<hr />
+
+<h1>Need a Helping Hand?</h1>
+<p>If you need help finding what it is you are looking for, give us a call or leave us your details via the form below.  We’ll get in touch ASAP.</p>
+<div class="centered">
+  <%= link_to "SUBMIT YOUR ENQUIRY", new_quote_url, class: 'button' %>
+</div>
+
+<% content_for :lower_email do %>
+  <tr>
+    <td class="iris__image">
+      <%= image_tag 'mailers/caitred.png', alt: "CaitreD" %>
+    </td>
+    <td class="iris__text">
+      <h3>How can we be at your service?</h3>
+      <p>If there is anyway we can provide you with further assistance, you can either e-mail us at <%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com", class: 'green' %> or call us on <span class="green">(02) 8007 5056</span> from Mon-Fri during normal business hours.</p>
+    </td>
+  </tr>
+<% end %>

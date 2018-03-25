@@ -1,0 +1,64 @@
+@import 'mixins';
+@import 'web_variables';
+
+body {
+  font-family: $sans-serif;
+  color: $caitre-grey;
+}
+
+h1, h2, h3 {
+  font-family: $serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+h1, .alpha { 
+  @include font-size(8);
+  color: white;
+  font-weight: bold;
+}
+
+h2, .bravo {
+  @include font-size(3.6);
+  color: $primary-green;
+  font-weight: bold;
+  text-transform: none;
+}
+
+h3, .charlie {
+  @include font-size(2.4);
+  color: $caitre-green;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h4, .delta {
+  @include font-size(1.8);
+  color: $footer-background;
+  font-weight: bold;
+}
+
+
+a { 
+  color: $caitre-green;
+  &:hover {
+    color: darken($caitre-green, 8);
+  }
+}
+
+p {
+  @include font-size(1.4);
+  
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+p.larger {
+  @include font-size(2.4);
+}
+
+p.subhead {
+  @include font-size(1.8);
+  font-weight: lighter;
+}

@@ -1,0 +1,8 @@
+= render 'shared/edit_food_partner'
+
+.tab-content
+  #js-edit-packageable-items.tab-pane.tabbed-panel.active
+    = field_set_tag "Packageable Item Details"
+    .col-xs-7
+      = form_for @packageable_item, url: packageable_item_path(@food_partner, @packageable_item), builder: Judge::FormBuilder, html: { class: 'form-horizontal js-judge-validate-packageable-item-form'} do |form|
+        = render partial: 'form', locals: { f: form }

@@ -1,0 +1,23 @@
+@import 'mixins';
+@import 'web_variables';
+
+.fa-header {
+  &:before {
+    content: "";
+  }
+  margin-top: 8rem;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem 0;
+  h1 {
+    font-weight: bold;
+    @include font-size(5);
+  }
+  small {
+    @include font-size(1.4);
+    font-weight: bold;
+    a {
+      color: $button-color;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<div class="row checkout">
+  <div class="col-md-8">
+
+    <div class="checkout__progress">
+      <div class="checkout__progress__details active"> Enter Your Details </div>
+      <div class="checkout__progress__details"> Confirm Payment </div>
+    </div>
+
+    <div class="checkout__process">
+
+      <%= simple_form_for @enquiry, url: payment_path(@food_partner.url_slug), 
+                                    data: { enquiry_id: current_enquiry.id,
+                                      food_partner: @food_partner.company_name,
+                                      food_partner_id: @food_partner.id
+                                    }, html: { id: 'js--new-order' } do |f| %>
+        <%= f.input :additional_messages, as: :hidden, input_html: { id: 'js--additional-messages' } %>
+
+        <div class="fieldset-wrap">
+          <div class="fieldset-header js--fieldset-delivery-header">Event Details</div>
+          <fieldset class="active js--fieldset-delivery">
+            <%= render 'delivery_time', f: f %>
+            <%= render 'additional_event_information', f: f %>
+          </fieldset>
+        </div>
+
+        <div class="fieldset-wrap">
+          <div class="fieldset-header js--fieldset-personal-header">Delivery Details</div>
+          <fieldset class="js--fieldset-personal">
+            <%= render 'delivery_address', f: f %>
+          </fieldset>
+        </div>
+
+        <div class="fieldset-wrap">
+          <div class="fieldset-header js--fieldset-personal-header">Personal Details</div>
+          <fieldset class="js--fieldset-personal">
+            <%= render 'personal_details', f: f %>
+          </fieldset>
+        </div>
+
+        <div class="checkout__next-step">
+          <p class="checkout__total">
+          Total (incl. GST) <strong><%= number_to_currency(current_enquiry.amount_to_pay) %></strong></p>
+          <%= f.submit "Continue", class: 'shadow-button shadow-button--green' %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-md-push-1">
+    <%= render 'sidebar' %>
+  </div>
+
+</div>
+
+<script type='text/javascript'>
+
+  var startdate = $('.js-datepicker').data('min-date');
+  var mindate = new Date(startdate);
+  var days_off = $('.js-datepicker').data('days-off');
+
+  $('.js-datepicker').datepicker({
+    dateFormat: 'dd M yy',
+    beforeShowDay: DisableSpecificDates,
+    firstDay: 1
+  });
+
+  function DisableSpecificDates(date) {
+    if ( date < mindate || (days_off.indexOf(date.getDay()) > -1) ) {
+      return [false, '', 'Closed'];
+    } else {
+      return [true, '', 'Open'];
+    }
+  };
+
+</script>

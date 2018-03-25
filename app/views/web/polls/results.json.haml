@@ -1,0 +1,11 @@
+\{
+"results": [
+- @results.each_with_index do |result, idx|
+  \{
+  "answer": "#{result[:answer_text]}",
+  "votes": "#{result[:votes]}"
+  \}
+  - if idx < (@results.size - 1)
+    ,
+]
+\}

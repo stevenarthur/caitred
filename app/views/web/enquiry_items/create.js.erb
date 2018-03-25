@@ -1,0 +1,36 @@
+<% if @enquiry.errors.any? || @enquiry_item.errors.any? %>
+  alert("not valid.")
+<% else %>
+
+  $(".order-cart").html("<%= escape_javascript(render 'shared/order_cart') %>");
+  $('.js--sticky').stick_in_parent();
+
+  $("#js--enquiry_parameters input, #js--enquiry_parameters select").on('change', function(){
+    $("#js--enquiry_parameters").submit()
+  });
+  
+  var edit_links = $('.order-cart--edit');
+
+  for (var i = 0; i < edit_links.length; i++) {
+    $('.pa-item__add_to_cart button[data-target="' + edit_links[i].data('data-target') + '"]').text('edit')
+  };
+
+  // Segment Tracking
+  // Some of this is semantic. See: https://segment.com/docs/spec/ecommerce/
+  fbq('track', 'AddToCart');
+  
+  analytics.track('Added Product', {
+    id: "<%= @enquiry_item.packageable_item_id %>", 
+    sku: "<%= @enquiry_item.xero_item_id %>",
+    name: "<%= @enquiry_item.title %>",
+    price: "<%= @enquiry_item.unit_price %>",
+    quantity: "<%= @enquiry_item.quantity %>",
+    enquiry_id: "<%= @enquiry_item.enquiry_id %>",
+    total_price: "<%= @enquiry_item.total_price %>",
+    food_partner_id: "<%= @enquiry.food_partner_id %>",
+    food_partner_company_name: "<%= @enquiry.food_partner_company_name %>"
+  });
+
+  Cake.AddInstructions.ready();
+
+<% end %>

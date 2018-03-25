@@ -1,0 +1,61 @@
+<div class="advanced-search">
+  <%= form_tag '/search', method: :post do |f| %>
+
+    <div class="col-md-2">
+        <%= label_tag :postcode, "Event Postcode?" %>
+        <%= text_field_tag :postcode, session[:postcode] || params[:postcode],
+            class: 'js--postcode-search js--advanced-search-item' %>
+    </div>
+
+    <div class="col-md-2">
+        <%= label_tag :delivery_day, "Event Date" %>
+        <%= text_field_tag :delivery_day, session[:delivery_day], 
+            class: "js-datepicker js--datepicker-search js--advanced-search-item", placeholder: 'Date' %>
+    </div>
+
+    <div class="col-md-2">
+        <%= label_tag :eat_time, "Eat time?" %>
+        <%= select_tag :eat_time, 
+            options_for_select(FoodPartner.available_delivery_times_for_day(session[:delivery_day]), 
+                               (session[:eat_time])), include_blank: true,
+            class: 'js--timepicker-search js--advanced-search-item', :data => {:toggle => 'tooltip', :placement => 'bottom', :html => true}, :title => 'Delivery time will be <u>15 minutes</u> before Eat Time.' %>
+    </div>
+
+    <div class="col-md-6 advanced-search-price-section">
+        <span>What's your budget?</span>
+        <div class="price-section-item-wrap" data-toggle="tooltip" title="Less than $10pp">
+            <%= check_box_tag :price_low, false, false, :class => "js--advanced-search-item js--price-low-checkbox" %>
+            <%= label_tag :price_low, "$" %>
+        </div>
+        <div class="price-section-item-wrap" data-toggle="tooltip" title="$10pp - $15pp">
+            <%= check_box_tag :price_medium, false, false, :class => "js--advanced-search-item js--price-medium-checkbox" %>
+            <%= label_tag :price_medium, "$$" %>
+        </div>
+        <div class="price-section-item-wrap" data-toggle="tooltip" title="More than $15pp">
+            <%= check_box_tag :price_high, false, false, :class => "js--advanced-search-item js--price-high-checkbox" %>
+            <%= label_tag :price_high, "$$$" %>
+        </div>
+    </div>
+    
+    <div class="event-type col-md-12">
+        <span class="event-type-title">What event type?</span>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Breakfast" id="breakfast" />
+        <label for="breakfast">Breakfast</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Morning Tea" id="morning-tea" />
+        <label for="morning-tea">Morning Tea</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Lunch" id="lunch" />
+        <label for="lunch">Lunch</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Afternoon Tea" id="afternoon-tea" />
+        <label for="afternoon-tea">Afternoon Tea</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Dinner" id="dinner" />
+        <label for="dinner">Dinner</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Finger Food" id="finger-food" />
+        <label for="finger-food">Finger Food/Snacks</label>
+        <input class="js--advanced-search-item" type="radio" name="event_type" value="Canapes" id="canapes" />
+        <label for="canapes">Canapes/Cocktail Party</label>
+    </div>
+    <div class="col-md-12 clear-form-wrap">
+        <a href="#" class="js--clear-advanced-form">Clear All</a>
+    </div>
+  <% end %>
+</div>

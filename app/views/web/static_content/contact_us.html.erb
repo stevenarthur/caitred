@@ -1,0 +1,67 @@
+<% content_for :title do %>
+  Contact Us For Event Catering
+<% end %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+  <%= 
+    content_tag :div, class: "header--enquiry header--content header--banner" do
+      content_tag :div, class: "header-content-wrap" do
+        content_tag :div, class: "header-content-box" do
+          concat( content_tag(:h1){ "Get in Touch" } )
+          + concat( content_tag(:p){ raw("Let us know how we can be 'At Your Service' through the below channels.") } )
+        end
+      end
+    end 
+  %>
+<% end %>
+
+<div class="contact">
+  <div class="row content--body">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <h4>Catering Questions?</h4>
+          <p>
+            <%= link_to "FAQs", faqs_path %>
+            <br>
+            <%= link_to "Online Orders", partner_search_path('sydney-city') %>
+            <br>
+            <%= link_to "Place Enquiry", new_quote_path %>
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <h4>Caterer Enquiries</h4>
+          <p>
+            Make awesome food?
+            <br/>
+            <%= link_to "Learn More", sell_with_us_path %>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <h4>Press Enquiries?</h4>
+          <p>Contact our Regional Manager for any press enquiries.</p>
+          <p>
+            <i class="fa fa-envelope"></i>
+            <%= link_to "seiya@caitre-d.com", "mailto:seiya@caitre-d.com" %>
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <h4>Anything else?</h4>
+          <p>Any other enquiries?</p>
+          <p>
+            <i class="fa fa-envelope"></i>
+            <%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com" %>
+            <br>
+            <i class="fa fa-phone"></i>
+            (02) 8007 5056 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

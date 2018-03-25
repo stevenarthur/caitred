@@ -1,0 +1,10 @@
+<div class="cart-partner-error">
+  <p>You're currently viewing the menu for 
+  <%= link_to @food_partner.company_name, partner_from_web_path(@food_partner.url_slug) %>, 
+  however your cart contains items from 
+  <%= link_to current_enquiry.food_partner.company_name, 
+    partner_from_web_path(current_enquiry.food_partner.url_slug) %>.</p>
+  <p>Would you like to 
+  <%= link_to "place your order with #{current_enquiry.food_partner.company_name}", 
+    partner_from_web_path(current_enquiry.food_partner.url_slug) %> or <%= link_to "clear your cart", clear_cart_items_path(current_enquiry.id), method: :post %> so you can purchase from <%= @food_partner.company_name %>?</p>
+</div>

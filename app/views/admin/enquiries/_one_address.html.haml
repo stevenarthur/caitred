@@ -1,0 +1,16 @@
+.address-block
+  %div#js-address-line-1
+    %label Address:
+    = @enquiry.address.one_line
+.paddress-block
+  %label Parking information:
+  = @enquiry.address.parking_information
+
+.address-buttons
+  %a.js-add-address.btn.btn-default.btn-inline{ data: { href: new_admin_customer_address_path(@enquiry.customer, popup: 1) } }
+    Add Address
+  %a.js-edit-address.btn.btn-default.btn-inline{ data: { href: edit_admin_customer_address_path(@enquiry.customer, @enquiry.address, popup: 1) } }
+    Edit Address
+  - unless @enquiry.address.default?
+    %a.js-set-address-default.btn.btn-default.btn-inline{ data: { href: admin_customer_address_set_default_path(@enquiry.customer, @enquiry.address) } }
+      Set Default

@@ -1,0 +1,21 @@
+.add-instructions {
+
+  .add-instructions-toggle, .add-instructions-action {
+    cursor: pointer;
+  }
+
+  .add-instructions-toggle {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    margin: 5px auto;
+  }
+
+  .add-instructions-overflow {
+    display: none;
+
+    .add-instructions-textarea {
+      width: 100%;
+    }
+  }
+}

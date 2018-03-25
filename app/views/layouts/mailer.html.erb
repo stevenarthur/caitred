@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <%= stylesheet_link_tag "email" %>
+</head>
+<body>
+  <div class="wrapper">
+
+    <table class="panel" align="center">
+      <tbody><tr>
+        <td class="logo">
+          <div class="logo-left" align="left">
+            <%= link_to root_url, target: "_blank", class: 'logo-link' do %>
+              <%= image_tag "mailers/logo.png", width: 132, height: 49 %>
+            <% end %>
+          </div>
+        </td>
+      </tr></tbody>
+    </table>
+
+    <table class="panel" align="center">
+      <tbody><tr>
+        <td class="whitebox">
+          <table class="whitebox__inner" align="center">
+            <tbody><tr>
+              <td style="padding: 40px 50px;">
+                <%= yield %>
+              </td>
+            </tr></tbody>
+          </table>
+        </td>
+      </tr></tbody>
+    </table>
+
+    <% if content_for?(:upper_lower_email) %>
+      <table class="panel" align="center">
+        <tbody><tr>
+          <td class="whitebox">
+            <table class="whitebox__inner" align="center">
+              <tbody><tr>
+                <td style="padding: 40px 50px 20px 50px;">
+                  <%= yield(:upper_lower_email) %>
+                </td>
+              </tr></tbody>
+            </table>
+          </td>
+        </tr></tbody>
+      </table>
+    <% end %>
+
+    <% if content_for?(:lower_email) %>
+      <table class="panel" align="center">
+        <tbody><tr>
+          <td class="whitebox">
+            <table class="whitebox__inner" align="center">
+              <tbody>
+                <%== yield(:lower_email) %>
+              </tbody>
+            </table>
+          </td>
+        </tr></tbody>
+      </table>
+    <% end %> 
+          
+  </div>
+</body>
+</html>

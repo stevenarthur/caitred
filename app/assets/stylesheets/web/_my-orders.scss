@@ -1,0 +1,20 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.my-orders {
+  margin: 10rem 0 8rem 0;
+}
+
+.my-orders__wrap {
+  background: white;
+  margin-top: 2rem;
+  padding: 3rem;
+}
+
+@media (min-width: $screen-md-min) {
+  .my-orders { 
+    margin: 14rem 0 8rem 0;
+  }
+}
+

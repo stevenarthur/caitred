@@ -1,0 +1,2 @@
+window.Cake ||= {}
+Cake.Templates = {}

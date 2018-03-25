@@ -1,0 +1,80 @@
+<h1 class="main-title">You have received a new order!</h1>
+
+<div class="centered">
+<p><%= image_tag 'mailers/chuck.gif' %></p>
+<p><%= link_to "View in Cake", edit_admin_enquiry_url(@enquiry.id), class: 'button' %></p>
+</div>
+
+<hr />
+
+<h2>Order</h2>
+<table class="order-table">
+  <% @enquiry.enquiry_items.each do |item| %>
+    <tr>
+      <% if item.top_level_package_item? %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <% item.package_subitems.each do |subitem| %>
+            <br /><span><%= subitem.quantity %> &times; <%= subitem.packageable_item.title %></span>
+          <% end %>
+          <% if item.additional_instructions.present? %>
+            <br /><em><%= item.additional_instructions %></em>
+          <% end %>
+        </td>
+        <td>
+          <%= number_to_currency(item.package_price) %>
+        </td>
+      <% elsif !item.packageable_item.package? %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <% if item.additional_instructions.present? %>
+            <br /><em><%= item.additional_instructions %></em>
+          <% end %>
+        </td>
+        <td>
+          <%= number_to_currency(item.total_price) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><strong class="total">Total <%= number_to_currency(@enquiry.amount_to_pay) %></strong></p>
+
+<hr />
+
+<table>
+  <tr>
+    <td class="half">
+      <h2>Event Details</h2>
+      <p class="event-details"><strong>Delivery Date: <span style='font-weight: normal'><%= @enquiry.event_date.try(:strftime, '%d %b') %></span><br>
+        Delivery Time:  <span style='font-weight: normal'><%= @enquiry.delivery_time %></span> <br>
+
+        <% if @enquiry.number_of_attendees.present? %>
+          Total Guests:  <span style='font-weight: normal'><%= @enquiry.number_of_attendees %></span><br>
+        <% end %>
+
+        <% if @enquiry.additional_messages.present? %>
+          Additional Comments:  <span style='font-weight: normal'><%= @enquiry.additional_messages %></span><br>
+        <% end %>
+
+        <% if @enquiry.customer_company_name.present? %>
+          Company Name:  <span style='font-weight: normal'><%= @enquiry.customer_company_name %></span> <br>
+        <% end %>
+
+        Delivery Address:  <span style='font-weight: normal'><%= @enquiry.address.one_line %></span><br>
+        Parking Information:  <span style='font-weight: normal'><%= @enquiry.address.parking_information %></span></strong></p>
+    </td>
+    <td class="half">
+      <h2>Contact Details</h2>
+      <p class="event-details">
+        <strong>Order Contact: <span style='font-weight: normal'><%= @enquiry.customer_name %></span><br />
+        Order Phone: <span style='font-weight: normal'> <%= @enquiry.customer_telephone %></span><br />
+        <% if @enquiry.customer.additional_first_name.present? %>
+          Delivery Contact: <span style='font-weight: normal'> <%= @enquiry.customer.additional_name %></span><br>
+          Delivery Phone: <span style='font-weight: normal'> <%= @enquiry.customer.additional_telephone %></span>
+        <% end %>
+      </strong></p>
+    </td>
+  </tr>
+</table>

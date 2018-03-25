@@ -1,0 +1,23 @@
+<section class="are-you-an-investor">
+  <h2>Are you a sophisticated investor?</h2>
+  <p>If you want join us on this exciting journey as an investor, enter your details below:</p>
+  <%= simple_form_for @investment_lead, remote: true, html: { class: 'contact-form modern are-you-an-investor__form' },
+      data: { model: 'investment_lead' } do |f| %>
+
+    <div class="are-you-an-investor__column">
+      <%= f.input :name, required: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :phone %>
+    </div>
+
+    <div class="are-you-an-investor__column">
+      <%= f.input :location %>
+      <%= f.input :invested_in_a_startup_previously, as: :select, 
+                  label: "Have you invested in a startup previously?", include_blank: false %>
+      <%= f.input :typical_investment_size %>
+    </div>
+
+    <%= f.submit "I'm Interested!", class: 'shadow-button shadow-button--green' %>
+
+  <% end %>
+</section>

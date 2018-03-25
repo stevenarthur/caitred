@@ -1,0 +1,49 @@
+<% if @enquiry.menu.present? %>
+  <h3 style="margin-top:0"><%= @enquiry.number_of_attendees %> x <%= @enquiry.menu_title %> @ <%= number_to_currency(@enquiry.price_per_head) %>ea.</h3>
+  <%= simple_format(@enquiry.menu_content) %>
+
+  <p><strong>Total Cost:</strong> <%= number_to_currency(@enquiry.total_cost) %></p>
+
+<% else %>
+  <!-- Display Order Here -->
+  <table width="100%">
+    <% @enquiry.enquiry_items.each do |item| %>
+    <tr>
+      <% if item.top_level_package_item? %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <%= simple_format(item.description) %>
+          <% item.package_subitems.each do |subitem| %>
+            <br /><span><%= subitem.quantity %> &times; <%= subitem.packageable_item.title %></span>
+            <%= simple_format(item.description) %>
+            <% if subitem.additional_instructions.present? %>
+              <br /><strong><%= subitem.additional_instructions %></strong>
+            <% end %>
+          <% end %>
+          <% if item.additional_instructions.present? %>
+            <br /><strong><%= item.additional_instructions %></strong>
+          <% end %>
+        </td>
+        <td style="text-align: right">
+          <%= number_to_currency(item.package_price) %>
+        </td>
+
+      <% else %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <%= simple_format(item.description) %>
+          <% if item.additional_instructions.present? %>
+            <p><strong><%= item.additional_instructions %></strong></p>
+          <% end %>
+        </td>
+        <td style="text-align: right">
+          <%= number_to_currency(item.total_price) %>
+        </td>
+      <% end %>
+
+
+    </tr>
+    <% end %>
+  </table>
+  <!-- Display Order Here -->
+<% end %>

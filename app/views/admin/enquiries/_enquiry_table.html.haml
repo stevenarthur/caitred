@@ -1,0 +1,47 @@
+.row.spaced
+  .col-xs-12
+    %h2
+      = link_to admin_enquiries_path(format: "csv"), :class => "create-button btn btn-success" do
+        %span.glyphicon.glyphicon-floppy-save
+        Download CSV
+      =title
+
+    %table.table.table-striped{ id: table_id, data: { sortable: true }  }
+      %thead
+        %tr.js-sort-headers.sort-headers
+          %th{width: '10%'} &nbsp;
+          %th{width: '10%'} Received
+          %th Event Date
+          %th Name
+          %th Status
+          %th Food Partner
+          %th{data: { sortable: false } }
+      %tbody
+        - enquiries.each do |enquiry|
+          - customer = enquiry.customer
+          %tr.js-enquiry.js-status-row{ data: { id: enquiry.id, status: enquiry.status, remote: edit_admin_enquiry_path(enquiry, popup: 1) } }
+            %td
+              %a.js-enquiry-id{ href: edit_admin_enquiry_path(enquiry) }
+                = enquiry.id
+            %td.js-view-enquiry{ data: { value: enquiry.created_at.to_s} }
+              = enquiry.created_at.strftime('%d %b')
+            %td.js-view-enquiry{ data: { value: enquiry.event_date.to_s} }
+              = enquiry.event_date.try(:strftime, '%d %b')
+            %td.js-view-enquiry
+              #{enquiry.customer.try(:name)} #{enquiry.customer.try(:company)}
+            %td.js-view-enquiry.js-status{ data: { value: enquiry.status_value} }
+              = enquiry.status
+            %td.js-view-enquiry.js-food-partner{ data: { value: enquiry.food_partner.try(:company_name)} }
+              = enquiry.food_partner.try(:company_name)
+            %td.js-status-buttons.enquiry-status-buttons
+              - if enquiry.can_progress?
+                %a.js-progress-enquiry.btn.btn-inline.btn-default{ data: { id: enquiry.id } }
+                  Move to #{enquiry.next_status}
+              - if enquiry.can_cancel?
+                %a.js-cancel-enquiry.btn.btn-inline.btn-default{ data: { id: enquiry.id, confirm: "Are you sure you want to cancel this enquiry?" }, title: 'Cancel' }
+                  X
+              - if enquiry.can_mark_test_or_spam?
+                %a.js-mark-enquiry-test.btn.btn-inline-icon.btn-default{ data: { id: enquiry.id, confirm: "Are you sure you want to mark this enquiry as a test?" }, title: 'Mark as Test' }
+                  %i.icon-icon_34525.icon-medium{ data: { id: enquiry.id } }
+                %a.js-mark-enquiry-spam.btn.btn-inline-icon.btn-default{ data: { id: enquiry.id, confirm: "Are you sure you want to mark this enquiry as spam?" }, title: 'Mark as Spam' }
+                  %i.icon-icon_61684.icon-medium{ data: { id: enquiry.id } }

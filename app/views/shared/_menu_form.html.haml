@@ -1,0 +1,63 @@
+= field_set_tag "Menu Details"
+.col-xs-8
+  = render partial: 'shared/form_field', locals: { field_name: :title, field_id: 'js-title', field_label: "Menu Title", form: form, maxlength: 31 }
+  = render partial: 'shared/text_area_field', locals: { field_name: :description, field_id: 'js-description', field_label: "Menu Description", form: form }
+  = render partial: 'shared/text_area_field', locals: { field_name: :long_description, field_id: 'js-long-description', field_label: "What you get", form: form }
+  = render partial: 'shared/form_field', locals: { field_name: :package_conditions, field_id: 'js-package-conditions', field_label: "Package Conditions", form: form }
+  = render partial: 'shared/text_area_field', locals: { field_name: :how_to_serve, field_id: 'js-how-to-serve', field_label: "What to expect", form: form }
+  .form-group
+    = form.label :minimum_attendees, "Minimum attendees", class: 'col-xs-4 control-label'
+    .col-xs-8
+      = form.text_field :minimum_attendees, class: 'form-control input-sm', :required => true
+  .form-group
+    = form.label :price, "Price $", class: 'col-xs-4 control-label'
+    .col-xs-8
+      = form.text_field :price, class: 'form-control input-sm', :required => true
+  = render partial: 'shared/form_field', locals: { field_name: :menu_image_file_name, field_id: 'js-image_file_name', field_label: "Image File Name", form: form }
+  = render partial: 'shared/form_field', locals: { field_name: :tags, field_id: 'js-tags', field_label: "Tags", form: form, field_value: @menu.tag_string }
+  = render partial: 'shared/form_field', locals: { field_name: :url_slug, field_id: 'js-menu-slug', field_label: "Menu Slug", form: form }
+  = render partial: 'shared/form_field', locals: { field_name: :meta_title, field_id: 'js-menu-meta-title', field_label: "Meta Title", form: form }
+  = render partial: 'shared/form_field', locals: { field_name: :priority_order, field_id: 'js-priority-order', field_label: "Priority Order", form: form }
+  .row
+    = form.label :event_type, "Type of event?", class: 'col-xs-4 control-label'
+  - EventTypes.names.each_slice(2) do |slice|
+    .row
+      .col-xs-4.col-xs-offset-4
+        .checkbox
+          %label
+            = check_box_tag "menu[event_type][]", slice[0], @menu.event_type.include?(slice[0])
+            = slice[0]
+      .col-xs-4
+        .checkbox
+          %label
+            = check_box_tag "menu[event_type][]", slice[1], @menu.event_type.include?(slice[1])
+            = slice[1]
+  .form-group
+    .col-xs-12
+      %label Dietary Properties
+      %p.info Tick if the menu provides a selection of food which will be enough to satisfy a group including vegetarians (25%), Gluten Frees (10%) and Vegans (10%)
+    .col-xs-8.col-xs-offset-4
+      - SpecialDiets.names.each do |property|
+        .checkbox
+          %label
+            = check_box_tag "menu[dietary_properties][]", property, @menu.dietary_properties.include?(property)
+            = property
+  .form-group
+    .col-xs-12
+      %label Images
+    .col-xs-8.col-xs-offset-4
+      = image_tag @menu.image_url(:small), itemprop: 'image'
+      = form.file_field :menu_image_file_name #:pictures
+
+  .form-group
+    .col-xs-12
+      %label Info Sheet
+    .col-xs-8.col-xs-offset-4
+      = link_to @menu.info_sheet, @menu.info_sheet_url
+      = form.file_field :info_sheet
+
+  .form-group
+    = form.label :active, "Active?", class: 'col-xs-4 control-label'
+    .col-xs-8
+      .checkbox
+        = form.check_box :active, id: 'js-menu-active'

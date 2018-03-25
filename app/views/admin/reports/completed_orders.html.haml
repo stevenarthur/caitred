@@ -1,0 +1,6 @@
+- content_for :title do
+  \- View Enquiries
+
+= render partial: 'admin/enquiries/enquiry_table', locals: { enquiries: @orders, title: 'Completed Orders', table_id: 'js-confirmed' }
+
+

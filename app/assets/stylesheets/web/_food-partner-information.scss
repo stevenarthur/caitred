@@ -1,0 +1,17 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.partners {
+  min-height: 100vh;
+
+  .partners-information {
+    img {
+      max-width: 100%;
+    }
+
+    .partners-information-header {
+      color: $brand-text;
+    }
+  }
+}

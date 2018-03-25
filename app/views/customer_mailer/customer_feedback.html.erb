@@ -1,0 +1,32 @@
+<h1 class="main-title">It was a pleasure to serve you.<br/> How was everything?</h1>
+
+<p>Hello <%= @customer.first_name %>,</p>
+<p>I started Caitre’d because I know what it’s like to order office catering and I wanted more from that experience.</p>
+<p>How was your experience today? Did you enjoy everything? It was our pleasure to serve you. Would you like to take this 2-minute survey and let us know how you think we did?</p>
+
+<div class="centered">
+  <p><%= link_to "PROVIDE FEEDBACK", "https://www.surveymonkey.com/r/2MMZVRM", class: 'button' %></p>
+</div>
+
+<table>
+  <tr>
+    <td class="iris__text iris__text--liz">
+      <p>Thank you from all of us at Caitre'd and we look forward to being at your service again soon.</p>
+    </td>
+    <td class="iris__image">
+      <%= image_tag 'mailers/liz.png', alt: "Iris" %>
+    </td>
+  </tr>
+</table>
+
+<% content_for :lower_email do %>
+  <tr>
+    <td class="iris__image">
+      <%= image_tag 'mailers/caitred.png', alt: "CaitreD" %>
+    </td>
+    <td class="iris__text">
+      <h3>Would you like to book in your next event?</h3>
+      <p>Add a touch of Caitre’d class to your next booking - call us anytime or send us an email to get started. You can either e-mail me at <%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com", class: 'green' %> or call us on <span class="green">(02) 8007 5056</span> from Mon-Fri during normal business hours.</p>
+    </td>
+  </tr>
+<% end %>

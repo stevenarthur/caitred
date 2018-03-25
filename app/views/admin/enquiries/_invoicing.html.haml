@@ -1,0 +1,90 @@
+.row.grid.left.right.button-box.js-view-button-container.show-invoicing-details
+  .col-xs-4
+    %label Invoicing
+  .col-xs-8
+    %a.btn.btn-inline.btn-default#js-show-invoicing-details Click to View
+.row.grid.left.right.pricing-row.invoicing-details#js-invoicing-details
+  .col-xs-12
+    %h4 Please click the button to generate an invoice for the customer.
+  .col-xs-12
+    = form.check_box :paid
+    Paid?
+  .col-xs-12
+    %table.table-condensed-xs.table
+      %tr
+        %td Description
+        %td Quantity
+        %td Unit price (ex GST)
+        %td Total
+        %td GST
+      %tr
+        %td=@enquiry.menu_title
+        %td=@enquiry.event.attendees
+        %td=@enquiry.price_per_head_display_string
+        %td GST on Income
+        %td=@enquiry.food_cost_display_string
+      - if @enquiry.delivery_cost.to_i > 0
+        %tr
+          %td Delivery
+          %td 1
+          %td=@enquiry.delivery_cost_display_string
+          %td GST on Income
+          %td=@enquiry.delivery_cost_display_string
+      - if @enquiry.payment_fee.to_i > 0
+        %tr
+          %td Payment fee
+          %td 1
+          %td=@enquiry.payment_fee_ex_gst_display_string
+          %td
+            - if @enquiry.payment_method_includes_gst?
+              GST on Income
+            - else
+              GST Free
+          %td=@enquiry.payment_fee_ex_gst_display_string
+      %tr
+        %td{colspan: 4} GST
+        %td=@enquiry.total_gst_display_string
+      %tr
+        %td{colspan: 4} Total
+        %td=@enquiry.amount_to_pay_display_string
+  .col-xs-12.js-invoice-generation-content
+    %a.btn.btn-inline.btn-default#js-generate-invoice Generate Customer Invoice
+    %div.spinner.hidden-spinner
+  .col-xs-12
+    %h4 Please ensure the following details are correct, then click to generate the supplier invoice.
+  .col-xs-4
+    = form.label :food_cost_to_us, "Food - Cost to Us (inclusive of GST) $"
+    = form.text_field :food_cost_to_us, class: 'form-control input-sm', id: 'js-cost-to-us', rows: 8
+  .col-xs-4
+    = form.label :delivery_cost_to_us, "Delivery Cost to Us (inclusive of GST) $"
+    = form.text_field :delivery_cost_to_us, class: 'form-control input-sm', id: 'js-cost-to-us', rows: 8
+  .col-xs-4
+    %label
+      Total (calculated)
+      %br
+      #{@enquiry.total_cost_to_us_display_string}
+  .col-xs-12
+    = form.check_box :paid
+    Paid?
+  .col-xs-12
+    %table.table-condensed-xs.table
+      %tr
+        %td Description
+        %td Total
+      %tr
+        %td
+          #{@enquiry.menu_title} for #{@enquiry.event.attendees} people
+        %td=@enquiry.food_cost_to_us_display_string
+      - if @enquiry.delivery_cost.to_i > 0
+        %tr
+          %td Delivery
+          %td=@enquiry.delivery_cost_to_us_display_string
+      %tr
+        %td Includes GST
+        %td=@enquiry.gst_paid_to_supplier_display_string
+      %tr
+        %td Total
+        %td=@enquiry.total_cost_to_us_display_string
+  .col-xs-12.js-invoice-generation-content
+    %a.btn.btn-inline.btn-default#js-generate-invoice Generate Supplier Invoice
+    %div.spinner.hidden-spinner

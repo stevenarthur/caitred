@@ -1,0 +1,42 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.companies-we-feed {
+  overflow:hidden;
+  padding: 5rem 0 3rem 0;
+  background-color: white;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+
+  h2 {
+    font-weight: bold;
+    color: $caitre-grey;
+    @include font-size(3);
+    @include heading-border();
+    @media (min-width: $screen-md-min) {
+      @include font-size(5);
+    }
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+.companies-we-feed__logo {
+  @include aspect-ratio(16,9);
+  background-color: white;
+
+  .content {
+    min-height: inherit !important;
+  }
+  .companies-we-feed__inner {
+    @include vertical-align(absolute);
+    width: 100%;
+    padding: 0 2rem;
+    text-align: center;
+  }
+}
+

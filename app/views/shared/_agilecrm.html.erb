@@ -1,0 +1,8 @@
+<script type="text/javascript" src="https://seiyayouchews.agilecrm.com/stats/min/agile-min.js"> </script>
+<script type="text/javascript" > 
+  _agile.set_account('c6r5julbk8fgjv0hen2d2qbblg', 'seiyayouchews'); 
+  _agile.track_page_view(); 
+  <% if current_customer.present? %>
+    _agile.set_email("<%= current_customer.email %>")
+  <% end %>
+</script>

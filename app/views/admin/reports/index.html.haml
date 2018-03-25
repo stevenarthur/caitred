@@ -1,0 +1,29 @@
+- content_for :title do
+  \- Reports Index
+
+.row
+  .col-xs-12
+    %h2
+      Reports
+
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Report Title
+      %tbody
+        %tr
+          %td
+            %a#js-completed-orders{ href: admin_reports_completed_orders_path }
+              Completed Orders
+        %tr
+          %td
+            %a#js-weekly-summary{ href: admin_reports_weekly_path }
+              Weekly Summary
+        %tr
+          %td
+            %a#js-monthly-summary{ href: admin_reports_monthly_path }
+              Monthly Summary
+        %tr
+          %td
+            %a#js-customer-report{ href: admin_reports_customers_path }
+              Customers

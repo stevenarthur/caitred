@@ -1,0 +1,55 @@
+<%= form_for customer, url: url_target do |form| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group js-field-group has-feedback">
+        <%= form.text_field :first_name,  class: 'form-control input', id: 'js-first-name', placeholder: 'First Name', validate: true %>
+        <div class="js-errors error-message"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group js-field-group has-feedback">
+        <%= form.text_field :last_name,  class: 'form-control input', id: 'js-last-name', placeholder: 'Last Name', validate: true %>
+        <div class="js-errors error-message"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.text_field :company_name,  class: 'form-control input', id: 'js-company-name', placeholder: 'Company Name' %>
+      </div>
+      <div class="form-group js-field-group has-feedback">
+        <%= form.text_field :email,  class: 'form-control input', id: 'js-email', placeholder: 'Email Address', data: { validate: "[{\"kind\":\"presence\",\"options\":{},\"messages\":{\"blank\":\"can't be blank\"}},{\"kind\":\"format\",\"options\":{\"with\":\"(?i-mx:\\\\A[A-Z0-9_\\\\.%\\\\+\\\\-']+@(?:[A-Z0-9\\\\-]+\\\\.)+(?:[A-Z]{2,13})\\\\z)\"},\"messages\":{\"invalid\":\"is invalid\",\"blank\":\"can't be blank\"}},{\"kind\":\"length\",\"options\":{\"maximum\":100},\"messages\":{\"too_long\":\"is too long (maximum is 100 characters)\",\"blank\":\"can't be blank\"}},{\"kind\":\"format\",\"options\":{\"with\":\"(?i-mx:\\\\A[A-Z0-9_\\\\.%\\\\+\\\\-']+@(?:[A-Z0-9\\\\-]+\\\\.)+(?:[A-Z]{2,13})\\\\z)\",\"message\":{}},\"messages\":{\"invalid\":\"should look like an email address.\",\"blank\":\"can't be blank\"}},{\"kind\":\"length\",\"options\":{\"minimum\":3,\"maximum\":100},\"messages\":{\"too_short\":\"is too short (minimum is 3 characters)\",\"too_long\":\"is too long (maximum is 100 characters)\",\"blank\":\"can't be blank\"}},{\"kind\":\"format\",\"options\":{\"with\":\"(?-mix:\\\\A\\\\w[\\\\w\\\\.+\\\\-_@ ]+\\\\z)\",\"message\":\"should use only letters, numbers, spaces, and .-_@ please.\"},\"messages\":{\"invalid\":\"should use only letters, numbers, spaces, and .-_@ please.\",\"blank\":\"can't be blank\"}}]" } %>
+        <div class="js-errors error-message"></div>
+      </div>
+      <div class="form-group">
+        <%= form.text_field :telephone,  class: 'form-control input', id: 'js-telephone', placeholder: 'Telephone number' %>
+      </div>
+      <div class="form-group js-field-group has-feedback">
+        <%= form.password_field :password,  class: 'form-control input', id: 'js-password', placeholder: 'Password', data: { validate: "[{\"kind\":\"presence\",\"options\":{},\"messages\":{\"blank\":\"can't be blank\"}},{\"kind\":\"confirmation\",\"options\":{},\"messages\":{\"confirmation\":\"doesn't match Password\"}}]" } %>
+        <div class="js-errors error-message"></div>
+      </div>
+      <div class="form-group js-field-group has-feedback">
+        <%= form.password_field :password_confirmation,  class: 'form-control input', id: 'js-password_confirmation', placeholder: 'Confirm your Password', validate: true %>
+        <div class="js-errors error-message"></div>
+      </div>
+      <!--= form.fields_for :preferences, @customer.preferences do |preferences|
+      -->
+      <!--  .form-group
+      -->
+      <!--    %label
+      -->
+      <!--      = preferences.check_box :opt_out
+      -->
+      <!--      &nbsp;Please don't add me to the mailing list
+      -->
+      <!--    %div
+      -->
+      <!--      (we won't share your details with anybody else)
+      -->
+      <div class="form-group">
+        <%= submit_tag "Save", class: 'btn btn-success js-track js-judge-validate-registration', id: 'js-register-submit' %>
+      </div>
+    </div>
+  </div>
+<% end %>

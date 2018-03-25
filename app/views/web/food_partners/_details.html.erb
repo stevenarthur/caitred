@@ -1,0 +1,21 @@
+<span>
+  <i class="fa fa-calendar-o" data-toggle='tooltip' data-placement='bottom' title='Delivery hours'></i>
+  <%= @food_partner.availability_text %>
+  | 
+</span>
+
+<span>
+  <i class="fa fa-truck" data-toggle='tooltip' data-placement='bottom' title='Delivery areas'></i>
+  <%= @food_partner.delivery_text %>
+  | 
+</span>
+
+<span>
+  <i class="fa fa-clock-o" data-toggle='tooltip' data-placement='bottom' title='Delivery notice'></i>
+  <%= @food_partner.lead_time_hours %> Hours
+  | 
+</span>
+
+<span>
+  <%= number_to_currency(@food_partner.minimum_spend) %> Min spend
+</span>

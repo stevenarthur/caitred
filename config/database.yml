@@ -1,0 +1,30 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: youchews_development
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: youchews_staging
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: youchews_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: cake_production
+  pool: 5
+  username: cake
+
+cucumber:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: youchews_test

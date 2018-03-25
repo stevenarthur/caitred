@@ -1,0 +1,70 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.caterer-looking-for-biz__media {
+  background-image: url(asset_path('home/caterer-looking-for-biz.jpg')) ;
+  background-position: center center;
+  background-size: cover;
+}
+
+.caterer-looking-for-biz__content {
+  padding: 4rem 3rem;
+
+  h2 { 
+    margin-top: 0; 
+    color: #4f4f4f;
+    text-transform:none;
+  } 
+  p { 
+    @include font-size(2);
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .caterer-looking-for-biz__media {
+    @include aspect-ratio(100, 50);
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .caterer-looking-for-biz { 
+    width: 100%;
+    overflow: hidden;
+    display: table;
+    direction: rtl;
+  }
+
+  .caterer-looking-for-biz__media, 
+  .caterer-looking-for-biz__content {
+    width: 50%;
+    display: table-cell;
+    direction: ltr;
+  }
+
+  .caterer-looking-for-biz__content {
+    padding: 4rem;
+    h2 { 
+      @include font-size(3.6);
+    }
+    p {
+      @include font-size(2.5);
+      margin-bottom: 2rem;
+    }
+    h2, p, a {
+      text-align: right;
+      max-width: 500px;
+      margin-left: auto;
+    }
+    a {
+      float: right;
+      clear: both;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .caterer-looking-for-biz__content {
+    padding: 8rem;
+  }
+}

@@ -1,0 +1,56 @@
+<%= f.simple_fields_for :customer, @enquiry.customer do |b| %> 
+  <div class="row">
+    <div class="col-md-6">
+      <%= b.input :first_name, validate: true %>
+    </div>
+    <div class="col-md-6">
+      <%= b.input :last_name, validate: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= b.input :email, label: "Email address" %>
+    </div>
+    <div class="col-md-6">
+      <%= b.input :telephone, label: "Phone number", validate: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" id="js--main-contact">
+      <label>Are you the person our Food Partner should contact upon arrival at the venue?</label>
+      <br/>
+      <%= radio_button_tag :main_contact, "yes", !@enquiry.customer.additional_first_name.present? %>&nbsp;
+      <%= label :main_contact, "yes", " Yes", class: 'normal' %>&nbsp;&nbsp;&nbsp;
+      <%= radio_button_tag :main_contact, "no", @enquiry.customer.additional_first_name.present? %>&nbsp;
+      <%= label :main_contact, "no", " No. Please contact someone else.", class: 'nomral', id: "qa--additional-contact" %>
+    </div>
+  </div>
+
+  <div id="js--additional-contact">
+    <p>
+      <span>Please provide details of the person who will be available at the venue to contact on the day of event.</span>
+        This is to ensure that our Food Partner has a point of contact upon arrival so that your delivery is on-time.
+    </p>
+    <fieldset>
+      <div class="row">
+        <div class="col-md-6">
+          <%= b.input :additional_first_name, label: "First Name" %>
+        </div>
+        <div class="col-md-6">
+          <%= b.input :additional_last_name, label: "Last Name" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= b.input :additional_email, label: "Email address" %>
+        </div>
+        <div class="col-md-6">
+          <%= b.input :additional_telephone, label: "Phone number", validate: true %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+<% end %>

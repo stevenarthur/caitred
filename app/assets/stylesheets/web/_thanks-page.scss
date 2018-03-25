@@ -1,0 +1,35 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.nowrap { 
+  white-space: nowrap;
+}
+.thanks-page {
+  margin: 12rem 0 4rem 0;
+  text-align: center;
+
+  h1 { 
+    @include font-size(5);
+  }
+  p {
+    @include font-size(2.2);
+    margin-bottom: 1.5em;
+  }
+}
+
+.thanks-page__icon {
+  color: #4f4f4f;
+  @include font-size(15);
+  margin-bottom: 5rem;
+}
+
+.thanks-page__form-container {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.thanks-page__social-links {
+  @extend .footer__social-links;
+  float: none;
+}

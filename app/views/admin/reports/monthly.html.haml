@@ -1,0 +1,35 @@
+- content_for :title do
+  \- Monthly Report
+
+.row
+  .col-xs-12
+    %h2
+      Monthly Summary
+
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Date
+          %th Enquiries Confirmed
+          %th New Enquiries
+          %th Average Enquiry Value
+          %th Enquiries from new customers
+          %th Total Revenue
+          %th Gross Profit
+          %th Orders Fulfilled
+          %th Meals served
+      %tbody
+        - @monthly_reports.each do |report|
+          %tr
+            %td
+              = report.start_date.strftime('%d %B %Y')
+              to
+              = report.end_date.strftime('%d %B %Y')
+            %td= report.confirmed_enquiry_count
+            %td= report.new_enquiries_count
+            %td= report.average_enquiry_value_display_string
+            %td= report.new_customer_count
+            %td= report.total_revenue_display_string
+            %td= report.gross_profit_display_string
+            %td= report.orders_fulfilled
+            %td= report.meals_served

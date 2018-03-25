@@ -1,0 +1,33 @@
+<% if item.gluten_free? || item.vegetarian? || item.vegan? || item.contains_nuts? || item.halal? || item.vegetarian_options_available? || item.gluten_free_options_available? %> 
+  <ul class="dietary-labels">
+
+  <% if item.gluten_free? %>
+    <li>Gluten Free</li>
+  <% end %>
+
+  <% if item.vegetarian? %>
+    <li>Vegetarian</li>
+  <% end %>
+
+  <% if item.vegetarian_options_available? %>
+    <li>Vegetarian Options Available</li>
+  <% end %>
+
+  <% if item.gluten_free_options_available? %>
+    <li>Gluten Free Options Available</li>
+  <% end %>
+
+  <% if item.vegan? %>
+    <li>Vegan</li>
+  <% end %>
+
+  <% if item.contains_nuts? %>
+    <li>Contains Nuts</li>
+  <% end %>
+
+  <% if item.halal? %>
+    <li>Halal</li>
+  <% end %>
+
+  </ul>
+<% end %>

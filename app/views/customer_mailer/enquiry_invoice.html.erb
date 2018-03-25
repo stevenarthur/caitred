@@ -1,0 +1,99 @@
+<h1 class="main-title">Your booking has been accepted!</h1>
+
+<p>Hello <%= @customer.first_name %>,</p>
+<p>Your booking for <%=  %> at <%= %> has been accepted by your chosen caterer. Thank you for 'chewsing' us to provide you with the Caitre'd experience you deserve!</p>
+<p>Details of your booking confirmation are below.</p>
+
+<hr />
+
+<h2>Your Catering Order</h2>
+<p>Order #<%= @enquiry.id %> by <%= @enquiry.food_partner_company_name %></p>
+
+<table class="order-table">
+  <% @enquiry.enquiry_items.each do |item| %>
+    <tr>
+      <% if item.top_level_package_item? %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <% item.package_subitems.each do |subitem| %>
+            <br /><span><%= subitem.quantity %> &times; <%= subitem.packageable_item.title %></span>
+          <% end %>
+          <% if item.additional_instructions.present? %>
+            <br /><em><%= item.additional_instructions %></em>
+          <% end %>
+        </td>
+        <td>
+          <%= number_to_currency(item.package_price) %>
+        </td>
+      <% else %>
+        <td>
+          <%= item.quantity %> &times; <%= item.packageable_item.title %>
+          <% if item.additional_instructions.present? %>
+            <br /><em><%= item.additional_instructions %></em>
+          <% end %>
+        </td>
+        <td>
+          <%= number_to_currency(item.total_price) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p><strong class="total">Total <%= number_to_currency(@enquiry.amount_to_pay) %></strong></p>
+
+<hr />
+
+<table>
+  <tr>
+    <td class="half">
+      <h2>Event Details</h2>
+      <p class="event-details"><strong>Delivery Date: <span style='font-weight: normal'><%= @enquiry.event_date.try(:strftime, '%d %b') %></span><br>
+        Delivery Time:  <span style='font-weight: normal'><%= @enquiry.delivery_time %></span> <br>
+
+        <% if @enquiry.number_of_attendees.present? %>
+          Total Guests:  <span style='font-weight: normal'><%= @enquiry.number_of_attendees %></span><br>
+        <% end %>
+
+        <% if @enquiry.additional_messages.present? %>
+          Additional Comments:  <span style='font-weight: normal'><%= @enquiry.additional_messages %></span><br>
+        <% end %>
+
+        <% if @enquiry.customer_company_name.present? %>
+          Company Name:  <span style='font-weight: normal'><%= @enquiry.customer_company_name %></span> <br>
+        <% end %>
+
+        Delivery Address:  <span style='font-weight: normal'><%= @enquiry.address.one_line %></span><br>
+        Parking Information:  <span style='font-weight: normal'><%= @enquiry.address.parking_information %></span></strong></p>
+    </td>
+    <td class="half">
+      <h2>Contact Details</h2>
+      <p class="event-details">
+        <strong>Order Contact: <span style='font-weight: normal'><%= @enquiry.customer_name %></span><br />
+        Order Phone: <span style='font-weight: normal'> <%= @enquiry.customer_telephone %></span><br />
+        <% if @enquiry.customer.additional_first_name.present? %>
+          Delivery Contact: <span style='font-weight: normal'> <%= @enquiry.customer.additional_name %></span><br>
+          Delivery Phone: <span style='font-weight: normal'> <%= @enquiry.customer.additional_telephone %></span>
+        <% end %>
+      </strong></p>
+    </td>
+  </tr>
+</table>
+
+<% content_for :upper_lower_email do %>
+  <h2>A Bit of Housekeeping...</h2>
+  <p>We try to accept as many changes and requests that we can after your booking has been confirmed, provided your chosen caterer can accommodate. For some changes, you’ll be kept informed if a fee may be charged. Please give us a call on the number below should need more info.</p>
+<% end %>
+
+<% content_for :lower_email do %>
+  <tr>
+    <td class="iris__image">
+      <%= image_tag 'mailers/caitred.png', alt: "CaitreD" %>
+    </td>
+    <td class="iris__text">
+      <h3>How can we be at your service?</h3>
+      <p>If there is anyway we can provide you with further assistance, you can either e-mail us at <%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com", class: 'green' %> or call us on <span class="green">(02) 8007 5056</span> from Mon-Fri during normal business hours.</p>
+    </td>
+  </tr>
+<% end %>
+

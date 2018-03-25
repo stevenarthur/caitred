@@ -1,0 +1,115 @@
+sections:
+  - name: Affordability
+    questions:
+      - question: We have a set budget per person. What can you recommend? 
+        answer:
+          - "Here are some budget guidelines which may be useful:"
+          - "<strong>BREAKFAST</strong><br />
+            $5 – 'light' breakfast (e.g., basic pastries, etc)<br />
+            $10+ – 'filling' breakfast (pastries plus mini bacon egg rolls, yogurt and granola cups, fruit, etc.)"
+          - "<strong>MORNING TEA</strong><br />
+            $5 – 'light' morning tea (e.g., 1 piece of basic pastries, etc.)<br />
+            $8 – 'filling' morning tea (2 pieces per person)"
+          - "<strong>WORKING LUNCHES</strong><br />
+            $10 – 'light' lunch (e.g. just sandwiches)<br />
+            $15+ 'filling' lunch (sandwiches, fruit, drinks or hot food)"
+          - "<strong>AFTERNOON TEA </strong><br />
+            $5 – “light” afternoon tea (e.g., one serve / piece of brownies, flaky sausage rolls, etc) / $8 – “filling” afternoon tea (2 serves per person)<br />
+            $12 – light dinner / $15+ – good dinner (tip: you generally always want dinner to be good)"
+          - "<strong>NIBBLES</strong><br />
+            If you’re looking for something to lightly fill tummies with during after-work drinks, $10-$12 per person for sharing platters works well."
+          - "<strong>CANAPES</strong><br />
+            Individual canapés generally range between $2-$4.50. The number of canapes you should order depends on three things: the length of event, the time of day and how full you would like your gests to be"
+          - "It’s best to give us a call so we can make specific recommendations (every event is different), but four pieces of canape per person per hour is a good rule of thumb if you want to make sure your guests leave satisfied."
+      - question: We have a set amount of money ($500) feed a certain amount of people (100). What can you recommend?
+        answer:
+          - We will still try to help where we can, however If your budget is fixed no matter how many people attend your event, you risk running out of food.
+
+  - name: Style and Customisation
+    questions:
+      - question: How will the food be delivered / presented?
+        answer: 
+          - "The 'Presentation' section on top of the menu page for the caterer describes what you can expect when the catering arrives."
+      - question: Can I get a quote? 
+        answer: 
+          - "Of course - please <a href='http://caitre-d.com/quotes/new'>click here</a>."
+      - question: Do you have healthy food?
+        answer: 
+          - "Definitely! A dietitian is our CEO! Check our our menus <a href='http://caitre-d.com/in/sydney-city'>here</a>."
+      - question: Do you have vegan / gluten free / lactose-free options?
+        answer: 
+          - "Yes - most of our caterers cater for dietary requirements and include those options on their menus. We also can cater for other specific requests - place an enquiry <a href='http://caitre-d.com/quotes/new'>here</a>."
+      - question: "Is it possible for ingredient 'A' to be changed for ingredient 'B'?"
+        answer: 
+          - Some caterers are more flexible than others to making changes to their menu items. Give us a call and we can help you pick a suitable caterer.
+      - question: What if I can’t find what I’m looking for on your website? 
+        answer: 
+          - "Place an enquiry <a href='http://caitre-d.com/quotes/new'>here</a> and we’ll be 'at your service' ASAP."
+
+  - name: Coordination of Booking
+    questions: 
+      - question: Can I order less than the minimum order amount per item?
+        answer: 
+          - Each caterer makes everything from from scratch so they need to produce and sell a certain number, or “batch” of the items to cover the cost of ingredients.
+      - question: Can a caterer also deliver in another area than specified on the website?
+        answer: 
+          - In order for our caterers to deliver outside their normal area, there might be an additional cost and you may have to order a certain amount of food for the booking to be accepted. 
+      - question: I’ve placed my order, but I need to add attendees / add a dietary requirement / change the delivery time. Can I make changes to my order? 
+        answer: 
+          - 98% of changes are fine. It all depends on the change you are asking to be made, i.e., changing your buffet lunch order from 100 people to 70 people the morning of the event might not be possible, but a minor time change / a few extra sandwiches are no worries at all. Changes may also attract additional charges. We will do our best to inform you of what the charges are in advance so you can decide how to proceed.
+      - question: Can i still place an order for tomorrow?
+        answer: 
+          - A quick sandwich platter should be OK; a hot buffet breakfast for 100 people *might* be trickier. Please be in touch to see what is possible. 
+      - question: What is the cut off time for placing an order?
+        answer:
+          - The cut off time per caterer is on top of the caterers menu page.  
+      - question: Can I pay by invoice / account rather than credit card?
+        answer: 
+          - Yes, you can also pay by invoice and we accept corporate accounts. However, credit card details are necessary to book a caterer. 
+
+  - name: On-site Requirements
+    questions: 
+      - question: Why is it necessary to provide parking information and an on-site contact number?  
+        answer: 
+          - If there is no parking information, your delivery runs the risk of being late. Most of our caterers deliver in company vans / cars. Without a designated area where the caterer can park to unload and carry your delivery up to your office, he / she has to instead circle around your building to find parking and cannot unload your delivery until they have done so. 
+          - "The same thing is true for the on-site delivery contact. Unless a caterer already has been to your building, they may need help when they arrive to find out exactly where your meeting is being held. This could be for any number of reasons: the loading dock supervision needs someone to provide clearance; the goods and services lift might not be working; once the caterer arrives to the floor, they may need to be buzzed in by a member of staff; the list goes on."
+          - If the caterer faces any unexpected delivery issue and is unable to contact someone to let them know or ask for help, you run the risk of your delivery being late.
+      - question: Is it possible to get a chef on-site?
+        answer: 
+          - "Of course - place an enquiry <a href='http://caitre-d.com/quotes/new'>here</a> so we can suggest a suitable caterer."
+      - question: Is the setup of the catering included as well?
+        answer: 
+          - "Our caterers drop off your order and head to their next delivery quickly. If you need setup assistance please let us know in advance and we can book this in for you - place an enquiry <a href='http://caitre-d.com/quotes/new'>here</a>."
+      - question: Will there be clean up afterwards (since the venue is not ours)?
+        answer: 
+          - "We can provide this service if booked in advance. Place an enquiry <a href='http://caitre-d.com/quotes/new'>here</a>."
+      - question: Are plates and cutlery included?
+        answer: 
+          - Most of our caterers offer plates and cutlery for purchase and these can easily be added to your cart.
+      - question: Are utensils included to serve the food?
+        answer: 
+          - Utensils to serve the food are not included with your catering delivery. 
+
+  - name: Day of Delivery
+    questions: 
+      - question: "What does 'delivery time guarantee' mean?"
+        answer: 
+          - The Caitre’d delivery time guarantee means that your catering order will be delivered to the appropriate room within a venue either on or up to 15 minutes before the specified service time (when you want the food to be ready to eat).   
+          - We only offer a delivery time guarantee when there is parking and an on-site contact available.
+          - The only exception to this guarantee is either 1) an “Act of God” (like a bad storm) or 2) circumstances beyond our control (such as traffic accidents). 
+          - Irrespective of the situation, if we find out on the day that your order may not be delivered within your requested delivery timeframe for any reason, we will notify you immediately and keep you updated and informed as to the status of your order.
+      - question: What is the service time?
+        answer: 
+          - The service time is the time that you want the catering to be set up and ready for people to eat. 
+      - question: Who do I call on the day of the delivery if I need anything?
+        answer: 
+          - "We are at your service to assist you - please call (02) 8007 5056."
+
+  - name: Contact
+    questions: 
+      - question: How can I get in touch with Caitre’d?
+        answer: 
+          - "If you have any questions please be in touch via <a href='mailto:atyourservice@caitre-d.com'>atyourservice@caitre-d.com</a> or <a href='tel:+61280075056'>(02) 8007 5056</a>."
+      - question: How do I provide Caitre’d with (amazing) feedback?
+        answer: 
+          - "Awww thanks! We strive for every experience with Caitre’d to be better than the last - and if it isn’t for ANY reason please do let us know. We send feedback forms via email after every event, or you can call us on <a href='tel:+61280075056'>(02) 8007 5056</a> or send an email to <a href='mailto:atyourservice@caitre-d.com'>atyourservice@caitre-d.com</a>."

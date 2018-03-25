@@ -1,0 +1,27 @@
+- content_for :title do
+  \- View Polls
+
+.row
+  .col-xs-12
+    %h2
+      Polls
+.row
+  .col-xs-12
+    %a#js-add-poll.btn.btn-success{href: new_admin_poll_path} Add New Poll
+    %br
+
+.row
+  .col-xs-12
+    %table.table.table-striped
+      %tr
+        %th Title
+        %th Description
+        %th Created on
+      - @polls.each do |poll|
+        %tr.js-poll
+          %td
+            %a.js-poll-name{href: edit_admin_poll_path(poll)}
+              = poll.title
+          %td
+            != poll.description_html
+          %td= poll.created_at.strftime('%d %b %Y')

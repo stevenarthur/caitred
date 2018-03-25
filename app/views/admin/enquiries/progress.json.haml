@@ -1,0 +1,11 @@
+\{
+"new_status": "#{@enquiry.status}",
+- if @enquiry.can_progress?
+  "next_status": "#{@enquiry.next_status}",
+- if @enquiry.can_regress?
+  "last_status": "#{@enquiry.last_status}",
+"can_progress": "#{@enquiry.can_progress?}",
+"can_regress": "#{@enquiry.can_regress?}",
+"can_cancel": "#{@enquiry.can_cancel?}",
+"can_mark_test_or_spam": "#{@enquiry.can_mark_test_or_spam?}"
+\}

@@ -1,0 +1,39 @@
+- content_for :title do
+  \- View Customers
+
+%br
+.row
+  .col-xs-12
+    %a.btn.btn-success{href: new_admin_customer_path} Add New Customer
+    %br
+
+.row
+  .col-xs-12
+    %h2
+      Customers
+    %table.table.table-striped
+      %tr
+        %th Name
+        %th Company
+        %th Telephone
+        %th Email
+        %th Registered?
+        %th Mailing list?
+        %th
+        %th
+        %th
+      - @customers.each do |customer|
+        %tr.js-customer
+          %td.js-customer-name= customer.name
+          %td= customer.company_name
+          %td= customer.telephone
+          %td= customer.email
+          %td= registered?(customer)
+          %td= mailing_list?(customer)
+          %td
+            = button_to login_as_customer_path(customer.id), class: 'btn btn-success js-edit-customer' do
+              Login As
+          %td
+            %a.btn.btn-default.js-edit-customer{href: edit_admin_customer_path(customer)} Edit
+          %td
+            %a.btn.btn-default.js-customer-enquiries{href: admin_customer_enquiries_path(customer), data: { name: customer.name} } #{customer.enquiries.count} Enquiries

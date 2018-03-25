@@ -1,0 +1,9 @@
+- content_for :title do
+  \- Editing Quote
+  = @quote.name
+
+.row
+  .col-xs-8
+    %h2 
+      Details for #{@quote.name} - #{@quote.food_partner ? @quote.food_partner.company_name : "No Food Partner specified"}
+= render "form"

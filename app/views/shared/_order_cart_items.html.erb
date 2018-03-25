@@ -1,0 +1,68 @@
+<div class="your-order">
+  <div class="order-cart-prices">
+    <!-- 
+      # Top level packages
+      ## Sub level packages
+      #
+      # Sub level packages without top_level_items
+      #
+      # Singular items
+    -->
+    <% current_enquiry.enquiry_items.each do |item| %>
+
+      <% if item.top_level_package_item? %>
+        <%= render 'shared/packageable_item_cart_item', item: item, modification_enabled: true %>
+      <% elsif subpackage_item_without_parent_order?(item) %>
+        <%= render 'shared/packageable_item_cart_item', item: item, modification_enabled: true %>
+
+      <% elsif !item.subpackage_item? %>
+        <div class="order-cart-prices-item">
+          <div class="order-cart-prices-label">
+            <% if modification_enabled == true %>
+              <%= link_to "x", remove_cart_item_path(item), method: :DELETE, remote: true %>
+            <% end %>
+            <%= item.quantity %> &times; <%= item.packageable_item.title %>
+            <% if item.additional_instructions.present? %>
+              <p><%= item.additional_instructions %></p>
+            <% end %>
+          </div>
+          <div class="order-cart-prices-value"><%= number_to_currency(item.total_price) %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <hr />
+    <div class="order-cart-prices">
+      <div class="order-cart-prices-item order-cart-prices-item--subtotal">
+        <div class="order-cart-prices-label">Subtotal</div>
+        <div class="order-cart-prices-value" id="qa--cart-subtotal">
+          <%= number_to_currency(current_enquiry.subtotal) %>
+        </div>
+      </div>
+      <% if current_enquiry.subtotal < @food_partner.minimum_spend %>
+        <div class="order-cart-prices-item order-cart-prices-item--min-order">
+          <div class="order-cart-prices-label">Minimum Order</div>
+          <div class="order-cart-prices-value"><%= number_to_currency(@food_partner.minimum_spend ) %></div>
+        </div>
+      <% end %>
+      <div class="order-cart-prices-item order-cart-prices-item--del-fee">
+        <div class="order-cart-prices-label">Delivery Fee</div>
+        <div class="order-cart-prices-value" id="qa--delivery-fee">
+          <% if current_enquiry.delivery_cost == 0 %>
+            Free
+          <% else %>
+            <%= number_to_currency(current_enquiry.delivery_cost) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="order-cart-prices-item order-cart-prices-item--payment-fee">
+        <div class="order-cart-prices-label">Payment Fee (3%)</div>
+        <div class="order-cart-prices-value" id="qa--payment-fee"><%= number_to_currency(current_enquiry.payment_fee) %></div>
+      </div>
+      <div class="order-cart-prices-item order-cart-prices-item--total">
+        <div class="order-cart-prices-label">Total (incl. GST)</div>
+        <div class="order-cart-prices-value" id="qa--cart-total"><%= number_to_currency(current_enquiry.amount_to_pay) %></div>
+      </div>
+    </div>
+</div>

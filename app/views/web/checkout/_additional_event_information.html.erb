@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= f.label :number_of_attendees, "How many people at the event?" %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.input :number_of_attendees, label: false %>
+      </div>
+      <div class="col-md-10 checkout__people">
+        <p>people</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" id="js--checkout-time"> 
+    <%= f.input :additional_messages, label: "Additional comments", placeholder: "Anything else we should know?" %>
+  </div>
+</div>

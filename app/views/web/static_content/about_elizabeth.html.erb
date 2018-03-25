@@ -1,0 +1,48 @@
+<% content_for :title do %>
+  About Us - Corporate Catering for Sydney's Foodies
+<% end %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+<% end %>
+
+<% content_for :middle_content do %>
+  <div class="about-elizabeth">
+
+    <section class="about-elizabeth__info container">
+      <div class="row">
+        <div class="col-md-6">
+          <%= image_tag 'about-images/elizabeth/one.jpg' %>
+        </div>
+        <div class="col-md-6">
+          <h1>Elizabeth Kaelin</h1>
+          <p class="about-elizabeth__title"><strong>CEO and Founder of Caitre’d</strong></p>
+          <p>I know what it’s like to order catering for offices. For years, I organised catering from local chefs into the offices of clients. I realised that people not only want great food – they want a great experience start to finish, and they deserve best-in-class customer service. </p>
+          <p>I’m a dietitian and nutritionist so I know good food when I see it.  That’s why I created Caitre’d – I wanted my customers to have a classier catering experience.</p>
+        </div>
+      </div>
+      <div class="about-elizabeth__imagerow container">
+        <div class="row">
+          <div><%= image_tag 'about-images/elizabeth/two.jpg' %></div>
+          <div><%= image_tag 'about-images/elizabeth/three.jpg' %></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-elizabeth__commitment">
+      <h2>My Commitment To You</h2>
+      <p>I created Caitre’d with the vision of making the catering experience special.</p>
+      <p><span>Simple, consistent, affordable quality, with a touch of Caitre’d class.</span></p>
+    </section>
+
+    <section class="about-elizabeth__contact">
+      <%= image_tag 'about-images/elizabeth/main.jpg' %>
+      <h2>Get In Touch</h2>
+      <p>Elizabeth and the Caitre’ds are excited to serve you and your team. Let us see what we can do for you.</p>
+      <%= link_to "Lets Chat", contact_us_path, class: 'button' %>
+    </section>
+
+  </div>
+<% end %>

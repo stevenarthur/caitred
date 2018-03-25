@@ -1,0 +1,12 @@
+.single-page-header {
+  background-image: asset-url('become_a_partner.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  text-align: center;
+  padding: 12rem 0 10rem 0;
+
+  h1 {
+    @extend .alpha;
+    text-transform: uppercase;
+  }
+}

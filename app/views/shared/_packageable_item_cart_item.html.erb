@@ -1,0 +1,16 @@
+<div class="order-cart-prices-item">
+  <div class="order-cart-prices-label">
+    <% if modification_enabled == true %>
+      <%= link_to "x", remove_cart_package_path(item.id), method: :DELETE, remote: true %>
+    <% end %>
+    <%= item.quantity %> &times; <%= item.packageable_item.title %>
+    <a class="order-cart--edit" data-toggle="modal" data-target="[data-item-id='<%= item.package_parent %>']">Edit</a>
+    <% item.package_subitems.each do |subitem| %>
+      <div class="order-cart-prices-label-subitem"><%= subitem.quantity %> &times; <%= subitem.packageable_item.title %></div>
+    <% end %>
+    <% if item.additional_instructions.present? %>
+      <p><%= item.additional_instructions %></p>
+    <% end %>
+  </div>
+  <div class="order-cart-prices-value"><%= number_to_currency(item.package_price) %></div>
+</div>

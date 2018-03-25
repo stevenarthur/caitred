@@ -1,0 +1,19 @@
+.row
+  .col-lg-12
+    .border-box
+    .content-box
+      %h1 Something went wrong
+      %p
+        There was an error on the page you were trying to access. Our development team has been notified.
+      %p
+        Please visit the 
+        %a{href: "/"} Home Page 
+        or 
+        %a{href: faqs_path} FAQs
+        instead.
+      %p &nbsp;
+%script
+  $(function() {
+  var error = "500";
+  Cake.Analytics.trackError(error);
+  });

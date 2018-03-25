@@ -1,0 +1,30 @@
+- content_for :title do
+  \- View Testimonials
+
+%br
+.row
+  .col-xs-12
+    %a.btn.btn-success{href: new_admin_testimonial_path} Create Testimonial
+    %br
+.row
+  .col-xs-12
+    %h2
+      Testimonials
+    %table.table.table-striped
+      %tr
+        %th Date
+        %th Food Partner
+        %th Text
+        %th Author
+        %th
+
+        
+      - @testimonials.each do |testimonial|
+        %tr.js-quote
+          %td.js-quote-name= testimonial.created_at.strftime('%d %b')
+          %td= link_to testimonial.food_partner.company_name, edit_food_partner_path(testimonial.food_partner) if testimonial.food_partner
+          %td= truncate testimonial.text
+          %td= testimonial.author
+          %td.text-right
+            = link_to 'Edit', edit_admin_testimonial_path(testimonial), :class => "btn btn-default"
+            = link_to 'Delete', admin_testimonial_path(testimonial), :method => 'delete', :class => "btn btn-danger"

@@ -1,0 +1,11 @@
+.address-label
+  No Address set
+  %br
+  Select from the list to choose, or click to add.
+
+%a.js-add-address.btn.btn-default.btn-inline{ data: { href: new_admin_customer_address_path(@enquiry.customer, popup: 1) } }
+  Add Address
+
+%br
+%br
+= render partial: 'select_address', locals: { include_blank: 'Choose Delivery Address' }

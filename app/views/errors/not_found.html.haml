@@ -1,0 +1,20 @@
+.row
+  .col-lg-12
+    .border-box
+    .content-box
+      %h1 Page not found
+      %p
+        We couldn't find the page you were looking for. 
+      %p
+        Please visit the 
+        %a{href: "/"} Home Page 
+        or 
+        %a{href: faqs_path} FAQs
+        instead.
+      %p &nbsp;
+
+%script
+  $(function() {
+  var error = "404";
+  Cake.Analytics.trackError(error);
+  });

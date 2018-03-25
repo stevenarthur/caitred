@@ -1,0 +1,35 @@
+<div class="container">
+  <button class="js--nav-toggle header__nav-toggle hamburger hamburger--slider" type="button">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+
+  <div class="header__logo">
+    <%= link_to root_path do %>
+      <h1>Caitre'd</h1>
+    <% end %>
+  </div>
+
+  <div class="header__nav js--nav">
+
+    <ul class="upper">
+      <li class="lighten opening-hours"><a href="#">Open Monday-Friday 9am-5pm</a></li>
+      <li class="lighten"><a href="tel:+61280075056">(02) 8007 5056</a></li>
+      <li class="lighten"><%= link_to "atyourservice@caitre-d.com", "mailto:atyourservice@caitre-d.com" %></li>
+    </ul>
+
+    <ul>
+      <!-- Monday-Friday:9-5  -->
+      <li><%= link_to "Browse Caterers", partner_search_path(locality: 'sydney-city') %></li>
+      <li><strong><%= link_to "Need a Quote?", new_quote_path %></strong></li>
+      <% if authenticated? %>
+        <li><%= link_to "My Account", my_account_path %></li>
+        <li><%= link_to "Sign Out", customer_logout_path %></li>
+      <% else %>
+        <li><%= link_to "Sign In", customer_login_path %></li>
+        <li><%= link_to "Register", register_path %></li>
+      <% end%>
+    </ul>
+  </div>
+</div>

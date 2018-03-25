@@ -1,0 +1,49 @@
+<table class="table table-striped table-condensed-xs">
+  <caption><%= caption %></caption>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Last Updated</th>
+      <th>Updated By</th>
+      <th>Cost</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if items.present? %>
+      <% items.each do |item| %>
+        <tr class="js-item">
+          <td><%= item.sort_order %></td>
+          <td>
+            <a class="js-edit-item" href="<%=edit_packageable_item_path(@food_partner, item)%>" data-itemid="<%= item.id %>">
+              <%= item.title %>
+              <% if item.gluten_free? %><i class="icon-gluten_free.icon-medium"></i><% end %>
+              <% if item.vegetarian? %><i class="icon-vegetarian.icon-medium"></i><% end %>
+              <% if item.vegan? %><i class="icon-vegan.icon-medium"></i><% end %>
+            </a>
+          </td>
+          <td><%= item.description %></td>
+          <% unless item.versions.try(:last).nil? %>
+            <td><%= item.versions.try(:last).created_at.strftime('%d %b') %></td>
+            <td><%= "#{item.versions.try(:last).try(:actor).try(:username)}" %></td>
+          <% else %>
+            <td>-</td>
+            <td>-</td>
+          <% end %>
+          <td><%= item.cost_string %></td>
+          <td>
+            <%= button_to "Delete", packageable_item_path(@food_partner, item), method: :delete, class: 'js-delete-item btn btn-danger btn-inline', data: { itemid: item.id, confirm: "Are you sure you want to delete this packageable item? This can't be undone." } %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5">
+          No Items To Show
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

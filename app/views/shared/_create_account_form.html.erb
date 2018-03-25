@@ -1,0 +1,24 @@
+<% if !@customer.created_account? %>
+
+  <p><strong>
+    Want to save your details for next time? <br />
+    Create an account by entering a password below.
+  </strong> </p>
+
+  <div class="thanks-page__form-container">
+    <%= simple_form_for @customer, url: create_account_path(@customer) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :password %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :password_confirmation  %>
+        </div>
+        <div class="col-md-12">
+          <%= f.submit "Create Account", class: 'shadow-button shadow-button--green' %>
+        </div>
+        <%= f.input :email, as: :hidden, value: @customer.email %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

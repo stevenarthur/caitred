@@ -1,0 +1,78 @@
+@import 'mixins';
+@import 'web_variables';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+.order-cart {
+  .order-cart__actual-item-list {
+    @media (min-width: $screen-md-min) {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+  }
+
+  input[type="submit"], .shadow-button {
+    display: block;
+    margin: 5px auto;
+    margin-bottom: 3rem;
+  }
+
+  h2, h4 {
+    text-transform: uppercase;
+    @include font-size(2.4);
+    font-weight: 500;
+  }
+
+  h2, p {
+    text-align: center;
+  }
+}
+
+.your-order {
+  
+  .order-cart-prices {
+    @media (min-width: $screen-md-min) {
+      max-height: 350px;
+      overflow-y: visible;
+      overflow-x: hidden;
+      padding-left: 1px;
+    }
+  }
+
+  .order-cart-prices-item {
+    
+    &.order-cart-prices-item--min-order {
+      color: $caitre-green;
+    }
+
+    &.order-cart-prices-item--total {
+      margin-top: 15px;
+    }
+
+    .order-cart-prices-label, .order-cart-prices-value {
+      display: inline-block;
+      margin: 0 -1px;
+      a { 
+        color: $caitre-green;
+      }
+    }
+
+    .order-cart-prices-label {
+      width: 75%;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .order-cart-prices-value {
+      width: 25%;
+      text-align: right;
+    }
+  }
+  
+}
+
+.order-cart-prices-label-subitem {
+  display: block;
+  padding-left: 1.5rem;
+  font-weight: bold;
+}

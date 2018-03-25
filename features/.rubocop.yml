@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - features/support/env.rb
+    - bin/*
+    - db/seeds.rb
+    - db/schema.rb
+    - db/migrate/*
+    - config/initializers/secret_token.rb
+    - config/initializers/backtrace_silencers.rb
+    - features/step_definitions/temp_snippets_steps.rb
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 200
+Metrics/MethodLength:
+  Max: 12
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - step_definitions/*_steps.rb

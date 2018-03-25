@@ -1,0 +1,17 @@
+.row
+  .col-lg-12
+    .border-box
+    .content-box
+      %h1 Something went wrong
+      %p
+        We couldn't understand what you were trying to send us.
+      %p
+        Please
+        %a{href: 'mailto:eat@youchews.com'} email us
+        and tell us what you were trying to do and what went wrong, and we'll try to help.
+      %p &nbsp;
+%script
+  $(function() {
+  var error = "422";
+  Cake.Analytics.trackError(error);
+  });

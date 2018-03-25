@@ -1,0 +1,43 @@
+<%= javascript_include_tag "facebook_enquiry_track" %>
+
+<script type="text/javascript">
+  analytics.track('Completed Order', { 
+    orderID: "<%= @enquiry.id %>",
+    totalCost: "<%= @enquiry.amount_to_pay %>", 
+    currency: "AUD",
+  });
+  fbq('track', 'Purchase', { value: <%= @enquiry.amount_to_pay %>, currency:'AUD'});
+</script>
+
+<!-- Google Code for purchases Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 961951479;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "_FaXCK7gxm0Q9-3YygM";
+var google_conversion_value = "<%= @enquiry.amount_to_pay %>";
+var google_conversion_currency = "AUD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/961951479/?value=<%= @enquiry.amount_to_pay %>&amp;currency_code=AUD&amp;label=_FaXCK7gxm0Q9-3YygM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<div class="thanks-page" id="qa--thanks">
+  <i class="fa fa-thumbs-o-up thanks-page__icon"></i>
+
+  <h1>Thank you for "Chewsing" <span class='nowrap'>Caitre'd</span></h1>
+  <p>
+    We have received your order. Check your email for a summary. <br/>
+    We'll be in touch soon!
+  </p>
+
+  <%= render partial: 'shared/create_account_form' %>
+</div>

@@ -1,0 +1,22 @@
+.row
+  .col-xs-8
+    = hidden_field_tag :form_type, @form_type
+    = render partial: 'shared/form_field', locals: { field_name: :first_name, field_id: 'js-first-name', field_label: "First Name", form: form, model_class: 'Authentication::AdminUser' }
+    = render partial: 'shared/form_field', locals: { field_name: :last_name, field_id: 'js-last-name', field_label: "Last Name", form: form, model_class: 'Authentication::AdminUser' }
+    = render partial: 'shared/form_field', locals: { field_name: :username, field_id: 'js-username', field_label: "Username", form: form, model_class: 'Authentication::AdminUser' }
+    - unless @user.id
+      = render partial: 'password_field', locals: { field_name: :password, field_id: 'js-password', field_label: "Password", form: form, model_class: 'Authentication::AdminUser' }
+      = render partial: 'password_field', locals: { field_name: :password_confirmation, field_id: 'js-password_confirmation', field_label: "Confirm Password", form: form, model_class: 'Authentication::AdminUser' }
+    = render partial: 'shared/form_field', locals: { field_name: :mobile_number, field_id: 'js-mobile-number', field_label: "Mobile Number", form: form, model_class: 'Authentication::AdminUser' }
+    = render partial: 'shared/form_field', locals: { field_name: :email_address, field_id: 'js-email', field_label: "Email", form: form, model_class: 'Authentication::AdminUser' }
+
+
+    - if power_user?
+      .form-group.js-field-group
+        = form.label :is_power_user, "Can add users?", class: 'col-xs-4 control-label'
+        .col-xs-8
+          .checkbox
+            = form.check_box :is_power_user, id: 'js-power-user'
+    .form-group.js-field-group
+      .col-sm-offset-2.col-xs-6
+        = submit_tag "Save Admin User", class: 'btn btn-success js-judge-validate-admin-user'

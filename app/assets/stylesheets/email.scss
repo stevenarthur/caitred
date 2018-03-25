@@ -1,0 +1,164 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  background-color: #efefef;
+  font-family: 'Helvetica', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: #3c3c3c;
+  font-style: italic;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+.main-title {
+  margin-bottom: 40px;
+}
+
+p {
+  color: #3c3c3c;
+  font-size: 17px;
+  line-height: 1.3em;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin: 40px 0 50px 0px;
+  border:none;
+  height: 2px;
+  background-color: #d7d7d7;
+  display: block;
+}
+
+.centered {
+  text-align: center;
+}
+
+.button {
+  background-color: #128879;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 15px 30px;
+  border-radius: 3px;
+  &:hover {
+    background-color: darken(#128879,3);
+  }
+}
+
+.wrapper {
+  background-color: #efefef;
+} 
+
+.logo {
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 560px;
+  padding-top: 30px;
+}
+
+.panel {
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.whitebox { 
+  background-color: white;
+  padding: 20px 0;
+  width: 560px;
+}
+
+.whitebox__inner {
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-left {
+  font-size:0px !important;
+  line-height:0 !important;
+}
+
+.logo-link {
+  text-decoration: none;
+  transition: opacity 0.1s ease-in;
+  color: #3C3C3C;
+}
+
+.green {
+  color: #128879;
+}
+
+.iris__image {
+  width: 170px;
+  padding-left: 30px;
+}
+
+.iris__text {
+  width: 330px;
+  padding-right: 30px;
+  h3 {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-top: 0;
+    font-size: 14px;
+  }
+  &.iris__text--liz {
+    padding-right: 0;
+    p { 
+      font-size: 17px;
+    }
+  }
+}
+
+.order-table {
+  width:100%;
+  font-size: 15px;
+  line-height: 21px;
+  color: #3c3c3c;
+  em {
+    display: block;
+    color: lighten(#3c3c3c, 25);
+  }
+  td {
+    padding: 7px 7px 7px 0;
+  }
+}
+
+.half {
+  width: 50%;
+  vertical-align: top;
+}
+
+.total {
+  font-size: 16px;
+}
+
+.event-details {
+  font-size: 14px;
+}

@@ -1,0 +1,63 @@
+@import 'bootstrap/variables';
+
+$caitre-grey: #3c3c3c;
+$caitre-green: #128879;
+$caitre-green-darkened: darken($caitre-green,8);
+$caitre-brown: #4f4f4f;
+$caitre-light-grey: #d7d7d7;
+
+$sans-serif: 'PT Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: 'PT Serif', georgia, serif;
+
+$yc-primary: #158b7a;
+$yc-primary-ex-light: lighten(#a6d1cb, 20%);
+
+$brand-primary-dark: #a34e3d;
+$brand-primary-light: #c26f5f;
+$brand-primary-ex-light: lighten($brand-primary-dark, 40%);
+
+$brand-heading: #158a7a;
+$nav-bg: #105d43;
+
+$brand-secondary: #d9a663;
+$brand-secondary-light: #eedab9;
+$brand-secondary-dark: darken($brand-secondary, 5%);
+$brand-light-border: #cccccc;
+$brand-text: #696969;
+$font-size-lg: 16px;
+$font-size: 14px;
+$font-size-sm: 12px;
+$font-size-xs: 10px;
+$mobile-font-size: 20px;
+
+$light-bg: #f7f7f7;
+$lighter-bg: lighten($light-bg, 2%);
+$brand-light-border: $well-border;
+$brand-dark-border: darken($brand-light-border, 4%);
+$brand-dark-shadow: darken($brand-light-border, 20%);
+
+/* button colours */
+$brand-primary: #be5945;
+$brand-success: $yc-primary;
+$brand-info: $brand-secondary;
+$yc-yellow: #daa84e;
+$yc-yellow-darkened: darken(#daa84e,5);
+
+$yc-red: #c05b48;
+$yc-red-darkened: darken(#c05b48,5);
+
+$dark-bg: #f7f7f7;
+$event_type_count: 8;
+
+
+$primary-green: #128879;
+$primary-green-darkened: #0f796b;
+
+$primary-orange: #c05b48;
+$primary-orange-darkened: #a45140;
+
+$button-color: #7a7a7a;
+$button-color-darkened: #686d6c;
+
+$footer-background: #4f4f4f;
+

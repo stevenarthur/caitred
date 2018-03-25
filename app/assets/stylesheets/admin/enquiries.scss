@@ -1,0 +1,297 @@
+@import "admin_variables";
+@import "bootstrap";
+@import "font-awesome";
+@import "typeahead";
+@import "bootstrap-timepicker";
+@import "fontcustom/fontcustom-rails";
+
+$light-bg: $well-bg;
+$light-brand-info-bg: lighten($brand-info-bg, 6%);
+
+body.modal-open .datepicker, body.modal-open .bootstrap-timepicker-widget {
+  z-index: 1100;
+}
+
+.bootstrap-timepicker-widget {
+  input.form-control {
+    padding: 4px 6px;
+    box-sizing: content-box;
+    height: 20px
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+.tabbed-panel {
+  padding-top: 20px;
+  border: 1px solid #ddd;
+  border-top: 0px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  .alert {
+    margin: 10px;
+  }
+}
+
+.table-striped, .table {
+  border: 1px solid #ddd;
+  > tbody > tr > td {
+    vertical-align: middle;
+    label {
+      margin: 0
+    }
+    &.multiline-label {
+      vertical-align: top;
+      padding-top: 15px
+    }
+  }
+}
+
+.table.table-condensed-xs tr {
+  td, th {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 13px;
+    .btn {
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+  }
+}
+
+.input-sm {
+  font-size: 12px;
+}
+
+.btn-inline {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  .glyphicon {
+    padding-left: 8px;
+    padding-right: 2px;
+  }
+}
+
+.btn-inline-icon {
+  padding: 1px 3px 0;
+}
+
+legend {
+  font-size: 10px;
+  padding-left: 10px;
+  text-transform: uppercase;
+  color: #bbb;
+  font-weight: bold;
+}
+
+label {
+  text-transform: capitalize;
+}
+
+.help-block {
+  font-size: $font-size-small;
+  color: #999;
+}
+
+.error-message {
+  color: $state-danger-text;
+  display: block;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+.email-template {
+  background: #d9edf7
+}
+
+.spaced {
+  padding-top: 15px;
+}
+
+.current-menu {
+  font-weight: bold;
+}
+
+.well-blue {
+  background: $state-info-bg;
+  border-color: $state-info-border;
+}
+
+.well-blue .table {
+  td, th {
+    border-top-color: $state-info-border;
+  }
+}
+
+.contact-type {
+  font-weight: bold;
+}
+
+.enquiry-status {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.icon-large {
+  font-size: 40px;
+}
+
+.icon-medium {
+  font-size: 23px;
+  line-height: 14px;
+}
+
+.enquiry-status-buttons {
+  text-align: right;
+}
+
+.create-button {
+  display: block;
+  float: right;
+  margin: 0 5px;
+}
+
+.clickable {
+  cursor: pointer
+}
+
+.control-value {
+  text-transform: none;
+  padding-top: 7px;
+}
+
+.enquiry-status-buttons a {
+  margin-left: 3px;
+}
+
+.address-label {
+  padding: 15px 0;
+}
+
+.col-xs-12.address-details {
+  padding-left: 0;
+}
+
+.js-address-details {
+  .control-label {
+    text-align: left;
+  }
+
+  .address-buttons {
+    padding: 10px 0;
+  }
+}
+
+.sort-headers th {
+  cursor: pointer;
+  &.sorted-desc:after {
+    content: '\f063';
+    font-family: FontAwesome;
+    padding: 0 5px;
+  }
+  &.sorted-asc:after {
+    content: '\f062';
+    font-family: FontAwesome;
+    padding: 0 5px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .modal-dialog {
+    width: 1000px;
+  }
+}
+
+div.grid {
+  border-top: 1px solid #ddd;
+  padding: 0;
+  > div {
+    padding: 10px;
+  }
+  .left, &.left {
+    border-left: 1px solid #ddd;
+  }
+  .right, &.right {
+    border-right: 1px solid #ddd;
+  }
+  &.bottom {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.button-box {
+  background: $brand-info-bg;
+}
+
+.pricing-row {
+  background: $light-bg;
+}
+
+.supplier-comms {
+  background: $light-brand-info-bg;
+}
+
+.email-content-container {
+  position: relative
+}
+
+.email-content {
+  display: none;
+  background: darkgrey;
+  color: white;
+  width: 600px;
+  position: absolute;
+  z-index: 2;
+  padding: 15px;
+}
+
+.status-new {
+  .show-customer-details, .reporting-details, .customer-confirmation, .supplier-comms, .invoicing-details {
+    display: none;
+  }
+}
+
+.status-processing, .status-waiting-on-supplier {
+  .customer-details, .reporting-details, .customer-confirmation, .show-supplier-comms, .invoicing-details {
+    display: none;
+  }
+}
+
+.status-ready-to-confirm {
+  .customer-details, .supplier-comms, .reporting-details, .show-customer-conf, .invoicing-details {
+    display: none;
+  }
+}
+
+.status-confirmed, .status-delivered, .status-completed {
+  .customer-details, .supplier-comms, .customer-confirmation, .show-reporting-details, .show-invoicing-details {
+    display: none;
+  }
+}
+
+.spinner {
+  background: url(asset_path('spinner-small.gif')) no-repeat center;
+  height: 30px;
+  width: 30px;
+  &.hidden-spinner {
+    display: none;
+  }
+}
+
+.edit-menu-heading {
+  padding-left: 15px
+}
+
+#food_partner_image_file_name {
+  margin-top: 15px;
+}

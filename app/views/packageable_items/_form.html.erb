@@ -1,0 +1,135 @@
+<div class="form-group">
+  <label class="col-xs-4 control-label">Active?</label>
+  <div class="col-xs-8">
+    <%= f.check_box :active %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-xs-offset-4 col-xs-4">
+    <label>
+      <%= f.radio_button :item_type, :food, id: "js-type-food", validate: true %>
+      Food
+    </label>
+  </div>
+  <div class="col-xs-4">
+    <label>
+      <%= f.radio_button :item_type, :equipment, id: "js-type-equipment", validate: true %>
+      Equipment
+    </label>
+  </div>
+</div>
+
+<%= render partial: "shared/form_field", locals: { field_name: :title, field_id: "js-title", field_label: "Item Title", form: f } %>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">Variant of</label>
+  <div class="col-xs-8">
+    <%= f.collection_select :parent_id, @available_items, :id, :title, include_blank: true %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">Sort Order</label>
+  <div class="col-xs-8">
+    <%= f.number_field :sort_order %>
+  </div>
+</div>
+
+<%= render partial: "shared/text_area_field", locals: { field_name: :description, field_id: "js-description", field_label: "Item Description", form: f } %>
+
+<%= render partial: "shared/text_area_field", locals: { field_name: :what_you_get, field_id: "js-what-you-get", field_label: "What You Get", form: f } %>
+<%= render partial: "shared/text_area_field", locals: { field_name: :presentation, field_id: "js-presentation", field_label: "Presentation", form: f } %>
+<%= render partial: "shared/text_area_field", locals: { field_name: :package_conditions, field_id: "js-package-conditions", field_label: "Package Conditions", form: f } %>
+
+<%= render partial: "shared/form_field", locals: { field_name: :cost, field_id: "js-cost", field_label: "Price for Customer", form: f } %>
+<%= render partial: "shared/form_field", locals: { field_name: :cost_to_youchews, field_id: "js-cost", field_label: "Cost to Caitre'd", form: f } %>
+<%= render partial: "shared/form_field", locals: { field_name: :minimum_order, field_id: "js-minimum-order", field_label: "Minimum order", form: f } %>
+<%= render partial: "shared/form_field", locals: { field_name: :maximum_order, field_id: "js-maximum-order", field_label: "Maximum order", form: f } %>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    Menu Category
+  </label>
+  <div class="col-xs-8">
+    <%= f.collection_select :menu_category_id, @menu_categories, :id, :name, include_blank: true %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :event_type, "Is Package?", class: "col-xs-4 control-label" %>
+
+  <div class="col-xs-8">
+    <%= f.check_box :is_package %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    <i class="icon-vegetarian icon-medium"></i>Vegetarian?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :vegetarian %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    Vegetarian Options Available?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :vegetarian_options_available %>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    <i class="icon-vegan icon-medium"></i>Vegan?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :vegan %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    <i class="icon-gluten_free icon-medium"></i>Gluten Free?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :gluten_free %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    Gluten Free Options Available?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :gluten_free_options_available %>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    Contains nuts?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :contains_nuts %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-xs-4 control-label">
+    Halal?
+  </label>
+  <div class="col-xs-8">
+    <%= f.check_box :halal %>
+  </div>
+
+<div class="form-group spaced">
+  <div class="col-sm-offset-2 col-xs-6">
+    <%= submit_tag "Save Packageable Item", class: "btn btn-success js-save js-judge-validate-packageable-item" %>
+  </div>
+</div>

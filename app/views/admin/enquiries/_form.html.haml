@@ -1,0 +1,68 @@
+- content_for :title do
+  \- Editing Order
+  = @enquiry.id
+
+= yield :enquiry_header
+
+= yield :enquiry_summary
+
+.row
+  .col-xs-12
+    = form_for @enquiry, url: enquiry_form_url, html: { class: 'form-horizontal', id: 'js-edit-enquiry'} do |form|
+      = form.hidden_field :menu_extras, id: 'extras'
+      - if edit_customer
+        .form-group.js-field-group.has-feedback
+          = form.label :customer_id, "Customer", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :customer, value: @enquiry.customer.try(:description), id: 'js-customer-field', placeholder: 'Start typing to find customers'
+            = form.hidden_field :customer_id, id: 'js-customer-id'
+            %span.glyphicon.form-control-feedback
+            %span.js-errors.error-message
+
+
+      = form.fields_for :event, @enquiry.event do |event|
+        .form-group
+          = event.label :event_date, "Date and Time", class: 'col-xs-4 control-label'
+          .col-xs-4
+            = event.text_field :event_date, class: 'form-control js-datepicker input-sm', value: formatted_event_date
+          .col-xs-4
+            = event.text_field :event_time, class: 'form-control js-timepicker input-sm'
+        .form-group
+          = event.label :attendees, "Attendees", class: 'col-xs-4 control-label'
+          .col-xs-2
+            = event.text_field :attendees,  class: 'form-control input-sm', id: 'js-attendees'
+
+      
+      .form-group
+        = form.label :additional_messages, "Additional Messages", class: 'col-xs-4 control-label'
+        .col-xs-8
+          = form.text_area :additional_messages, class: 'form-control input-sm', rows: 3
+
+      .form-group
+        = form.label :menu_title, "Menu title", class: 'col-xs-4 control-label'
+        .col-xs-8
+          = form.select :menu, options_from_collection_for_select(Menu.active.order(:title), :id, :title), { include_blank: 'Choose a menu' }, :id => "menu-selector"
+
+
+      .form-group
+        = form.label :dietary_requirements, "Dietary Requirements", class: 'col-xs-4 control-label'
+        .col-xs-8.dietary-requirements
+          = render partial: 'dietary_requirements', locals: { form: form }
+
+      .form-group
+        = form.label :extras, "Extras", class: 'col-xs-4 control-label'
+        .col-xs-8.extras
+          = render partial: 'extras', locals: { menu: '' }
+
+
+      .form-group
+        .col-xs-8.col-xs-offset-4
+          = render partial: 'web/enquiries/address', locals: { form: form }
+      .form-group
+        .col-sm-offset-4.col-xs-6
+          = submit_tag "Save Order", class: 'btn btn-success'
+
+
+
+
+

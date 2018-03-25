@@ -1,0 +1,16 @@
+= form_for @testimonial, url: testimonial_form_url, html: { class: 'form-horizontal'} do |form|
+  .form-group
+    = form.label :text, "Text", class: 'col-xs-2 control-label'
+    .col-xs-8
+      = form.text_area :text, class: 'form-control input-sm', placeholder: 'Testimonial text', :row => "5"
+  .form-group
+    = form.label :author, "Author", class: 'col-xs-2 control-label'
+    .col-xs-2
+      = form.text_field :author, class: 'form-control input-sm', placeholder: 'Author'
+  .form-group
+    = form.label :menu_id, "Food Partner", class: 'col-xs-2 control-label'
+    .col-xs-2
+      = form.collection_select(:menu_id, Menu.active, :id, :title, :prompt => 'Please select a Menu', :class => 'form-control input-sm' )
+  .form-group
+    .col-sm-offset-2.col-xs-6
+      = submit_tag "Save testimonial", class: 'btn btn-success'

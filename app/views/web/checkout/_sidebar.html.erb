@@ -1,0 +1,13 @@
+<aside class="sidebar">
+  <h4 class="delta">Your Order</h4>
+  <p class="checkout__delivery-notifier">
+    Your delivery time is 
+    <span class="js--delivery-time">
+      <%= (session[:eat_time].to_time - 15.minutes).strftime("%l:%M %p") %>
+    </span>
+  </p>
+  <br />
+
+  <%= render 'shared/order_cart_items', modification_enabled: false, add_instructions: true  %>
+
+</aside>

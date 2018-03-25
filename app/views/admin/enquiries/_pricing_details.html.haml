@@ -1,0 +1,14 @@
+.row.grid.left.right.button-box.js-view-button-container.show-reporting-details
+  .col-xs-4
+    %label Reporting Details
+  .col-xs-8
+    %a.btn.btn-inline.btn-default#js-show-reporting-details Click to View
+.row.grid.left.right.pricing-row.reporting-details#js-reporting-details
+  .col-xs-12
+    %h4 Please ensure these details are correct for reporting
+  .col-xs-6
+    = form.label :payment_fee_paid, "Payment fee $", class: 'control-label'
+    = form.text_field :payment_fee_paid, class: 'form-control input-sm', id: 'js-payment-fee-paid', rows: 8
+  .col-xs-6
+    = form.label :total_amount_paid, "Total Paid (inclusive of GST) $", class: 'control-label'
+    = form.text_field :total_amount_paid, class: 'form-control input-sm', id: 'js-total-amount-paid', rows: 8

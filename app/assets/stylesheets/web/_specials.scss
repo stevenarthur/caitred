@@ -1,0 +1,220 @@
+@import 'menus';
+@import 'fontcustom/fontcustom-rails';
+@import 'mixins';
+@import 'web_variables';
+
+body.christmas .container {
+  background: url(asset_path('christmas/background.png'));
+}
+
+body.food_experience {
+  background-color: white;
+  .container {
+    background-color: $light-bg;
+  }
+}
+
+.special-banner {
+  margin-left: -15px;
+  width: 1170px;
+  height: 214px;
+  border-bottom: 5px solid $yc-primary;
+  text-align: center;
+  position: relative;
+  &:after {
+    content: "";
+    width: 87px;
+    height: 87px;
+    position: absolute;
+    left: 542px;
+  }
+  h1 {
+    color: white;
+    font-size: 45px;
+    font-weight: 600;
+  }
+  h2 {
+    color: white;
+  }
+  &.experience {
+    background: url(asset_path('experiences/header.png')) center;
+    position: relative;
+    &:after {
+      background: url(asset_path('experiences/cutlery.png')) center;
+    }
+    h1 {
+      text-shadow: 2px 2px 5px #125d32;
+      padding: 30px 200px 0px;
+      line-height: 1.25;
+    }
+    .left-icon, .right-icon {
+      position: absolute;
+      font-size: 120px;
+      color: white;
+    }
+    .left-icon {
+      bottom: -25px;
+      left: 50px;
+    }
+    .right-icon {
+      bottom: -30px;
+      right: 50px;
+    }
+  }
+  &.christmas {
+    background: url(asset_path('christmas/header.png')) center;
+    &:after {
+      background: url(asset_path('christmas/reindeer.png')) center;
+    }
+    h1 {
+      text-shadow: 2px 2px 5px #a42f29;
+      padding: 30px 300px 0px;
+    }
+  }
+}
+
+img.featured {
+  box-shadow: 0 10px 20px 2px $brand-dark-border;
+}
+
+.special-intro {
+  @include center-block();
+  background: white;
+  padding: 40px;
+  text-align: center;
+
+  margin-bottom: 20px;
+  z-index: 4;
+  p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  &.christmas {
+    width: 750px;
+    margin-top: 20px;
+  }
+  &.experience {
+    margin-top: 40px;
+  }
+  &.sign-up {
+      margin-bottom: 40px;
+  }
+}
+
+.poll-answer {
+  display: block;
+  height: 25px;
+  input {
+    margin: 0 5px;
+  }
+}
+
+.chart-part {
+  float: left;
+}
+
+.bar-legend {
+  margin: 0;
+  padding: 15px 0 0 25px;
+  width: 200px;
+  li {
+    list-style-type: none;
+    height: 40px;
+    padding: 0 35px;
+    position: relative;
+    line-height: 1;
+  }
+  span {
+    height: 20px;
+    width: 30px;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.survey {
+  display: none;
+}
+
+h1.main {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+p.main {
+  text-align: center;
+}
+
+h2.center-block {
+  text-align: center;
+}
+
+h2.featured {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 40px 0 ;
+  text-align: center;
+}
+
+a.show-results {
+  color: white;
+  display:block;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.btn-subscribe {
+  width: 100%;
+  height: 34px;
+  padding: 0 6px;
+}
+
+.mobile-image {
+  width: 100%;
+}
+
+.caption {
+  display: none;
+}
+
+@media (min-width: $screen-sm-min) {
+  h1.main {
+    color: white;
+  }
+  .caption {
+    position: absolute;
+    color: white;
+    bottom: 0;
+    display: block;
+  }
+  .mobile-image {
+    display: none;
+  }
+  .liz-image {
+    background: url(image_path('i-love-pulled-pork-rolls.jpg')) no-repeat center;
+    height: 651px;
+    overflow: hidden;
+    position: relative;
+    .image-overlay {
+      margin: 20px 0;
+      background: rgba(105, 130, 115, 0.5);
+      padding: 20px;
+      box-shadow: 0 0 30px 20px rgba(105, 130, 115, 0.5);
+      color: white;
+      h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 20px 0 30px;
+      }
+      p {
+        line-height: 1.8;
+      }
+    }
+  }
+  .mobile-caption {
+    display: none;
+  }
+}

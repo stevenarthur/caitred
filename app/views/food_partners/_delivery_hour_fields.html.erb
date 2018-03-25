@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= f.input :day, collection: DeliveryHour.days, 
+                      label_method: proc{ |h| h[0].humanize },
+                      value_method: proc{ |h| h[0] },
+                      input_html: { class: 'form-control input' }  %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :start_time, collection: DeliveryHour.all_available_hours, 
+                             selected: f.object.start_time.to_i,
+                             label_method: proc{ |h| h.strftime("%l:%M %p").strip }, 
+                             value_method: proc{ |h| h.seconds_since_midnight.to_i },
+                             input_html: { class: 'form-control input' } %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :end_time, collection: DeliveryHour.all_available_hours, 
+                           selected: f.object.end_time.to_i,
+                           label_method: proc{ |h| h.strftime("%l:%M %p").strip }, 
+                           value_method: proc{ |h| h.seconds_since_midnight.to_i },
+                           input_html: { class: 'form-control input' } %>
+  </div>
+  <div class="col-md-2">
+    <br>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", "#", class: "js--remove_day btn btn-danger" %>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+@import 'web_variables';
+@import 'mixins';
+
+.footer {
+  margin-top: 0;
+  overflow: hidden;
+  background-color: $caitre-grey;
+  color: white;
+  padding: 4rem 0;
+
+  nav {
+    float: right; 
+    border: none;
+    background: transparent;
+    ul { float: right; margin:0; padding: 0;}
+    li { float: left; list-style-type: none; margin-left: 2rem;} 
+  }
+
+  a {
+    color: white;
+    @include font-size(1.4);
+    transition: all 0.4s;
+
+    &:hover { 
+      color: $caitre-green;
+      text-decoration: none;
+    }
+  }
+}
+
+.footer__social-links {
+  float: right; 
+  overflow: hidden;
+  margin-bottom: 2rem;
+  a {
+    background-color: white;
+    margin-left: 1.5rem;
+    height: 3.6rem;
+    width: 3.6rem;
+    display: inline-block;
+    &:hover { 
+      background-color: darken($caitre-green,8);
+    }
+  }
+}
+
+.footer__navigation {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  overflow: hidden;
+  p { float: left; }
+  p, li { line-height: 4rem; margin-bottom: 0;} 
+}
+
+.footer__lower-content {
+  padding: 2rem 0;
+  p {
+    clear: both;
+    max-width: 60rem;
+    @include font-size(1.4);
+    margin-top: 2rem;
+    text-align: center;
+  }
+  @media (min-width: $screen-md-min) {
+    p {
+      margin-top: 0;
+      text-align: left;
+      clear: none;
+    }
+
+  }
+}
+
+.footer__newsletter-signup {
+  text-align: center;
+  margin-bottom: 3rem;
+  input { 
+    width: 100%; 
+    @media (min-width: $screen-md-min) {
+      width: 49%;
+    }
+  }
+
+  .button, input {
+    margin-top: 0;
+    display: block;
+    float: left;
+  }
+
+  .button {
+    height: 3.9rem;
+    padding: 0 5rem;
+    line-height: 3.9rem;
+    font-size: 1.5rem;
+  }
+
+  form { 
+    width: 100%; 
+    max-width: 610px;
+    margin: 0 auto;
+  } 
+
+  h3 { 
+    text-align: center; 
+    font-weight: bold;
+    @include font-size(1.8);
+    margin-bottom: 1.5rem;
+    text-transform: none;
+    color: white;
+  }
+}
+
+.footer__newsletter-signup__email { 
+  width: 100%;
+  height: 3.9rem;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  padding: 1rem;
+  border: none;
+  color: $footer-background;
+  @media (min-width: $screen-sm-min) {
+    margin-right: 1rem;
+    min-width: 30rem;
+  }
+}

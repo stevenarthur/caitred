@@ -1,0 +1,44 @@
+.menu-filter-form
+  .row
+    .col-md-7.no-right-padding-lg
+      .col-md-3.js-field-group.has-feedback
+        = label_tag :postcode, 'Your postcode', class: 'sm-text-mobile'
+        %br
+        = text_field_tag :postcode, params[:postcode], class: 'form-control'
+      .col-md-3.js-field-group.has-feedback
+        = label_tag :event_type, 'Event type'
+        %br
+        = select_tag :event_type, options_for_select(EventTypes.names, params[:event_type]), class: 'form-control'
+      .col-md-3.js-field-group.has-feedback
+        = label_tag :attendees, 'Number of people', class: 'sm-text-mobile'
+        %br
+        = text_field_tag :attendees, params[:attendees], class: 'form-control'
+        /= select_tag :attendees, options_for_select((10..200), selected: params[:attendees]), class: 'form-control', id: 'js-attendees', data: { validate: '[{"kind":"numericality","options":{"only_integer":false,"allow_nil":true},"messages":{"not_a_number":"is not a number"}}]'}
+        %span.js-errors.error-message
+      .col-md-3.js-field-group.has-feedback.no-padding-ipad
+        /= select_tag :delivery_day, options_for_select(FoodPartner::DELIVERY_DAYS), class: 'form-control input-lg'
+        = label_tag :delivery_day, 'Date'
+        %br
+        .input-group
+          = text_field_tag :delivery_day, params[:delivery_day], class: "form-control js-datepicker input", id: 'js-event-date-top', placeholder: 'Date'
+          %span.input-group-btn
+            %a#js-show-datepicker.btn.btn-default.btn-inside-input
+              %i.glyphicon.glyphicon-calendar
+    .col-md-5
+      .col-md-4.js-field-group.has-feedback.no-padding-ipad
+        = label_tag :delivery_hour, 'Time'
+        %br
+        .input-group
+          = text_field_tag :delivery_hour, params[:delivery_hour], class: 'form-control input js-timepicker', id: 'js-event-time'
+          %span.input-group-btn
+            %a#js-show-timepicker.btn.btn-default.btn-inside-input
+              %i.glyphicon.glyphicon-time
+      .col-md-4.js-field-group.has-feedback
+        = label_tag :budget, 'Budget'
+        %br
+        = select_tag :budget, options_for_select(budget_options, params[:budget]), class: 'form-control', placeholder: '$', id: 'js-budget'
+        %span.js-errors.error-message
+      .col-md-4.no-padding-ipad
+        %button.btn.btn-success.btn-filter.js-track.js-judge-validate-menus#js-filter-menus.small-button-text{data: { name: 'filter-menus'}}
+          "Chews" a Menu
+          %span.glyphicon.glyphicon-arrow-right

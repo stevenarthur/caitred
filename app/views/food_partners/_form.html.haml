@@ -1,0 +1,103 @@
+= form_for @food_partner, builder: Judge::FormBuilder, html: { class: 'form-horizontal js-judge-validate-food-partner-form', id: 'partner_form'} do |form|
+  = field_set_tag "Company Details" do
+    .col-xs-7
+      .row
+        .form-group
+          = form.label :company_name, "Company Name", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :company_name, class: 'form-control input-sm', id: 'js-company-name'
+        .form-group
+          = form.label :cuisine, "Cuisine", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :cuisine, class: 'form-control input-sm', id: 'js-cuisine'
+        .form-group
+          = form.label :bio, "Biography", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_area :bio, class: 'form-control input-sm', id: 'js-bio'
+        .form-group
+          = form.label :category, "Type", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :category, class: 'form-control input-sm', id: 'js-category'
+        .row
+          = form.label :url_slug, "Url Slug", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :url_slug, class: 'form-control input-sm'
+        .form-group
+          .col-xs-8.col-sm-offset-4
+            = render partial: 'shared/help_block', locals: { help_text: "Used to generate URL for supplier page, leave blank to create automatically. "}
+        .row
+          = form.label :contact_name, "Contact Name", class: 'col-xs-4 control-label'
+          .col-xs-4
+            = form.text_field :contact_first_name, class: 'form-control input-sm', placeholder: 'first name', id: 'js-contact-first-name'
+          .col-xs-4
+            = form.text_field :contact_last_name, class: 'form-control input-sm', placeholder: 'last name', id: 'js-contact-last-name'
+        .form-group
+          .col-xs-4.col-sm-offset-4
+            %span.help-block
+              First name is used to address emails.
+        .form-group
+          = form.label :email, "Email", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :email, class: 'form-control input-sm'
+        .form-group
+          = form.label :phone_number, "Phone Number", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :phone_number, class: 'form-control input-sm'
+        = render partial: 'shared/form_field', locals: { field_name: :minimum_spend, field_id: 'js-min-spend', field_label: "Minimum Spend $", form: form, placeholder: "0.00" }
+        = render partial: 'shared/form_field', locals: { field_name: :minimum_attendees, field_id: 'js-min-attendees', field_label: "Minimum Attendees", form: form }
+        = render partial: 'shared/form_field', locals: { field_name: :maximum_attendees, field_id: 'js-max-attendees', field_label: "Maximum Attendees", form: form }
+        = render partial: 'shared/form_field', locals: { field_name: :delivery_cost, field_id: 'js-delivery-cost', field_label: "Delivery Cost $", form: form, placeholder: "0.00" }
+        = render partial: 'shared/form_field', locals: { field_name: :delivery_text, field_id: 'js-delivery-text', field_label: "Delivery Text", form: form }
+        = render partial: 'shared/form_field', locals: { field_name: :availability_text, field_id: 'js-availability-text', field_label: "Availability Text", form: form }
+        = render partial: 'shared/form_field', locals: { field_name: :lowest_price_dish, field_id: 'js-lowest-price-dish', field_label: "Lowest Price Dish", form: form }
+        .form-group
+          = form.label :lead_time_days, "Lead Time (days)", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = form.text_field :lead_time_days, class: 'form-control input-sm', :required => true, placeholder: "1"
+        = render partial: 'shared/form_field', locals: { field_name: :orders_per_week, field_id: 'js-orders-per-week', field_label: "Orders per week", form: form }
+        .form-group
+          = form.label :image_file_name, "Image", class: 'col-xs-4 control-label'
+          .col-xs-8
+            = image_tag asset_path(@food_partner.image_path)
+            %br
+            = form.file_field :image_file_name
+        .form-group
+          = form.label :active, "Active?", class: 'col-xs-4 control-label'
+          .col-xs-8
+            .checkbox
+              = form.check_box :active, id: 'js-food-partner-active'
+        .form-group
+          = form.label :active, "Delivery Days", class: 'col-xs-4 control-label'
+          .col-xs-8
+            .checkbox
+              - FoodPartner::DELIVERY_DAYS.each do |day|
+                =# form.check_box :delivery_days[day], id: 'js-food-partner-active'
+                %label
+                  = check_box_tag "food_partner[delivery_days][]", day, @food_partner.delivery_days.try(:include?, day), :required => true
+                  = day
+        .form-group
+          .col-xs-4.text-right
+            %strong
+              Delivery Hours
+
+          = form.fields_for :delivery_hours do |builder|
+            .col-xs-4
+              = builder.label :hour_start, 'Hour start'
+              = builder.text_field :hour_start, class: 'form-control input js-timepicker', id: 'js-event-time', :required => true, placeholder: "HH:MM:SS"
+            .col-xs-4
+              = builder.label :hour_end, 'Hour end'
+              = builder.text_field :hour_end, class: 'form-control input js-timepicker', id: 'js-event-time', :required => true, placeholder: "HH:MM:SS"
+
+        .form-group
+          = form.label :delivery_area, "Delivery Areas", class: 'col-xs-4 control-label'
+          .col-xs-8
+            .checkbox
+              - DeliveryArea.all.each do |area|
+                %label
+                  = check_box_tag "food_partner[delivery_areas][]", area.id, @delivery_areas.try(:include?, area), :required => true
+                  = area.title
+                %br
+
+        .form-group
+          .col-sm-offset-2.col-xs-6
+            = submit_tag "Save Food Partner Details", class: 'btn btn-success js-judge-validate-food-partner'

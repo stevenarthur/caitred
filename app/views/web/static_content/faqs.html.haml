@@ -1,0 +1,24 @@
+- content_for :title do
+  Frequently Asked Questions for Event Planners -
+
+- content_for :header do
+  %header.nav--fixed
+    = render "shared/navigation"
+  = bordered_header_text "Frequently Asked Questions", "about"
+
+.row.top
+  .content-box
+    .panel-group#faq-group
+      - FAQS['sections'].each_with_index do |section, section_idx|
+        %h2 #{section["name"]}
+        - section["questions"].each_with_index do |faq, idx|
+          .panel.panel-default
+            .panel-heading
+              %h4.panel-title
+                %a.collapse-link{data: { toggle: "collapse", target: "#js-question-#{section_idx}-#{idx}", parent: "#faq-group"} }
+                  = faq['question']
+            .panel-collapse.collapse{id: "js-question-#{section_idx}-#{idx}"}
+              .panel-body
+                - faq['answer'].each do |para|
+                  %p
+                    != para

@@ -1,0 +1,32 @@
+- content_for :title do
+  \- All Admin Users
+
+- if flash[:error]
+  .row
+  .col-xs-12
+    %div{class: flash_class(:error)}
+      = flash[:error]
+- else
+  .row
+    .col-xs-6
+      %h2
+        Users
+      %a{href: new_user_path, class: 'btn btn-success'}
+        Add User
+  .row.spaced
+    .col-xs-6
+      %table.table.table-striped
+        %tr
+          %th Name
+          %th &nbsp;
+          %th &nbsp;
+          %th &nbsp;
+        - @users.each do |user|
+          %tr.js-user
+            %td.js-user-actual-name= "#{user.first_name} #{user.last_name}"
+            %td
+              %a{href: edit_profile_path(user), class: 'btn btn-default js-edit-user', data: { name: "#{user.first_name} #{user.last_name}" } } Edit Profile
+            %td
+              %a{href: reset_password_path(user), class: 'btn btn-default js-reset-password', data: { name: "#{user.first_name} #{user.last_name}" } } Reset Password
+            %td
+              =button_to "Delete", destroy_user_path(user), method: :delete, class: 'btn btn-danger js-delete-user', data: { name: "#{user.first_name} #{user.last_name}" }

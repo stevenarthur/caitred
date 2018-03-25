@@ -1,0 +1,51 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.testimonials {
+  background-image: url(asset_path('home/testimonial-bg.jpg'));
+  background-position: center center;
+  background-color: #e3e6f2;
+  border-top: 1px solid #e3e6f2;
+  padding: 5rem 0;
+}
+
+.testimonials__wrap {
+  padding: 0 2rem;
+}
+
+.testimonials__testimonial {
+  text-align: center;
+  margin: 0 auto;
+  display: none;
+  max-width: 800px;
+  &.active {
+    display: block;
+  }
+}
+
+.testimonials__quote {
+  font-style: italic;
+  font-family: $serif;
+  font-weight: bold;
+  @include font-size(3);
+}
+
+.testimonials__author {
+  font-weight: 300;
+  @include font-size(3);
+}
+
+.testimonials__logo {
+  margin-top: 2rem;
+  img { 
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .testimonials__quote,
+  .testimonials__author {
+    @include font-size(2);
+  }
+}

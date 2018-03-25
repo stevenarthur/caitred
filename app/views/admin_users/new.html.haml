@@ -1,0 +1,16 @@
+- flash.each do |key, value|
+  %div{class: flash_class(key)}
+    = value
+- content_for :title do
+  \- Create User
+
+.col-xs-12
+  %h2
+    Create new Admin User
+%br
+%br
+%br
+%br
+%br
+= form_for @user, url: create_user_path, builder: Judge::FormBuilder, html: { class: 'form-horizontal js-judge-validate-admin-user-form'} do |form|
+  = render partial: "form", locals: { form: form }

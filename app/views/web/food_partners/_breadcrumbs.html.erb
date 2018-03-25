@@ -1,0 +1,11 @@
+<% if session[:locality] %>
+  <div class="container breadcrumbs">
+    <div class="row">
+      <div class="col-md-12">
+        <nav>
+          <%= link_to "Back To Search Results", partner_search_path(session[:locality]) %>
+        </nav>
+      </div>
+    </div>
+  </div>
+<% end %>

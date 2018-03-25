@@ -1,0 +1,8 @@
+<% if @food_partners.each do |food_partner| %>
+  <%= render "partner_listing", food_partner: food_partner %>
+<% end.empty? %>
+  <div class="fa-search__no-results">
+    <h2>No Caterers Found</h2>
+    <p>Try refining your search. If there are still no results, dont worry, we may still be able to help! Just <%= link_to "place an enquiry here", new_quote_path %>
+  </div>
+<% end %>

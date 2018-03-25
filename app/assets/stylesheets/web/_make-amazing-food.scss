@@ -1,0 +1,52 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.make-amazing-food {
+  padding: 3rem 0 4rem 0;
+  h2 { 
+    @include font-size(3.6);
+    text-align: center;
+  }
+  input[type='submit'] { 
+    display: block;
+    margin: 0 auto;
+  } 
+}
+
+.make-amazing-food__points {
+  background-color: #c2c2c2;
+  padding: 1rem 2rem;
+  margin-bottom: 3rem;
+  h2 {
+    color: $caitre-grey;
+    margin-bottom: 2rem;
+  }
+  li {
+    @include font-size(2);
+    padding-left: 23px;
+    position: relative;
+    list-style: none;
+    margin-bottom: 2rem;
+    &:before {
+      content: "";
+      background-image: url(/assets/tick.png);
+      background-size: 100%;
+      width: 39px;
+      height: 34px;
+      position: absolute;
+      left: -35px;
+      top: 6px;
+      float: left;
+    } 
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .make-amazing-food__points {
+    li { 
+      @include font-size(2.4);
+    }
+  }
+}
+

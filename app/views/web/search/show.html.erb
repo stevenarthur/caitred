@@ -1,0 +1,43 @@
+<%= content_for(:tracked_page_name){ "Search: #{ @postcode.title }" } %>
+<%= content_for(:title){ "#{ @postcode.title } Office Catering - View Caterers & Book Online " } %>
+<%= content_for(:meta_description){ "#{ @postcode.title } office catering - browse catering options & book online" } %>
+
+<% content_for :top_content do %>
+  <div class="fa-search__header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Book Your Catering Online</h1>
+          <%= render 'shared/advanced_search' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @food_partners.present? %>
+  <div class="col-md-12">
+    <div class="sort-food-partners">
+      <label for="sort-food-partners-dropdown">Sort By</label>
+      <select class="js--sort-partners-by js--advanced-search-item" name="sort-food-partners-dropdown" id="sort-food-partners-dropdown">
+        <option value="">Select</option>
+        <option value="company_name">Name</option>
+        <option value="minimum_spend">Delivery Minimum</option>
+        <option value="lead_time_hours">Minimum Notice</option>
+      </select>
+      <button class="js--toggle-sort-partners-direction">
+        <i class="glyphicon glyphicon-chevron-up"></i>
+      </button> 
+    </div>
+  </div>
+  <ul class="fa-search__list row js--partner-listing">
+    <% @food_partners.each do |food_partner| %>
+      <%= render "partner_listing", food_partner: food_partner %>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="fa-search__no-results">
+    <h2>No Caterers Found</h2>
+    <p>Try refining your search. If there are still no results, dont worry, we may still be able to help! Just <%= link_to "place an enquiry here", new_quote_path %>
+  </div>
+<% end %>

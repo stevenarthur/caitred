@@ -1,0 +1,37 @@
+<% content_for(:title){ "View Shopping Carts" } %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Enquiry ID</th>
+      <th>Food Partner</th>
+      <th>Order</th>
+      <th>Value</th>
+      <th>Customer</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enquiries.each do |enquiry| %>
+      <tr>
+        <td><%= enquiry.id %></td>
+        <td><%= enquiry.food_partner.try(:company_name) %></td>
+        <td>
+          <%= simple_format(enquiry.formatted_line_items_for_partner) %>
+        </td>
+        <td><%= number_to_currency(enquiry.amount_to_pay) %></td>
+        <td><%= enquiry.customer.try(:name) || "Not signed in" %></td>
+        <td>
+          <% if enquiry.customer.present? %>
+            <% unless enquiry.address.present? && enquiry.event_date.present? %>
+              Stage 1 Checkout Required
+            <% else %>
+              <%= link_to "Make Enquiry", make_enquiry_admin_cart_path(enquiry), method: :post, class: 'btn btn-inline btn-success' %>
+            <% end %>
+          <% else %>
+            - 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

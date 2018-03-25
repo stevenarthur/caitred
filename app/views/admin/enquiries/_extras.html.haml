@@ -1,0 +1,8 @@
+- if @menu.nil? || @menu.packageable_items.included.extras.blank?
+  No extras
+  .item
+- else
+  - @menu.packageable_items.included.extras.each do |item|
+    .col-md-3
+      = "#{item.title} ($#{item.cost_as_extra.to_i})"
+      = check_box_tag :item, item.id, false, data: { "item-id" => item.id, "item-price" => item.cost_as_extra  }, class: 'item', id: item.title

@@ -1,0 +1,5 @@
+- content_for :enquiry_header do
+  %h2.js-enquiry-title
+    Create Enquiry
+
+= render partial: 'form', locals: { edit_customer: true }

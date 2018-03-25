@@ -1,0 +1,74 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.simpler-online-ordering__media {
+  background-image: url(asset_path('home/plan_your_event.jpg')) ;
+  background-position: center center;
+  background-size: cover;
+}
+
+.simpler-online-ordering__content {
+  background-color: $caitre-brown;
+  padding: 4rem 3rem;
+
+  h2 { 
+    margin-top: 0; 
+    margin-bottom: 1rem;
+    color: white;
+    text-transform:none;
+  } 
+  p { 
+    color: white;
+      margin-bottom: 3rem;
+    @include font-size(2);
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .simpler-online-ordering__media {
+    @include aspect-ratio(100, 50);
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .simpler-online-ordering { 
+    width: 100%;
+    overflow: hidden;
+    display: table;
+    direction: rtl;
+  }
+
+  .simpler-online-ordering__media, 
+  .simpler-online-ordering__content {
+    width: 50%;
+    display: table-cell;
+    direction: ltr;
+  }
+
+  .simpler-online-ordering__content {
+    padding: 4rem;
+    h2 { 
+      @include font-size(3.6);
+    }
+    p {
+      @include font-size(2.5);
+      margin-bottom: 3rem;
+    }
+    h2, p, a {
+      text-align: right;
+      max-width: 500px;
+      margin-left: auto;
+    }
+    a {
+      float: right;
+      clear: both;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .simpler-online-ordering__content {
+    padding: 8rem;
+  }
+}

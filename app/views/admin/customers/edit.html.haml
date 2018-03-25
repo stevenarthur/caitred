@@ -1,0 +1,9 @@
+- content_for :title do
+  \- Editing Customer 
+  = @customer.name
+
+.row
+  .col-xs-8
+    %h2 
+      Details for #{@customer.name} - #{@customer.company_name || "No company name specified"}
+= render "form"

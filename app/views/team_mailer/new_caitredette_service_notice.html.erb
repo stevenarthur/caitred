@@ -1,0 +1,13 @@
+<h1 class="main-title">You Have a New Caitredette Service Request!</h1>
+
+<hr />
+
+<p>
+  <strong>Preferred Contact Method: <span style='font-weight: normal'><%= @req.preferred_communication_method%> </span><br>
+  <strong>Customers Name: <span style='font-weight: normal'><%= @req.name %> </span><br>
+  <strong>Customers Company Name: <span style='font-weight: normal'><%= @req.company_name %> </span><br>
+  <strong>Customers Phone Number: <span style='font-weight: normal'><%= @req.try(:phone) || "Not Provided" %> </span><br>
+  <strong>Customers Email: <span style='font-weight: normal'><%= @req.email %> </span><br>
+  <strong>Customers Postcode: <span style='font-weight: normal'><%= @req.postcode %> </span><br>
+  <strong>Message:<span style='font-weight: normal'><%= @req.message %> </span><br>
+</p>

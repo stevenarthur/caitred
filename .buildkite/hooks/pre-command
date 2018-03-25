@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eu
+echo '--- :key: :key: :key: Decrypt Secrets'
+openssl aes-256-cbc -salt -a -d -in .envrc.encrypted -out .envrc -k $YOUCHEWS_ENCRYPTION_KEY
+export PATH="/var/lib/buildkite-agent/builds/$BUILDKITE_AGENT_NAME/$BUILDKITE_ORGANIZATION_SLUG/$BUILDKITE_PIPELINE_SLUG/node_modules/.bin:$PATH"
+source .envrc

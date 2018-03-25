@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+    - features/support/env.rb
+    - bin/*
+    - db/seeds.rb
+    - db/schema.rb
+    - db/migrate/*
+    - config/initializers/secret_token.rb
+    - config/initializers/backtrace_silencers.rb
+    - features/step_definitions/temp_snippets_steps.rb
+    - lib/tasks/*.rake
+    - Guardfile
+    - Gemfile
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 92
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - features/step_definitions/*_steps.rb
+Metrics/ClassLength:
+  Max: 120

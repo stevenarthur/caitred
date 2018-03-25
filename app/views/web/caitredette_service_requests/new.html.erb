@@ -1,0 +1,28 @@
+<% content_for :title do %>
+  The Caitredette Service
+<% end %>
+
+<% content_for :header do %>
+  <header class="nav--fixed nav--dark">
+    <%= render "shared/navigation" %>
+  </header>
+  <%= 
+    content_tag :div, class: "header--caitredette header--content header--banner" do
+      content_tag :div, class: "header-content-wrap" do
+        content_tag :div, class: "header-content-box" do
+          concat( content_tag(:h1){ "The Caitredette Service" } )
+          + concat( content_tag(:p){ raw("Need a hand onsite at your event? Caitredettes are here to help.") } )
+        end
+      end
+    end 
+  %>
+<% end %>
+
+<% content_for :middle_content do %>
+  <%= render 'what' %>
+  <%= render 'points' %>
+  <%= render 'how' %>
+  <%= render 'rates' %>
+  <%= render 'consultation' %>
+  <%= render 'message_from_liz' %>
+<% end %>

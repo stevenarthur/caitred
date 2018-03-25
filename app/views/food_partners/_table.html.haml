@@ -1,0 +1,48 @@
+%table.table.table-striped.table-condensed-xs
+  %tr
+    %th Company
+    %th Contact
+    %th Items (Active) #
+    %th Min $
+    %th Min #
+    %th Max #
+    %th Delivery $
+    %th
+      Lead time
+      %br
+      hours
+    %th Cheapest
+    %th
+      Max orders
+      %br
+      weekly
+    %th
+  - food_partners.each do |food_partner|
+    %tr.js-food-partner
+      %td.js-partner-company-name
+        %a.js-edit-partner{href: edit_food_partner_path(food_partner), data: { name: food_partner.company_name }}
+          #{food_partner.company_name}
+        .cuisine
+          #{food_partner.quick_description}
+      %td
+        .contact #{food_partner.contact_first_name} #{food_partner.contact_last_name}
+        .phone
+          - if food_partner.phone?
+            %span.contact-type t:
+            #{food_partner.phone_number}
+          - if food_partner.email?
+            %span.contact-type e:
+            #{food_partner.email}
+      %td= food_partner.packageable_items.active.size
+      %td= food_partner.minimum_spend_string
+      %td= food_partner.minimum_attendees
+      %td= food_partner.maximum_attendees
+      %td= food_partner.delivery_cost_display_string
+      %td= food_partner.lead_time_hours
+      %td= food_partner.lowest_price_dish_string
+      %td= food_partner.orders_per_week
+      %td
+        =button_to "Delete", food_partner_path(food_partner), method: :delete, class: 'btn btn-danger btn-inline', data: { confirm: "Are you sure you want to delete this food partner and all associated menus? This can't be undone." }
+%a{href: new_food_partner_path, class: 'btn btn-success'}
+  Add Food Partner
+%br

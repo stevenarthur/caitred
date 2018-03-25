@@ -1,0 +1,57 @@
+@import 'mixins';
+@import 'web_variables';
+
+$menu-padding: 2.5rem;
+.fa-menu { 
+  background-color: white;
+  padding: $menu-padding;
+  margin-bottom: 3rem;
+
+}
+.fa-menu__need-to-know {
+  text-align: center;
+  padding: $menu-padding;
+  background-color: $light-bg;
+  margin-bottom: 3rem;
+  h4 { 
+    text-transform: uppercase;
+    color: $caitre-green;
+  }
+  p {}
+}
+
+.fa-menu__event-type-list { 
+  list-style: none;
+  padding: 0; margin:0;
+  line-height: 1.2em;
+  font-size: $font-size;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: $menu-padding;
+  li {
+    margin-bottom: 1rem;
+  }
+
+  a, a:active, a:visited {
+    color: #333;
+    text-decoration: none;
+  }
+
+  li.active {
+    a, a:active, a:visited {
+      color: $caitre-green;
+    }
+    a:hover {
+      color: darken($caitre-green ,4);
+    }
+  }
+}
+
+.fa-menu__feature {
+  @include aspect-ratio(750,500);
+  background-color: lighten($primary-green,0);
+  margin-bottom: $menu-padding;
+  img {
+    max-width: 100%;
+  }
+}

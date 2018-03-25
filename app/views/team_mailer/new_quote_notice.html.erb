@@ -1,0 +1,16 @@
+<h1 class="main-title">You Have a New Enquiry!</h1>
+
+<div class="centered">
+  <p><%= link_to "View in Cake", edit_admin_quote_url(@quote.id), class: 'button' %></p>
+</div>
+
+<hr />
+
+<p>
+  <strong>Preferred Contact Method: <span style='font-weight: normal'><%= @quote.contact_method %> </span><br>
+  <strong>Customers Name: <span style='font-weight: normal'><%= @quote.name %> </span><br>
+  <strong>Customers Phone Number: <span style='font-weight: normal'><%= @quote.try(:phone) || "Not Provided" %> </span><br>
+  <strong>Customers Email: <span style='font-weight: normal'><%= @quote.email %> </span><br>
+  <strong>Customers Postcode: <span style='font-weight: normal'><%= @quote.postcode %> </span><br>
+  <strong>Message:<span style='font-weight: normal'><%= @quote.message %> </span><br>
+</p>

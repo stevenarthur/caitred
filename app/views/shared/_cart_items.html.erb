@@ -1,0 +1,38 @@
+<% if current_enquiry.enquiry_items.present? %>
+
+  <% if current_enquiry.food_partner.present? && current_enquiry.food_partner != @food_partner %>
+    <%= render 'shared/cart_partner_error' %>
+  <% else %>
+    <div class="order-cart__items" id="qa--cart-items">
+      <%= render 'shared/order_cart_items', modification_enabled: true %>
+
+      <% if current_enquiry.amount_to_pay >= @food_partner.minimum_spend %>
+        <%= button_tag "Order Now", { class: 'shadow-button shadow-button--orange', id: "qa--order" } %>
+      <% else %>
+        <%= button_tag "Order Now", { class: 'shadow-button', disabled: true } %>
+      <% end %>
+    </div>
+  <% end %>
+
+  
+<% else %>
+  <p>Your cart is empty! Get "chewsing"!</p>
+  <hr />
+  <div class="order-cart-prices">
+    <div class="order-cart-prices-item order-cart-prices-item--min-order">
+      <div class="order-cart-prices-label">Minimum Order</div>
+      <div class="order-cart-prices-value"><%= number_to_currency(@food_partner.minimum_spend ) %></div>
+    </div>
+    <div class="order-cart-prices-item order-cart-prices-item--del-fee">
+      <div class="order-cart-prices-label">Delivery Fee</div>
+      <div class="order-cart-prices-value" id="qa--delivery-fee">
+        <% if @food_partner.delivery_cost == 0 %>
+          Free
+        <% else %>
+          <%= number_to_currency(@food_partner.delivery_cost) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= button_tag "Order Now", { class: 'shadow-button', disabled: true } %>
+<% end %>

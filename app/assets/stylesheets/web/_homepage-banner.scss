@@ -1,0 +1,139 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.home--banner {
+  margin-top: 8rem;
+  position: relative;
+  background-color: #070709;
+  background-image: url(asset_path('homepage.jpg'));
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+
+  img {
+    margin-bottom: 3rem;
+    max-width: 100%;
+  }
+
+  input {
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+
+  button{
+    border: none !important;
+    height: 46px;
+    line-height: 46px;
+    font-size: 2rem;
+    padding: 0 4rem; 
+
+    @media (max-width: $screen-md-min) {
+      display: block;
+      margin: 5px auto;
+      width: 100%;
+    }
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 130%;
+    color: #fff;
+    text-shadow: 1.5px 2.598px 7px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (min-width: $screen-sm-min){
+    height: 630px;
+
+    h1 {
+      font-size: 49px;
+      margin-bottom: 0px;
+    }
+  }
+  @media (min-width: $screen-md-min){
+    h1 {
+      font-size: 54px;
+    }
+  }
+
+  @media (min-width: $screen-lg-min){
+    h1 {
+      @include font-size(9.0);
+      margin-bottom: 2rem;
+    }
+  }
+
+}
+
+.home--banner__content {
+  padding: 6rem 0;
+  @media (min-width: $screen-sm-min){
+    padding: 0;
+    @include vertical-align();
+  }
+
+  h1 {
+    @include font-size(3);
+
+    @media (min-width: $screen-sm-min) {
+      @include font-size(6);
+      margin-bottom: 0px;
+    }
+  }
+
+  small {
+    display: block;
+    font-weight: lighter;
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+    @include font-size(2);
+
+    @media (min-width: $screen-md-min){
+      @include font-size(3);
+    }
+  }
+}
+
+#js--service-postcode-wrap {
+  display: none;
+}
+
+#new_postcode_lead {
+  margin-top: 1.5rem;
+}
+
+.banner__postcode-error {
+  background-color: $caitre-grey;
+  color: white;
+  border-radius: 6px;
+  margin-top: 3rem;
+  padding: 2rem 3rem;
+  p {
+    text-align: center;
+    @include font-size(1.8);
+    margin: 0;
+  }
+  .help-block {
+    text-align: left;
+  }
+}
+
+.banner__postcode-error__button {
+  border: none !important;
+  border-radius: 6px;
+  background-color: $caitre-green;
+  margin: none;
+  height: 34px;
+  line-height: 34px;
+  width: 100%;
+  padding: 0 !important;
+  &:hover {
+  background-color: darken($caitre-green,7);
+  }
+}

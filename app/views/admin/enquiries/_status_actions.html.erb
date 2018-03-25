@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-12">
+    <strong>Food Partner:</strong> <%= link_to @enquiry.food_partner_company_name, edit_food_partner_path(@enquiry.food_partner) %>
+  </div>
+  <div class="col-xs-12">
+    <strong>Order Received:</strong> <%= @enquiry.created_at.strftime("%d %B %Y - %l:%M %p")
+ %> 
+  </div>
+</div>
+<div class="row js-status-content">
+
+  <div class="col-xs-2"> <label>Current Status</label> </div>
+  <div class="col-xs-2 js-status-title"> <%= @enquiry.status %> </div>
+  <div class="col-xs-8 enquiry-status-buttons right">
+    <% if @enquiry.can_regress? %>
+      <a class="js-regress-enquiry btn btn-inline btn-default" data-id="<%= @enquiry.id %>">
+        <i class="fa fa-arrow-left"></i>
+        Move to <%= @enquiry.last_status %>
+      </a>
+    <% end %>
+
+    <% if @enquiry.can_progress? %>
+      <% unless @enquiry.next_status.to_s == "Confirmed" %>
+        <a class="js-progress-enquiry btn btn-inline btn-default" data-id="<%= @enquiry.id %>">
+          Move to <%= @enquiry.next_status %>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      <% end %>
+    <% end %>
+
+    <% if @enquiry.can_cancel? %>
+      <a class="js-cancel-enquiry btn btn-inline btn-default" data-id="<%= @enquiry.id %>" title: 'Cancel'>
+        X
+      </a>
+    <% end %>
+
+    <% if @enquiry.can_mark_test_or_spam? %>
+      <a class="js-mark-enquiry-test btn btn-inline-icon btn-default" data-id="<%= @enquiry.id %>" title: 'Mark as Test'>
+        <i class="icon-icon_34525 icon-medium" data-id="<%= @enquiry.id %>"></i>
+      </a>
+      <a class="js-mark-enquiry-spam.btn.btn-inline-icon.btn-default" data-id="<%= @enquiry.id %>" title: 'Mark as Spam' }>
+        <i class="icon-icon_61684 icon-medium" data-id="<%= @enquiry.id %>"></i>
+      </a>
+    <% end %>
+  </div>
+</div>
+
+<% if @enquiry.ready_to_confirm? %>
+  <div class="row grid left right">
+    <div class="col-xs-2"> Link to confirm </div>
+    <div class="col-xs-7"> <%= link_to "Confirmation Page", ready_to_confirm_path(token: @enquiry.confirmation_token) %> </div>
+    <div class-"col-xs-3 enquiry-status-buttons js-confirm-button">
+      <a class="js-send-confirm-link btn btn-inline btn-default" data-id="<%= @enquiry.id %>" title: 'Send confirmation link to customer'>
+        Send to Customer
+        <span class="glyphicon glyphicon-envelope" data-id="<%= @enquiry.id %>">
+      </a>
+    </div>
+  </div>
+<% end %>

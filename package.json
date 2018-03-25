@@ -1,0 +1,22 @@
+{
+  "name": "youchews",
+  "version": "1.0.0",
+  "description": "## Overview",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitaldawn/youchews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digitaldawn/youchews/issues"
+  },
+  "homepage": "https://github.com/digitaldawn/youchews#readme",
+  "devDependencies": {
+    "phantomjs-prebuilt": "^2.1.5"
+  }
+}

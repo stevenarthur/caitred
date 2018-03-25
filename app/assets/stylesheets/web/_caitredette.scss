@@ -1,0 +1,203 @@
+@import "web_variables";
+@import "mixins";
+
+img {
+  max-width: 100%;
+}
+
+.caitredette__what {
+  margin: 6rem 0 6rem 0;
+  h1 {
+    margin-bottom: 4rem;
+    text-align: center;
+    color: $caitre-grey;
+    @include heading-border();
+    @media (min-width: $screen-md-min) {
+      @include font-size(4.8);
+    }
+  }
+  p {
+    margin-top: 2rem;
+    @include font-size(1.8);
+    text-align: center;
+  }
+  @media (min-width: $screen-md-min) {
+    p { @include font-size(2.6); margin-top: 0; }
+  }
+}
+
+.caitredette__points{
+  padding: 3rem 2rem 5rem 2rem;
+  background-color: $caitre-grey;
+  clear: both;
+  overflow: hidden;
+
+  h2 {
+    color: white;
+    text-align: center;
+    @media (min-width: $screen-md-min) {
+      @include font-size(4.8);
+      margin-bottom: 5rem;
+    }
+  }
+
+  p {
+    color: white;
+    margin-top: 2rem;
+    @include font-size(1.8);
+    padding-left: 2.5rem;
+    margin-left: 5rem;
+    position: relative;
+    clear: both;
+
+    &:before {
+      content: "";
+      background-image: url(/assets/tick.png);
+      background-size: 100%;
+      width: 39px;
+      height: 34px;
+      position: relative;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+      position: absolute;
+      left: -3.5rem;
+      top: 6px;
+      float: left;
+    } 
+  }
+  @media (min-width: $screen-md-min) {
+    p { @include font-size(2); margin-top: 0; }
+  }
+}
+
+.caitredette__how,
+.caitredette__rates {
+  background-color: #efefef;
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: $caitre-grey;
+    @include heading-border();
+    @media (min-width: $screen-md-min) {
+      @include font-size(4.8);
+    }
+  }
+}
+
+.caitredette__how {
+  padding: 4rem 0 4rem 0;
+  text-align: center;
+  h2 {
+    margin-bottom: 4rem;
+    text-align: center;
+    color: $caitre-grey;
+    @include heading-border();
+    @media (min-width: $screen-md-min) {
+      @include font-size(4.8);
+    }
+  }
+  h3 {
+    font-size: 7.2rem;
+    margin: 3rem auto;
+    border-radius: 400px;
+    width: 11rem;
+    height: 11rem;
+    color: white;
+    line-height: 11rem;
+    text-align: center;
+    background-color: $caitre-grey;
+  }
+  h4 {
+    @include font-size(2.8);
+  }
+  p {
+    @include font-size(2);
+  }
+}
+
+.caitredette__rates {
+  text-align: center;
+  h2 { margin-bottom: 4rem }
+}
+
+.caitredette__rate {
+  background-color: white;
+  padding: 4rem 5rem 2rem 5rem;
+  margin-bottom: 5rem;
+  p {
+    @include font-size(3);
+    margin-bottom: 0;
+    strong {
+      display: block;
+      @include font-size(7.2);
+      font-family: $serif;
+    }
+  }
+}
+
+.caitredette__rate--large {
+  p { 
+    @include font-size(6);
+    font-family: $serif;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 1.1em;
+    margin: 2.2rem 0;
+  }
+}
+
+.caitredette__rate-info {
+  font-weight: bold;
+  @include font-size(2.4);
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.caitredette__consultation {
+  padding: 4rem 1rem 6rem 1rem;
+  background-color: $caitre-grey;
+  clear: both;
+  overflow: hidden;
+  img {
+    margin: 3rem 0;
+  }
+  h2 {
+    color: white;
+    text-align: center;
+    @media (min-width: $screen-md-min) {
+      @include font-size(4.8);
+      margin-bottom: 5rem;
+    }
+  }
+  label {
+    color: white;
+  }
+}
+
+.caitredette__liz {
+  padding: 4rem 1rem 5rem 1rem;
+}
+
+.caitredette__liz-inner {
+  background: white; 
+  padding: 4rem 4rem;
+}
+
+.caitredette__liz__message {
+  padding-left: 2rem;
+  img {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    color: $caitre-grey;
+    text-align: center;
+    margin-top:0;
+    @media (min-width: $screen-md-min) {
+      @include font-size(3.8);
+      margin-bottom: 4rem;
+    }
+  }
+  p {
+    @include font-size(1.8);
+  }
+}

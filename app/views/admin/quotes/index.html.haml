@@ -1,0 +1,34 @@
+- content_for :title do
+  \- View Quotes
+
+%br
+.row
+  .col-xs-12
+    %a.btn.btn-success{href: new_admin_quote_path} Create Quote
+    %br
+.row
+  .col-xs-12
+    %h2
+      Quote
+    %table.table.table-striped
+      %tr
+        %th Date
+        %th Food Partner
+        %th Name
+        %th Email
+        %th Phone
+        %th Message
+        %th
+
+        
+      - @quotes.each do |quote|
+        %tr.js-quote
+          %td.js-quote-name= quote.created_at.strftime('%d %b')
+          %td= link_to quote.food_partner.company_name, edit_food_partner_path(quote.food_partner) if quote.food_partner
+          %td= quote.name
+          %td= quote.email
+          %td= quote.phone
+          %td= truncate quote.message
+          %td.text-right
+            = link_to 'Edit', edit_admin_quote_path(quote), :class => "btn btn-default"
+            = link_to 'Delete', admin_quote_path(quote), :method => 'delete', :class => "btn btn-danger"

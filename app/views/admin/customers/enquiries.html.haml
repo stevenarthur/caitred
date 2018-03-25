@@ -1,0 +1,22 @@
+- content_for :title do
+  Enquiries for #{@customer.name}
+
+%br
+.row
+  .col-xs-12
+    %h2
+      Enquiries for
+      %span.js-customer-name=@customer.name
+      \- #{@customer.company_name || "no company specified"}
+    %table.table.table-striped
+      %tr
+        %th ID
+        %th Date
+        %th
+      - @enquiries.each do |enquiry|
+        %tr.js-customer-enquiry
+          %td= enquiry.id
+          %td
+            #{enquiry.event_date} #{enquiry.event_time}
+          %td
+            %a.btn.btn-success{href: edit_admin_enquiry_path(enquiry)} Edit

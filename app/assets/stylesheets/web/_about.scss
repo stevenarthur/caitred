@@ -1,0 +1,66 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.about {
+  img {
+    width: 100%;
+  }
+
+  .about-how-start {
+    text-align: center;
+    padding: 6rem 0;
+
+    h1 {
+      @include font-size(2.8);
+      margin-top: 5rem;
+      color: #4f4f4f;
+      margin-bottom: 2rem;
+      &::after {
+        content: "";
+        width: 29rem;
+        height: 5px;
+        background-color: #68707B;
+        display: block;
+        margin: 1rem auto;
+      }
+    }
+
+    p {
+      @include font-size(1.8);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .shadow-button {
+      min-width: 200px;
+    }
+    @media (min-width: $screen-md-min){
+      h1 {
+        @include font-size(5);
+      }
+      p {
+        @include font-size(2.4);
+      }
+    }
+  }
+
+}
+
+.about__statement {
+  background-image: url(asset_path('about-images/about-statement-bg.jpg'));
+  background-position: center center;
+  overflow: hidden;
+  text-align: center;
+  padding: 9rem 2rem;
+  h2 {
+    @include font-size(2.8);
+    @media (min-width: $screen-md-min) {
+    @include font-size(5);
+    }
+    line-height: 1.2em;
+    max-width: 900px; margin: 0 auto;
+    color: white;
+  }
+}
+

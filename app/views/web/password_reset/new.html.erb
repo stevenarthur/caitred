@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  Reset your password -
+<% end %>
+
+<div class="nav-push">
+  <h2>Reset your password</h2>
+  <p>This will send you an email with a link to reset your password.</p>
+
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-5">
+      <%= form_tag password_reset_index_path do %>
+        <div class="form-group">
+          <label>
+            Email address
+          </label>
+          <%= text_field_tag :email, '', class: 'form-control input', id: 'js-email' %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Reset Password", class: 'btn btn-success js-track', id: 'js-reset-password-submit' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

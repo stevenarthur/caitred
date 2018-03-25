@@ -1,0 +1,48 @@
+@import "web_variables";
+@import "admin_variables";
+@import "mixins";
+
+.subscribe-form, .why-us {
+  text-align: center;
+  .btn {
+    width: 136px;
+  }
+}
+
+.blog-intro {
+  font-size: $font-size-lg;
+}
+
+.separator {
+  border-top: 1px dashed $brand-secondary-light;
+  padding-top: 20px;
+}
+
+h2.center-block {
+  text-align: center;
+}
+
+.contest h1 {
+	margin-bottom: 20px;
+	font-size: 70px;
+}
+
+.contest h3 {
+	font-size: 27px;
+	color: #fff;
+	text-shadow: black 0.1em 0.1em 0.2em;
+	margin-bottom: 10px;
+	margin-top: 0;
+}
+
+h4.text-center {
+  text-shadow: 2px 2px #1A1919;
+}
+
+.as-featured-in {
+  margin: 3rem 2rem;
+}
+.as-featured-in a {
+  display: inline-block;
+  margin: 0 3rem;
+}

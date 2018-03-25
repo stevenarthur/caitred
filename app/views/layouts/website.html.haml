@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+%html
+  %head
+    - if content_for?(:title)
+      %title= (yield :title) + raw(" | Caitre'd")
+    - else
+      %title Sydney Office Catering - Your Catering Concierge | Caitre'd
+    %meta{name: "viewport",content:"width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{name: "google-site-verification", content:"Baajv5RT7_KC-nv432EWF28songF_cMcFNF-nZCGdbc"}
+
+    - if @noindex
+      %meta{name: 'robots', content: 'noindex'}
+    - if content_for?(:meta_description)
+      %meta{name: "description", content: yield(:meta_description) }
+
+    = stylesheet_link_tag "_web"
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:700italic' rel='stylesheet' />
+
+    = favicon_link_tag 'favicon.png'
+
+    = render 'shared/segment'
+    = render 'shared/facebook_tracking_pixel'
+    = javascript_include_tag "website", "data-turbolinks-track" => true
+
+    = yield :stripe
+    = yield :javascripts
+    = yield :scripts
+
+    = render 'shared/bugsnag'
+
+    = csrf_meta_tags
+
+    %body{class: current_page.to_s}
+
+      = render 'layouts/header'
+
+      = yield :top_content
+
+      .container{ id: "#{'qa-signed-in' if current_customer.present? }" }
+        = yield
+
+      = yield :middle_content
+
+      = yield :last_content
+
+      = render 'layouts/footer'
+
+      = render 'shared/bugherd'
+
+      - if Rails.env.production?
+        = render 'shared/chatlio' if (Rails.env.production? && livechat?)
+        = render 'shared/facebook' if include_facebook?

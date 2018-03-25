@@ -1,0 +1,202 @@
+<%= simple_form_for @food_partner, id: 'partner_form' do |f| %>
+
+  <%= field_set_tag "Company Details" do %>
+    <%= f.input :active %>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12"> <%= f.input :company_name %> </div>
+
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4"> <%= f.input :url_slug %> </div>
+              <div class="col-md-4"> <%= f.input :quick_description %> </div>
+              <div class="col-md-4"> <%= f.input :priority_order %> </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <%= f.label :bio %>
+            <%= f.input :bio, as: :hidden, input_html: { id: "bio" } %>
+            <trix-editor input="bio"></trix-editor>
+
+            <%= f.label :need_to_know %>
+            <%= f.input :need_to_know, as: :hidden, input_html: { id: "need_to_know" } %>
+            <trix-editor input="need_to_know"></trix-editor>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.input :address_line_1 %>
+            <%= f.input :suburb %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :address_line_2 %>
+            <%= f.input :postcode %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <%= image_tag asset_path(@food_partner.image_path) %>
+        <%= f.input :image_file_name %>
+
+
+        <% if @food_partner.featured_image_file_name.present? %>
+          <%= image_tag @food_partner.featured_image_file_name.url(:partner_thumb) %>
+        <% end %>
+        <%= f.input :featured_image_file_name %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Contact Details" do %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :email, label: "Primary Email Address" %>
+      </div>
+      <div class="col-md-6"> 
+        <%= f.input :contact_first_name, hint: 'First name is used to address emails' %> 
+        <%= f.input :contact_last_name %> 
+        <%= f.input :phone_number %>
+      </div>
+      <div class="col-md-6"> 
+        <%= f.input :secondary_contact_first_name, hint: 'This contact is for admin purposes. Currently it is not copied in on emails' %> 
+        <%= f.input :secondary_contact_last_name %> 
+        <%= f.input :secondary_phone_number %>
+        <%= f.input :secondary_email %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Order Details" do %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.input :minimum_spend, label: "Minimum Spend $" %>
+        <%= f.input :lowest_price_dish %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :maximum_attendees %>
+        <%= f.input :lead_time_hours %>
+      </div>
+      <div class="col-md-4">
+        <%= label_tag "Pricing Category" %>
+        <%= f.input :price_low, label: '$ - Less than $10 PP' %>
+        <%= f.input :price_medium, label: '$$ - $10 PP - $15 PP' %>
+        <%= f.input :price_high, label: '$$$ - More than $15 PP' %>
+      </div>
+    </div>
+
+  <% end %>
+
+
+  <%= field_set_tag "Event Types" do %>
+    <div class="row">
+      <% EventTypes.all.each_slice(2) do |slice| %>
+          <div class="col-sm-3">
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag "food_partner[event_type][]", slice[0].name, 
+                                  @food_partner.event_type.include?(slice[0].name) %>
+                <%= slice[0].name %>
+              </label>
+            </div>
+          </div>
+          <% unless slice[1].nil? %>
+            <div class="col-sm-3">
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag "food_partner[event_type][]", slice[1].name, 
+                                    @food_partner.event_type.include?(slice[1].name) %>
+                  <%= slice[1].name %>
+                </label>
+              </div>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Opening Hours" do %>
+    <%= f.simple_fields_for :delivery_hours do |b| %>
+      <%= render 'delivery_hour_fields', f: b %>
+    <% end %>
+    <div class="row"><div class="col-md-12"><%= link_to_add_fields "Add Day", f, :delivery_hours %></div></div>
+  <% end %>
+
+  <%= field_set_tag "Delivery Details" do %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= f.input :delivery_cost, label: "Delivery cost $" %>
+      </div>
+      <div class="col-md-5">
+        <%= f.input :delivery_text %>
+      </div>
+      <div class="col-md-5">
+        <%= f.input :availability_text %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Delivery Postcodes" do %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Postcode</th>
+          <th>Area (s)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @food_partner.postcodes.each do |postcode| %>
+          <%= render 'postcode_row', postcode: postcode %>
+        <% end %>
+        <% if @food_partner.persisted? %>
+          <tr id="js--new-postcode-field">
+            <td colspan="2">
+              <%= text_field_tag :postcode, nil, class: 'form-control input-lg input--home-banner', id: 'js--lookup', placeholder: 'Search postcode (e.g. 2000)', minlength: 3, maxlength: 4, required: true %>
+              <%= hidden_field_tag :postcode_id, nil, id: 'js--slug' %>
+            </td>
+            <td>
+              <%= link_to "+", "#", id: "js--add-postcode", class: 'btn btn-success' %>
+            </td>
+          </tr>
+        <% else %>
+          <tr>
+            <td colspan='3'>Save the food partner before adding postcodes</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= f.submit "Save Food Partner Details", class: 'button button--small' %>
+
+  <% if @food_partner.persisted? %>
+    <script>
+      $(function() {
+        var baseCreatePostcodePath = "<%= add_postcode_food_partner_path(id: @food_partner.id, postcode_slug: "") %>";
+
+        $("#js--add-delivery-postcode").on('click', function(e){
+          e.preventDefault();
+          $("#js--new-postcode-field").show();
+        });
+
+        $("#js--add-postcode").on('click', function(e){
+          e.preventDefault(); 
+          var postcode_slug = $("#js--slug").val();
+          var newUrl = baseCreatePostcodePath + postcode_slug;
+          $.ajax({
+            type: "POST",
+            url: newUrl,
+            success: function(){ console.log("success")},
+            error: function(){ console.log("error")}
+          })
+        })
+      });
+    </script>
+  <% end %>
+
+<% end %>

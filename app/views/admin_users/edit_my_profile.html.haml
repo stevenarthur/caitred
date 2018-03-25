@@ -1,0 +1,5 @@
+- flash.each do |key, value|
+  %div{class: flash_class(key)}
+    = value
+= form_for @user, url: edit_profile_path(@user), builder: Judge::FormBuilder, html: { class: 'form-horizontal js-judge-validate-form'} do |form|
+  = render partial: "form", locals: { form: form }
